@@ -26,6 +26,11 @@
     { "firstName": "Bob", "lastName": "Dot", "email": "john@foo.com", "event": "Fundraiser", "location": "Kapolei", "containers": "100" },
     { "firstName": "Hal", "lastName": "Rob", "email": "admin@foo.com", "event": "Dinner", "location": "Waipahu", "containers": "10" },
     { "firstName": "Jen", "lastName": "Doe", "email": "admin@foo.com", "event": "Birthday", "location": "Ala Moana", "containers": "25" }
-  ]
+  ],
+
+  "monti": {
+    "appId": "4yHfSttAezRQro5jy",
+    "appSecret": "b7e6e9ff-50fe-4608-9dce-0a6597f8690c"
+  }
 
 }
