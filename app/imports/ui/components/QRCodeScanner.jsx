@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ZXing from '@zxing/library';
+import { Button } from 'react-bootstrap';
 
 const QrCodeScanner = () => {
   const [selectedDeviceId, setSelectedDeviceId] = useState(null);
@@ -34,8 +35,10 @@ const QrCodeScanner = () => {
           const decodingStyle = document.getElementById('decoding-style').value;
 
           if (decodingStyle === 'once') {
+            // eslint-disable-next-line no-use-before-define
             decodeOnce(codeReader, selectedDeviceId);
           } else {
+            // eslint-disable-next-line no-use-before-define
             decodeContinuously(codeReader, selectedDeviceId);
           }
 
@@ -55,6 +58,7 @@ const QrCodeScanner = () => {
     initCodeReader();
   }, [selectedDeviceId]);
 
+  // eslint-disable-next-line no-shadow
   const decodeOnce = (codeReader, selectedDeviceId) => {
     codeReader.decodeFromInputVideoDevice(selectedDeviceId, 'video').then((result) => {
       console.log(result);
@@ -65,6 +69,7 @@ const QrCodeScanner = () => {
     });
   };
 
+  // eslint-disable-next-line no-shadow
   const decodeContinuously = (codeReader, selectedDeviceId) => {
     codeReader.decodeFromInputVideoDeviceContinuously(selectedDeviceId, 'video', (result, err) => {
       if (result) {
@@ -92,20 +97,24 @@ const QrCodeScanner = () => {
     <div className="wrapper" style={{ paddingTop: '2em' }}>
 
       <div>
-        <a className="button" id="startButton">Start</a>
-        <a className="button" id="resetButton">Reset</a>
+        <Button className="button" id="startButton">Start</Button>
+        <Button className="button" id="resetButton">Reset</Button>
       </div>
 
       <div>
-        <video id="video" width="300" height="200" style={{ border: '1px solid gray' }}></video>
+        {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+        <video id="video" width="300" height="200" style={{ border: '1px solid gray' }} />
       </div>
 
       <div id="sourceSelectPanel" style={{ display: 'none' }}>
+        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         <label htmlFor="sourceSelect">Change video source:</label>
-        <select id="sourceSelect" style={{ maxWidth: '400px' }}></select>
+        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+        <select id="sourceSelect" style={{ maxWidth: '400px' }} />
       </div>
 
       <div style={{ display: 'table' }}>
+        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         <label htmlFor="decoding-style"> Decoding Style:</label>
         <select id="decoding-style" size="1">
           <option value="once">Decode once</option>
