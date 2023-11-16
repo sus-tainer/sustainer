@@ -129,21 +129,6 @@ const NavBar = () => {
                       </NavLink>
                     </li>
                     <li className="nav-item">
-                      <NavLink to="/admin-list" className="nav-links" onClick={closeMobileMenu}>
-                        Containers List
-                      </NavLink>
-                    </li>
-                    <li className="nav-item">
-                      <NavLink to="/scan" className="nav-links" onClick={closeMobileMenu}>
-                        Scan Containers
-                      </NavLink>
-                    </li>
-                    <li className="nav-item">
-                      <NavLink to="/signout" className="nav-links" onClick={closeMobileMenu}>
-                        Sign Out
-                      </NavLink>
-                    </li>
-                    <li className="nav-item">
                       <NavLink to="/vendororder" className="nav-links" onClick={closeMobileMenu}>
                         Vendor Order Form
                       </NavLink>
@@ -151,6 +136,11 @@ const NavBar = () => {
                     <li className="nav-item">
                       <NavLink to="/listvendororder" className="nav-links" onClick={closeMobileMenu}>
                         List Vendor Orders
+                      </NavLink>
+                    </li>
+                    <li className="nav-item">
+                      <NavLink to="/signout" className="nav-links" onClick={closeMobileMenu}>
+                        Sign Out
                       </NavLink>
                     </li>
                   </ul>
