@@ -1,3 +1,3 @@
-BitByBit
+## Sustainer Web App
 
-For details, please see https://hacc2023.github.io/BitByBit/
+For details, please see [https://sus-tainer.github.io/](https://sus-tainer.github.io/).
