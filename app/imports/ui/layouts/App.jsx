@@ -22,6 +22,7 @@ import AddContainer from '../pages/AddContainer';
 import Home from '../pages/Home';
 import ListContainersAdmin from '../pages/ListContainersAdmin';
 import QRCodeGenerator from '../components/QRCodeGenerator';
+import ListVendorOrder from '../pages/ListVendorOrder';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -46,6 +47,7 @@ const App = () => {
           <Route path="/add" element={<ProtectedRoute><AddContainer /></ProtectedRoute>} />
           <Route path="/qrcode" element={<ProtectedRoute><QRCodeGenerator /></ProtectedRoute>} />
           <Route path="/vendororder" element={<ProtectedRoute><AddVendorOrder /></ProtectedRoute>} />
+          <Route path="/listvendororder" element={<ProtectedRoute><ListVendorOrder /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
           <Route path="/admin-list" element={<AdminProtectedRoute ready={ready}><ListContainersAdmin /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
