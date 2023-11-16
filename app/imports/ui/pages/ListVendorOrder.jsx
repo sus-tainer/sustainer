@@ -38,10 +38,11 @@ const ListVendorOrder = () => {
                 <th>Event</th>
                 <th>Location</th>
                 <th>Containers</th>
+                <th>Remove</th>
               </tr>
             </thead>
             <tbody>
-              {vendororders.map((vendororder) => <VendorOrderItem key={VendorOrderItem._id} vendororder={vendororder} />)}
+              {vendororders.map((vendororder) => <VendorOrderItem key={VendorOrderItem._id} vendororder={vendororder} vendorordercollection={VendorOrder.collection} />)}
             </tbody>
           </Table>
         </Col>
