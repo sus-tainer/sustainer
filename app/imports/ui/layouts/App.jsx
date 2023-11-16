@@ -83,6 +83,18 @@ const AdminProtectedRoute = ({ ready, children }) => {
   return (isLogged && isAdmin) ? children : <Navigate to="/notauthorized" />;
 };
 
+const VendorProtectedRoute = ({ ready, children }) => {
+  const isLogged = Meteor.userId() !== null;
+  if (!isLogged) {
+    return <Navigate to="/vendororder" />;
+  }
+  if (!ready) {
+    return <LoadingSpinner />;
+  }
+  const isVendor = Roles.userIsInRole(Meteor.userId(), 'vendor');
+  return (isLogged && isVendor) ? children : <Navigate to="/notauthorized" />;
+};
+
 // Require a component and location to be passed to each ProtectedRoute.
 ProtectedRoute.propTypes = {
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
@@ -103,4 +115,13 @@ AdminProtectedRoute.defaultProps = {
   children: <Landing />,
 };
 
+VendorProtectedRoute.propTypes = {
+  ready: PropTypes.bool,
+  children: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+};
+
+VendorProtectedRoute.defaultProps = {
+  ready: false,
+  children: <Landing />,
+};
 export default App;
