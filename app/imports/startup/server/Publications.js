@@ -17,7 +17,7 @@ Meteor.publish(Stuffs.userPublicationName, function () {
 Meteor.publish(Containers.userPublicationName, function () {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
-    return Containers.collectionfind({ owner: username });
+    return Containers.collection.find({ owner: username });
   }
   return this.ready();
 });
@@ -25,7 +25,7 @@ Meteor.publish(Containers.userPublicationName, function () {
 Meteor.publish(VendorOrder.userPublicationName, function () {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
-    return VendorOrder.collectionfind({ owner: username });
+    return VendorOrder.collection.find({ owner: username });
   }
   return this.ready();
 });
