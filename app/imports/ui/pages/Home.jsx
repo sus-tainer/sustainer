@@ -42,6 +42,20 @@ const Home = () => {
               </Col>
             </Row>,
           ]) : ''}
+          {Roles.userIsInRole(Meteor.userId(), 'vendor') ? ([
+            <Row className="justify-content-center align-items-center">
+              <Col xs="auto" className="my-3">
+                <Button className="rounded-0" variant="outline-light" size="lg" href="/listvendororder">
+                  Vendor Order List
+                </Button>
+              </Col>
+              <Col xs="auto">
+                <Button className="rounded-0" variant="light" size="lg" href="/vendororder">
+                  Vendor Order Form
+                </Button>
+              </Col>
+            </Row>,
+          ]) : ''}
         </Container>
       </div>
       <FooterHome />
