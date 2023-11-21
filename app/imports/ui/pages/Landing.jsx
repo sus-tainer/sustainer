@@ -13,7 +13,7 @@ const Landing = () => (
             <p className="mb-0 text-center">
               {/* eslint-disable-next-line max-len */}
               Single-use takeout containers and food wrappers make up a significant portion—up to one-third—of the debris discovered along Hawai’i&apos;s shorelines. Sustainer is dedicated to tackling this environmental challenge by
-              providing a convenient and user-friendly reusable takeout container system. Our aim is to contribute to reducing this prevalent waste and elimi nating debrees along Hawai’i&apos;s coastal areas. Join us in making a positive
+              providing a convenient and user-friendly reusable takeout container system. Our aim is to contribute to reducing this prevalent waste and elimi nating debris along Hawai’i&apos;s coastal areas. Join us in making a positive
               impact by adopting our sustainable solution for takeout packaging.
             </p>
           </Col>
