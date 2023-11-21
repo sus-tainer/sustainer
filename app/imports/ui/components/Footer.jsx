@@ -12,7 +12,7 @@ const Footer = () => (
             <Card.Body>
               <Card.Title>Reduce</Card.Title>
               <Card.Text>
-                Minimize container loss and enhance the successful implementation of the Full Cycle Takeout program.
+                Minimize container loss and enhance the successful implementation of the <a href="https://www.fullcycletakeouthawaii.org/" target="/blank">Full Cycle Takeout program</a>.
               </Card.Text>
             </Card.Body>
           </Card>
