@@ -101,16 +101,14 @@ const QrCodeScanner = () => {
     });
   };
 
-  const [scan] = useState('test21');
-  const [selection, setSelection] = useState('hi');
+  const [selection, setSelection] = useState('container');
 
   const submit = (msgResult) => {
     console.log(selection);
-    console.log(scan);
-    if (msgResult === 'container') {
-      swal('Success', 'Assigned container to: THOMAS (trivera2@goo.com)', 'success');
-    } else {
+    if (msgResult === 'user') {
       swal('User Scan Success', 'Name: THOMAS', 'success');
+    } else {
+      swal('Success', 'Assigned container to: THOMAS (trivera2@goo.com)', 'success');
     }
   };
 
@@ -170,7 +168,7 @@ const QrCodeScanner = () => {
       <Container>
         <h3>Result:</h3>
         <pre><code id="result" /></pre>
-        <Button value={scan} onClick={handleOnClick}>Scan</Button>
+        <Button value={selection} onClick={handleOnClick}>Scan</Button>
       </Container>
     </div>
   );
