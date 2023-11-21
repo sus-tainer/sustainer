@@ -6,7 +6,7 @@ import { Card, Col, Container, Row } from 'react-bootstrap';
 const stripePromise = loadStripe('your_stripe_publishable_key');
 
 const PaymentForm = () => {
-  const [form, setForm] = React.useState({ email: '', error: '', loading: false });
+  const [form, setForm] = React.useState({ email: '', error: 'Credit Card Information Not Valid', loading: false });
   const stripe = useStripe();
   const elements = useElements();
 
