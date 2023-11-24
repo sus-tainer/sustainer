@@ -21,7 +21,7 @@ const VendorOrderItem = ({ vendorOrder, collection }) => {
       <td>
         <Link to={`/edit/${vendorOrder._id}`}>Edit</Link>
       </td>
-      <td><Button variant="danger" onClick={() => removeItem(vendorOrder._id)}><Trash /></Button></td>
+      <td><Button variant="danger" aria-label="Save" onClick={() => removeItem(vendorOrder._id)}><Trash /></Button></td>
     </tr>
   );
 };
