@@ -63,10 +63,20 @@ const AddContainer = () => {
                 <ErrorsField />
               </Card.Body>
             </Card>
+            <br />
             {showQRCode && <ContainerQRCodeGenerator containerData={submit} />}
           </AutoForm>
         </Col>
       </Row>
+      <br />
+      <h3>Instructions:</h3>
+      <ol>
+        <li>Select a size for your container.</li>
+        <li>Click the submit button.</li>
+        <li>Your QR code will appear below.</li>
+        <li>Print the QR code.</li>
+        <li>Attach the QR code to your container.</li>
+      </ol>
     </Container>
   );
 };
