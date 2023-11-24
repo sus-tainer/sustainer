@@ -47,10 +47,6 @@ const AddContainer = () => {
     );
   };
 
-  const handlePrint = () => {
-    window.print(<ContainerQRCodeGenerator />);
-  };
-
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   let fRef = null;
   return (
@@ -65,11 +61,6 @@ const AddContainer = () => {
                 <SelectField name="size" />
                 <SubmitField value="submit" />
                 <ErrorsField />
-
-                <button type="button" className="btn btn-primary mt-3" onClick={handlePrint}>
-                  Print QR Code
-                </button>
-
               </Card.Body>
             </Card>
             {showQRCode && <ContainerQRCodeGenerator containerData={submit} />}
