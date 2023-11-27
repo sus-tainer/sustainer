@@ -32,8 +32,9 @@ const PieChartStats = () => {
 
   if (ready && containers) {
     const totContainers = Containers.collection.find().fetch().length;
-    const totReturned = Containers.collection.find({ owner: 'trivera2@hawaii.edu' }).fetch().length;
+    const totReturned = Containers.collection.find({ owner: 'ZWO' }).fetch().length;
     const totMissing = totContainers - totReturned;
+    const totReturnedPercent = (totReturned / totContainers) * 100;
 
     console.log('Total containers:', totContainers);
     console.log('Total returned:', totReturned);
@@ -62,6 +63,7 @@ const PieChartStats = () => {
     return (
       ready ? (
         <div>
+          <h3>{totReturnedPercent.toFixed(2)}%</h3>
           <Doughnut data={data} options={options} />
         </div>
       ) : <LoadingSpinner />
