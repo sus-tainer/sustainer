@@ -15,10 +15,13 @@
   ],
 
   "defaultContainer": [
-    {"owner": "trivera2@hawaii.edu", "size": "small"},
-    {"owner": "trivera2@goo.com", "size": "medium"},
-    {"owner": "trivera2@goo.com", "size": "large"},
-    {"owner": "trivera2@poo.com", "size": "small"}
+    {"owner": "ZWO", "size": "small"},
+    {"owner": "burgers@foo.com", "size": "medium"},
+    {"owner": "user@foo.com", "size": "large"},
+    {"owner": "user@foo.com", "size": "small"},
+    {"owner": "ZWO", "size": "medium"},
+    {"owner": "ZWO", "size": "small"},
+    {"owner": "ZWO", "size": "large"}
   ],
 
   "defaultOrders": [
