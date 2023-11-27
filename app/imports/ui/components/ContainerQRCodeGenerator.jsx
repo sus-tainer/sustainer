@@ -24,7 +24,7 @@ const ContainerQRCodeGenerator = () => {
   useEffect(() => {
     if (ready && containers) {
       const latestContainerArray = Containers.collection.find(
-        { owner: Meteor.userId() },
+        { owner: 'ZWO' },
         { sort: { createdAt: 1 } },
       ).fetch();
 

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import { AutoForm, ErrorsField, SelectField, SubmitField, HiddenField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
-import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { Containers } from '../../api/container/Containers';
@@ -12,7 +11,7 @@ import ContainerQRCodeGenerator from '../components/ContainerQRCodeGenerator';
 const formSchema = new SimpleSchema({
   owner: {
     type: String,
-    defaultValue: Meteor.userId(),
+    defaultValue: 'ZWO',
   },
   size: {
     type: String,
@@ -30,7 +29,7 @@ const AddContainer = () => {
   // On submit, insert the data.
   const submit = (data, formRef) => {
     const { size } = data;
-    const owner = Meteor.userId();
+    const owner = 'ZWO';
 
     // Validate ownerId here if needed
     Containers.collection.insert(
