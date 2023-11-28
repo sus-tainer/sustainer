@@ -6,11 +6,19 @@ import { Card, Col, Container, Row } from 'react-bootstrap';
 const stripePromise = loadStripe('your_stripe_publishable_key');
 
 const PaymentForm = () => {
-  const [form, setForm] = React.useState({ email: '', error: 'Credit Card Information Not Valid', loading: false });
+  const [form, setForm] = React.useState({
+    cardName: '',
+    email: '',
+    error: 'Credit Card Information Not Valid',
+    loading: false,
+  });
   const stripe = useStripe();
   const elements = useElements();
 
-  const handleEmailChange = (event) => setForm({ ...form, email: event.target.value });
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setForm({ ...form, [name]: value });
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -22,7 +30,10 @@ const PaymentForm = () => {
         {
           payment_method: {
             card: elements.getElement(CardElement),
-            billing_details: { email: form.email },
+            billing_details: {
+              email: form.email,
+              name: form.cardName,
+            },
           },
         },
       );
@@ -60,10 +71,20 @@ const PaymentForm = () => {
       </div>
       <div style={{ marginBottom: '2em' }}>
         <input
+          type="text"
+          name="cardName"
+          value={form.cardName}
+          onChange={handleInputChange}
+          placeholder="Card Name"
+          style={{ width: '100%', padding: '1.5em', fontSize: '22px' }}
+        />
+      </div>
+      <div style={{ marginBottom: '2em' }}>
+        <input
           type="email"
           name="email"
           value={form.email}
-          onChange={handleEmailChange}
+          onChange={handleInputChange}
           placeholder="Email"
           style={{ width: '100%', padding: '1.5em', fontSize: '22px' }}
         />
