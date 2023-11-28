@@ -27,7 +27,7 @@ const QRCodeGenerator = () => {
   }, []);
 
   return (
-    <div>
+    <div id="generate-qr">
       <h1>User QR Code</h1>
       <div id="qrcode" className="d-flex justify-content-center align-items-center">
         {qrCode && <img src={qrCode} alt="QR Code" width="95%" />}
