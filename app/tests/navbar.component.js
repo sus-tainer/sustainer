@@ -31,13 +31,12 @@ class NavBar {
 
   /** Check that someone is logged in, then click items to logout. */
   async logout(testController) {
-    const visible = await Selector('#basic-navbar-nav').visible;
+    const visible = await Selector('#main-navbar-nav').visible;
     if (!visible) {
       await testController.click('button.navbar-toggler');
     }
     await testController.expect(Selector('#navbar-current-user').exists).ok();
-    await testController.click('#navbar-current-user');
-    await testController.click('#navbar-sign-out');
+    await testController.click('#sign-out');
   }
 
   /** Pull down login menu, go to sign up page. */

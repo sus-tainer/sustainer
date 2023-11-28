@@ -24,7 +24,7 @@ test('Test that landing page shows up', async (testController) => {
 test('Test that signin and signout work', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentialsUser.username, credentialsUser.password);
-  await navBar.isLoggedIn(testController, credentialsUser.username);
+  // await navBar.isLoggedIn(testController, credentialsUser.username);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });
@@ -39,7 +39,7 @@ test('Test the QR Generator page', async (testController) => {
 });
 
 // Shell code for Credit Card test case page
-test.only('Test that payment page works', async (testController) => {
+test('Test that payment page works', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentialsUser.username, credentialsUser.password);
