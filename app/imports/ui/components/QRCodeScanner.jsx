@@ -108,7 +108,7 @@ const QrCodeScanner = () => {
     if (msgResult === 'user') {
       swal('User Scan Success', 'Name: THOMAS', 'success');
     } else {
-      swal('Success', 'Assigned container to: THOMAS (trivera2@goo.com)', 'success');
+      swal('Successful Return', 'Assigned container back to: ZWO', 'success');
     }
   };
 
@@ -131,7 +131,7 @@ const QrCodeScanner = () => {
             <Button className="button" id="startButton">Start</Button>
             <Button className="button" id="resetButton">Reset</Button>
             <Form.Select aria-label="Default select example" value={selection} onChange={handleSelectionChange}>
-              <option value="container">Add Container</option>
+              <option value="container">Scan Container</option>
               <option value="user">Scan User</option>
             </Form.Select>
           </Col>
