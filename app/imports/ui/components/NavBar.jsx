@@ -30,6 +30,7 @@ const NavBar = () => {
           </Link>
         )}
         <Nav>
+          {/* <------------- Landing Navbar ------------> */}
           {currentUser === '' ? (
             <div>
               {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
@@ -56,6 +57,7 @@ const NavBar = () => {
             </div>
           ) : (
             <div title={currentUser}>
+              {/* <------------- User Navbar ------------> */}
               {Roles.userIsInRole(Meteor.userId(), 'user') ? ([
                 <div>
                   {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
@@ -86,6 +88,7 @@ const NavBar = () => {
                   </ul>
                 </div>,
               ]) : ''}
+              {/* <------------- Admin Navbar ------------> */}
               {Roles.userIsInRole(Meteor.userId(), 'admin') ? ([
                 <div>
                   {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
@@ -103,6 +106,11 @@ const NavBar = () => {
                         Containers List
                       </NavLink>
                     </li>
+                    {/* <li className="nav-item"> */}
+                    {/*  <NavLink to="/admin-list" className="nav-links" onClick={closeMobileMenu}> */}
+                    {/*    Containers List */}
+                    {/*  </NavLink> */}
+                    {/* </li> */}
                     <li className="nav-item">
                       <NavLink to="/scan" className="nav-links" onClick={closeMobileMenu}>
                         Scan Containers
@@ -116,6 +124,7 @@ const NavBar = () => {
                   </ul>
                 </div>,
               ]) : ''}
+              {/* <------------- Vendor Navbar ------------> */}
               {Roles.userIsInRole(Meteor.userId(), 'vendor') ? ([
                 <div>
                   {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
