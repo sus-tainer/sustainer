@@ -13,17 +13,16 @@ class NavBar {
 
   async gotoSignInPage(testController) {
     await this.ensureLogout(testController);
-    const visible = await Selector('#basic-navbar-nav').visible;
+    const visible = await Selector('#main-navbar-nav').visible;
     if (!visible) {
       await testController.click('button.navbar-toggler');
     }
-    await testController.click('#login-dropdown');
-    await testController.click('#login-dropdown-sign-in');
+    await testController.click('#login');
   }
 
   /** Check that the specified user is currently logged in. */
   async isLoggedIn(testController, username) {
-    const visible = await Selector('#basic-navbar-nav').visible;
+    const visible = await Selector('#main-navbar-nav').visible;
     if (!visible) {
       await testController.click('button.navbar-toggler');
     }
@@ -49,8 +48,17 @@ class NavBar {
     if (!visible) {
       await testController.click('button.navbar-toggler');
     }
-    await testController.click('#login-dropdown');
+    await testController.click('#login');
     await testController.click('#login-dropdown-sign-up');
+  }
+
+  /** Go to QR Generator page from Nav Bar upon sign in. */
+  async gotoGenerateQRCodePage(testController) {
+    const visible = await Selector('#main-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click('#navbar-qr-code');
   }
 }
 

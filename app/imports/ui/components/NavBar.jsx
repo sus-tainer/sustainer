@@ -18,7 +18,7 @@ const NavBar = () => {
   const closeMobileMenu = () => setClick(false);
 
   return (
-    <Navbar className="navbar">
+    <Navbar className="navbar" id="main-navbar-nav">
       <Container className="navbar-container align-items-center">
         {currentUser === '' ? (
           <Link to="/" className="navbar-logo " onClick={closeMobileMenu}>
@@ -43,19 +43,19 @@ const NavBar = () => {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink to="/signin" className="nav-links" onClick={closeMobileMenu}>
+                  <NavLink to="/signin" id="login" className="nav-links" onClick={closeMobileMenu}>
                     Sign In
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink to="/signup" className="nav-links" onClick={closeMobileMenu}>
+                  <NavLink to="/signup" id="signup" className="nav-links" onClick={closeMobileMenu}>
                     Register
                   </NavLink>
                 </li>
               </ul>
             </div>
           ) : (
-            <div title={currentUser}>
+            <div title={currentUser} id="navbar-current-user">
               {Roles.userIsInRole(Meteor.userId(), 'user') ? ([
                 <div>
                   {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
@@ -69,7 +69,7 @@ const NavBar = () => {
                       </NavLink>
                     </li>
                     <li className="nav-item">
-                      <NavLink to="/qrcode" className="nav-links" onClick={closeMobileMenu}>
+                      <NavLink id="navbar-qr-code" to="/qrcode" className="nav-links" onClick={closeMobileMenu}>
                         QR Code
                       </NavLink>
                     </li>
