@@ -35,7 +35,7 @@ const PieChartStats = () => {
     const totContainers = Containers.collection.find().fetch().length;
     const totReturned = Containers.collection.find({ owner: 'ZWO' }).fetch().length;
     const totMissing = totContainers - totReturned;
-    const totReturnedPercent = 96; // (totReturned / totContainers) * 100;
+    const totReturnedPercent = (totReturned / totContainers) * 100;
 
     // Prints values to console for debugging
     console.log('Total containers:', totContainers);
@@ -86,7 +86,7 @@ const PieChartStats = () => {
         <div style={{ position: 'relative', textAlign: 'center', minWidth: '200px' }}>
           <h3>{totReturnedPercent.toFixed(2)}%</h3>
           <Doughnut data={data} options={options} style={{ minWidth: '100px' }} />
-          {pieImg && <img src={pieImg} alt="Pie Chart" width="15%" style={{ position: 'absolute', top: '60%', left: '50%', transform: 'translate(-50%, -50%)', minWidth: '100px' }} />}
+          {pieImg && <img src={pieImg} alt="Pie Chart" width="15%" style={{ position: 'absolute', top: '57%', left: '50%', transform: 'translate(-50%, -50%)', minWidth: '100px' }} />}
         </div>
       ) : <LoadingSpinner />
     );
