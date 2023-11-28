@@ -6,8 +6,7 @@ class NavBar {
   async ensureLogout(testController) {
     const loggedInUser = await Selector('#navbar-current-user').exists;
     if (loggedInUser) {
-      await testController.click('#navbar-current-user');
-      await testController.click('#navbar-sign-out');
+      await testController.click('#sign-out');
     }
   }
 
@@ -44,7 +43,7 @@ class NavBar {
   /** Pull down login menu, go to sign up page. */
   async gotoSignUpPage(testController) {
     await this.ensureLogout(testController);
-    const visible = await Selector('#basic-navbar-nav').visible;
+    const visible = await Selector('#main-navbar-nav').visible;
     if (!visible) {
       await testController.click('button.navbar-toggler');
     }
@@ -59,6 +58,15 @@ class NavBar {
       await testController.click('button.navbar-toggler');
     }
     await testController.click('#navbar-qr-code');
+  }
+
+  /** Go to Payment page and add a credit card. */
+  async gotoAddProjectPage(testController) {
+    const visible = await Selector('#main-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click('#navbar-payment');
   }
 }
 

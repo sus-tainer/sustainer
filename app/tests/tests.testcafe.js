@@ -3,6 +3,7 @@ import { signinPage } from './signin.page';
 import { signoutPage } from './signout.page';
 import { navBar } from './navbar.component';
 import { generateQRCodePage } from './generateqrcode.page';
+import { addCreditCardPage } from './addcreditcard.page';
 
 /* global fixture:false, test:false */
 
@@ -29,10 +30,21 @@ test('Test that signin and signout work', async (testController) => {
 });
 
 // Shell code for QR Code generator test case page
-test.only('Test the QR Generator page', async (testController) => {
+test('Test the QR Generator page', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentialsUser.username, credentialsUser.password);
   await navBar.gotoGenerateQRCodePage(testController);
   await generateQRCodePage.isDisplayed(testController);
   await generateQRCodePage.hasQR(testController);
+});
+
+// Shell code for Credit Card test case page
+test.only('Test that payment page works', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentialsUser.username, credentialsUser.password);
+  await navBar.gotoAddProjectPage(testController);
+  await addCreditCardPage.isDisplayed(testController);
+  await addCreditCardPage.addCard(testController);
+  await addCreditCardPage.hasCreditCard(testController);
 });

@@ -74,12 +74,12 @@ const NavBar = () => {
                       </NavLink>
                     </li>
                     <li className="nav-item">
-                      <NavLink to="/payment" className="nav-links" onClick={closeMobileMenu}>
+                      <NavLink to="/payment" id="navbar-payment" className="nav-links" onClick={closeMobileMenu}>
                         Payment
                       </NavLink>
                     </li>
                     <li className="nav-item">
-                      <NavLink to="/signout" className="nav-links" onClick={closeMobileMenu}>
+                      <NavLink to="/signout" id="sign-out" className="nav-links" onClick={closeMobileMenu}>
                         Sign Out
                       </NavLink>
                     </li>
