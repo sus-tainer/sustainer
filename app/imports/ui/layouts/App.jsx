@@ -50,9 +50,9 @@ const App = () => {
           <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
           <Route path="/add" element={<ProtectedRoute><AddContainer /></ProtectedRoute>} />
           <Route path="/qrcode" element={<ProtectedRoute><QRCodeGenerator /></ProtectedRoute>} />
-          <Route path="/vendororder" element={<ProtectedRoute><AddVendorOrder /></ProtectedRoute>} />
-          <Route path="/listvendororder" element={<ProtectedRoute><ListVendorOrder /></ProtectedRoute>} />
-          <Route path="/edit/:_id" element={<ProtectedRoute><EditVendorOrder /></ProtectedRoute>} />
+          <Route path="/vendororder" element={<VendorProtectedRoute><AddVendorOrder /></VendorProtectedRoute>} />
+          <Route path="/listvendororder" element={<VendorProtectedRoute><ListVendorOrder /></VendorProtectedRoute>} />
+          <Route path="/edit/:_id" element={<VendorProtectedRoute><EditVendorOrder /></VendorProtectedRoute>} />
           <Route path="/admin-list" element={<AdminProtectedRoute ready={ready}><ListContainersAdmin /></AdminProtectedRoute>} />
           <Route path="/scan" element={<AdminProtectedRoute ready={ready}><QRCodeScanner /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />

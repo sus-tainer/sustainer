@@ -32,8 +32,8 @@ const EditVendorOrder = () => {
   // console.log('EditStuff', doc, ready);
   // On successful submit, insert the data.
   const submit = (data) => {
-    const { firstName, lastName, email, event, location, containers } = data;
-    VendorOrder.collection.update(_id, { $set: { firstName, lastName, email, event, location, containers } }, (error) => (error ?
+    const { firstName, lastName, email, event, location, containers, size } = data;
+    VendorOrder.collection.update(_id, { $set: { firstName, lastName, email, event, location, containers, size } }, (error) => (error ?
       swal('Error', error.message, 'error') :
       swal('Success', 'Item updated successfully', 'success')));
   };
@@ -52,6 +52,7 @@ const EditVendorOrder = () => {
                 <TextField name="event" />
                 <TextField name="location" />
                 <NumField name="containers" decimal={null} />
+                <TextField name="size" />
                 <SubmitField value="Submit" />
                 <ErrorsField />
               </Card.Body>

@@ -18,6 +18,11 @@ class VendorOrderCollection {
       event: String,
       location: String,
       containers: Number,
+      size: {
+        type: String,
+        allowedValues: ['small', 'medium', 'large'],
+        defaultValue: 'medium',
+      },
     });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);

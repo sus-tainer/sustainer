@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link, Navigate } from 'react-router-dom';
-import { Accounts } from 'meteor/accounts-base';
 import { Alert, Card, Col, Container, Row } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { VendorCollection } from '../../api/vendor/Vendors';
 
 const VendorSignUp = ({ location }) => {
   const [error, setError] = useState('');
@@ -23,8 +23,8 @@ const VendorSignUp = ({ location }) => {
   const bridge = new SimpleSchema2Bridge(schema);
 
   const submit = (doc) => {
-    const { email, password } = doc;
-    Accounts.createUser({ email, username: email, password }, (err) => {
+    const { vendorName, firstName, lastName, email, password } = doc;
+    VendorCollection.collection.insert({ vendorName, firstName, lastName, email, password }, (err) => {
       if (err) {
         setError(err.reason);
       } else {

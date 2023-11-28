@@ -15,6 +15,11 @@ const formSchema = new SimpleSchema({
   event: String,
   location: String,
   containers: Number,
+  size: {
+    type: String,
+    allowedValues: ['small', 'medium', 'large'],
+    defaultValue: 'medium',
+  },
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
@@ -24,10 +29,10 @@ const AddVendorOrder = () => {
 
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { firstName, lastName, email, event, location, containers } = data;
+    const { firstName, lastName, email, event, location, containers, size } = data;
     const owner = Meteor.user().email;
     VendorOrder.collection.insert(
-      { firstName, lastName, email, event, location, containers, owner },
+      { firstName, lastName, email, event, location, containers, size, owner },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -55,6 +60,7 @@ const AddVendorOrder = () => {
                 <TextField name="event" />
                 <TextField name="location" />
                 <NumField name="containers" decimal={null} />
+                <TextField name="size" />
                 <SubmitField value="Submit" />
                 <ErrorsField />
               </Card.Body>

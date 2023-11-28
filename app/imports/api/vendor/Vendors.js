@@ -30,4 +30,4 @@ class Vendors {
  * The singleton instance of the Vendors.
  * @type {Vendors}
  */
-export const VendorOrder = new Vendors();
+export const VendorCollection = new Vendors();
