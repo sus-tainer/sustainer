@@ -34,7 +34,6 @@ const UsersList = () => {
     ]);
 
     // Implement logic to update the container status in the database
-    // (e.g., call a Meteor method to update the container status)
   };
 
   const removeChargedContainer = (containerId) => {
