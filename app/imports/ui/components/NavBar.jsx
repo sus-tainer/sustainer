@@ -119,6 +119,26 @@ const NavBar = () => {
                     {/*  </NavLink> */}
                     {/* </li> */}
                     <li className="nav-item">
+                      <NavLink to="/add-container" className="nav-links" onClick={closeMobileMenu}>
+                        Add Container
+                      </NavLink>
+                    </li>
+                    <li className="nav-item">
+                      <NavLink to="/admin-list" className="nav-links" onClick={closeMobileMenu}>
+                        Containers List
+                      </NavLink>
+                    </li>
+                    <li className="nav-item">
+                      <NavLink to="/charge-user" className="nav-links" onClick={closeMobileMenu}>
+                        Charge User
+                      </NavLink>
+                    </li>
+                    <li className="nav-item">
+                      <NavLink to="/scan" className="nav-links" onClick={closeMobileMenu}>
+                        Scan Containers
+                      </NavLink>
+                    </li>
+                    <li className="nav-item">
                       <NavLink to="/signout" className="nav-links" onClick={closeMobileMenu}>
                         Sign Out
                       </NavLink>
