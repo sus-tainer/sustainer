@@ -33,7 +33,7 @@ const SignUp = ({ location }) => {
     });
   };
 
-  const { from } = location?.state || { from: { pathname: '/add' } };
+  const { from } = location?.state || { from: { pathname: '/home' } };
   if (redirectToReferer) {
     return <Navigate to={from} />;
   }
