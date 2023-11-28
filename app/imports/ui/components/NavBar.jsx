@@ -109,6 +109,11 @@ const NavBar = () => {
                       </NavLink>
                     </li>
                     <li className="nav-item">
+                      <NavLink to="/charge-user" className="nav-links" onClick={closeMobileMenu}>
+                        Charge User
+                      </NavLink>
+                    </li>
+                    <li className="nav-item">
                       <NavLink to="/scan" className="nav-links" onClick={closeMobileMenu}>
                         Scan Containers
                       </NavLink>
