@@ -1,5 +1,5 @@
 {
-  "name": "sustainer",
+  "name": "meteor-application-template-react",
   "private": true,
   "dependencies": {
     "@babel/runtime": "^7.22.6",
