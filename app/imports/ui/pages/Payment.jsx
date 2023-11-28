@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
+import { ComponentIDs, PageIDs } from '../utilities/ids';
 
 const App = () => {
   // State to manage the form inputs
@@ -47,7 +48,7 @@ const App = () => {
         height: '100vh',
       }}
     >
-      <Row className="d-flex justify-content-center">
+      <Row className="d-flex justify-content-center" id={PageIDs.addPayment}>
         <Col md="10" lg="8" xl="5">
           <Card className="rounded-3">
             <Card.Body className="p-4">
@@ -76,6 +77,7 @@ const App = () => {
               {/* Form for adding a new card */}
               <Form.Group className="form-outline">
                 <Form.Control
+                  id={ComponentIDs.addCardHolderName}
                   type="text"
                   size="lg"
                   placeholder="Cardholder Name"
@@ -85,6 +87,7 @@ const App = () => {
               </Form.Group>
               <Form.Group className="form-outline">
                 <Form.Control
+                  id={ComponentIDs.addCardHolderNumber}
                   type="text"
                   size="lg"
                   placeholder="Card Number"
@@ -96,6 +99,7 @@ const App = () => {
                 <Col xs="6">
                   <Form.Group className="form-outline">
                     <Form.Control
+                      id={ComponentIDs.addCardExpiration}
                       type="text"
                       size="lg"
                       placeholder="MM/YYYY"
@@ -107,6 +111,7 @@ const App = () => {
                 <Col xs="6">
                   <Form.Group className="form-outline">
                     <Form.Control
+                      id={ComponentIDs.addCardCV}
                       type="text"
                       size="lg"
                       placeholder="CVV"
@@ -117,6 +122,7 @@ const App = () => {
                 </Col>
               </Row>
               <Button
+                id={ComponentIDs.addPaymentFormSubmit}
                 variant="success"
                 size="lg"
                 block
