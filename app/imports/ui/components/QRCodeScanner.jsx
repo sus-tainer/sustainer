@@ -110,7 +110,11 @@ const QrCodeScanner = () => {
     if (msgResult === 'container') {
       swal('Success', 'Assigned container to: THOMAS (trivera2@goo.com)', 'success');
     } else {
+<<<<<<< HEAD
       swal('User Scan Success', 'Name: THOMAS', 'success');
+=======
+      swal('Success', 'Assigned container to: THOMAS (trivera2@goo.com)', 'success');
+>>>>>>> parent of 8ca9995 (Update QRCodeScanner.jsx)
     }
   };
 
