@@ -26,6 +26,7 @@ import ListVendorOrder from '../pages/ListVendorOrder';
 import EditVendorOrder from '../pages/EditVendorOrder';
 import QRCodeScanner from '../components/QRCodeScanner';
 import ChargeUser from '../pages/ChargeUser';
+import VendorSignUp from '../pages/VendorSignUp';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -43,6 +44,7 @@ const App = () => {
           <Route exact path="/" element={<Landing />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/vendorsignup" element={<VendorSignUp />} />
           <Route path="/signout" element={<SignOut />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
