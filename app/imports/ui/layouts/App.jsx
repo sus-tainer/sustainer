@@ -25,7 +25,7 @@ import QRCodeGenerator from '../components/QRCodeGenerator';
 import ListVendorOrder from '../pages/ListVendorOrder';
 import EditVendorOrder from '../pages/EditVendorOrder';
 import QRCodeScanner from '../components/QRCodeScanner';
-import VendorSignUp from '../pages/VendorSignUp';
+import ChargeUser from '../pages/ChargeUser';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -43,7 +43,6 @@ const App = () => {
           <Route exact path="/" element={<Landing />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/vendorsignup" element={<VendorSignUp />} />
           <Route path="/signout" element={<SignOut />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
@@ -54,7 +53,9 @@ const App = () => {
           <Route path="/listvendororder" element={<ProtectedRoute><ListVendorOrder /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditVendorOrder /></ProtectedRoute>} />
           <Route path="/admin-list" element={<AdminProtectedRoute ready={ready}><ListContainersAdmin /></AdminProtectedRoute>} />
+          <Route path="/add-container" element={<AdminProtectedRoute ready={ready}><AddContainer /></AdminProtectedRoute>} />
           <Route path="/scan" element={<AdminProtectedRoute ready={ready}><QRCodeScanner /></AdminProtectedRoute>} />
+          <Route path="/charge-user" element={<AdminProtectedRoute ready={ready}><ChargeUser /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
