@@ -18,6 +18,7 @@ const VendorOrderItem = ({ vendorOrder, collection }) => {
       <td>{vendorOrder.event}</td>
       <td>{vendorOrder.location}</td>
       <td>{vendorOrder.containers}</td>
+      <td>{vendorOrder.size}</td>
       <td>
         <Link to={`/edit/${vendorOrder._id}`}>Edit</Link>
       </td>
@@ -35,6 +36,7 @@ VendorOrderItem.propTypes = {
     event: PropTypes.string,
     location: PropTypes.string,
     containers: PropTypes.number,
+    size: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
   // eslint-disable-next-line react/forbid-prop-types
