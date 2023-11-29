@@ -17,6 +17,7 @@ const QrCodeScanner = () => {
     const initCodeReader = async () => {
       try {
         const codeReader = new ZXing.BrowserQRCodeReader();
+        // eslint-disable-next-line no-console
         console.log('ZXing code reader initialized');
 
         const videoInputDevices = await codeReader.getVideoInputDevices();
@@ -51,6 +52,7 @@ const QrCodeScanner = () => {
           }
 
           // eslint-disable no-console
+          // eslint-disable-next-line no-console
           console.log(`Started decode from camera with id ${selectedDeviceId}`);
         });
 
@@ -104,6 +106,7 @@ const QrCodeScanner = () => {
   const [selection, setSelection] = useState('container');
 
   const submit = (msgResult) => {
+    // eslint-disable-next-line no-console
     console.log(selection);
     if (msgResult === 'user') {
       swal('User Scan Success', 'Name: THOMAS', 'success');
