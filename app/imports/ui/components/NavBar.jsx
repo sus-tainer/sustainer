@@ -3,13 +3,14 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Link, NavLink } from 'react-router-dom';
 import { Roles } from 'meteor/alanning:roles';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { Recycle } from 'react-bootstrap-icons';
 import './Navbar2.css';
 // import Button from './Button';
 
 const NavBar = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
+  // Test
   const { currentUser } = useTracker(() => ({
     currentUser: Meteor.user() ? Meteor.user().username : '',
   }), []);
@@ -106,6 +107,11 @@ const NavBar = () => {
                         Containers List
                       </NavLink>
                     </li>
+                    <NavDropdown id="navbar-current-admin" title="Containers" className="nav-item nav-links">
+                      <NavDropdown.Item id="add-container" as={NavLink} to="/add-container" key="add" className="nav-links" onClick={closeMobileMenu}>Add Container</NavDropdown.Item>
+                      <NavDropdown.Item id="scan-container" as={NavLink} to="/scan" key="scan" className="nav-links" onClick={closeMobileMenu}>Scan Containers</NavDropdown.Item>
+                      <NavDropdown.Item id="list-container" as={NavLink} to="/admin-list" key="list" className="nav-links" onClick={closeMobileMenu}>Containers List</NavDropdown.Item>
+                    </NavDropdown>
                     {/* <li className="nav-item"> */}
                     {/*  <NavLink to="/admin-list" className="nav-links" onClick={closeMobileMenu}> */}
                     {/*    Containers List */}
