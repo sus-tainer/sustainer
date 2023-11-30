@@ -7,8 +7,11 @@ const stripePromise = loadStripe('your_stripe_publishable_key');
 
 const PaymentForm = () => {
   const [form, setForm] = React.useState({
-    cardName: '',
     email: '',
+    cardName: '',
+    cardNumber: '',
+    expDate: '',
+    cvv: '',
     error: 'Credit Card Information Not Valid',
     loading: false,
   });
@@ -71,6 +74,16 @@ const PaymentForm = () => {
       </div>
       <div style={{ marginBottom: '2em' }}>
         <input
+          type="email"
+          name="email"
+          value={form.email}
+          onChange={handleInputChange}
+          placeholder="Email"
+          style={{ width: '100%', padding: '1.5em', fontSize: '22px' }}
+        />
+      </div>
+      <div style={{ marginBottom: '2em' }}>
+        <input
           type="text"
           name="cardName"
           value={form.cardName}
@@ -81,14 +94,36 @@ const PaymentForm = () => {
       </div>
       <div style={{ marginBottom: '2em' }}>
         <input
-          type="email"
-          name="email"
-          value={form.email}
+          type="text"
+          name="cardNumber"
+          value={form.cardNumber}
           onChange={handleInputChange}
-          placeholder="Email"
+          placeholder="Card Number"
           style={{ width: '100%', padding: '1.5em', fontSize: '22px' }}
         />
       </div>
+      <Row style={{ marginBottom: '2em' }}>
+        <Col>
+          <input
+            type="text"
+            name="expDate"
+            value={form.expDate}
+            onChange={handleInputChange}
+            placeholder="Expiration Date"
+            style={{ width: '100%', padding: '1.5em', fontSize: '22px' }}
+          />
+        </Col>
+        <Col>
+          <input
+            type="text"
+            name="cvv"
+            value={form.cvv}
+            onChange={handleInputChange}
+            placeholder="CVV"
+            style={{ width: '100%', padding: '1.5em', fontSize: '22px' }}
+          />
+        </Col>
+      </Row>
       <button
         type="submit"
         disabled={form.loading}
@@ -109,7 +144,6 @@ const PaymentForm = () => {
     </form>
   );
 };
-import { ComponentIDs, PageIDs } from '../utilities/ids';
 
 const App = () => {
   return (
@@ -126,9 +160,6 @@ const App = () => {
       <Row className="d-flex justify-content-center">
         <Col md="10" lg="8" xl="6">
           <Card className="rounded-3" style={{ fontSize: '24px' }}>
-      <Row className="d-flex justify-content-center" id={PageIDs.addPayment}>
-        <Col md="10" lg="8" xl="5">
-          <Card className="rounded-3">
             <Card.Body className="p-4">
               <div className="text-center mb-4">
                 <h3 style={{ fontSize: '28px' }}>Settings</h3>
@@ -138,80 +169,6 @@ const App = () => {
               <Elements stripe={stripePromise}>
                 <PaymentForm />
               </Elements>
-              <p className="fw-bold mb-4 pb-2">Saved cards:</p>
-              {/* Display saved cards */}
-              {savedCards.map((card, index) => (
-                <div key={index} className="d-flex flex-row align-items-center mb-4 pb-1">
-                  {/* Display card icon based on type */}
-                  {/* ... */}
-                  <div className="flex-fill mx-3">
-                    <Form.Group className="form-outline">
-                      <Form.Control type="text" size="lg" value={card.cardNumber} disabled />
-                    </Form.Group>
-                  </div>
-                  <Button variant="danger" onClick={() => handleRemoveCard(index)}>
-                    Remove card
-                  </Button>
-                </div>
-              ))}
-
-              <p className="fw-bold mb-4">Add new card:</p>
-              {/* Form for adding a new card */}
-              <Form.Group className="form-outline">
-                <Form.Control
-                  id={ComponentIDs.addCardHolderName}
-                  type="text"
-                  size="lg"
-                  placeholder="Cardholder Name"
-                  value={cardholderName}
-                  onChange={(e) => setCardholderName(e.target.value)}
-                />
-              </Form.Group>
-              <Form.Group className="form-outline">
-                <Form.Control
-                  id={ComponentIDs.addCardHolderNumber}
-                  type="text"
-                  size="lg"
-                  placeholder="Card Number"
-                  value={cardNumber}
-                  onChange={(e) => setCardNumber(e.target.value)}
-                />
-              </Form.Group>
-              <Row className="my-4">
-                <Col xs="6">
-                  <Form.Group className="form-outline">
-                    <Form.Control
-                      id={ComponentIDs.addCardExpiration}
-                      type="text"
-                      size="lg"
-                      placeholder="MM/YYYY"
-                      value={expirationDate}
-                      onChange={(e) => setExpirationDate(e.target.value)}
-                    />
-                  </Form.Group>
-                </Col>
-                <Col xs="6">
-                  <Form.Group className="form-outline">
-                    <Form.Control
-                      id={ComponentIDs.addCardCV}
-                      type="text"
-                      size="lg"
-                      placeholder="CVV"
-                      value={cvv}
-                      onChange={(e) => setCVV(e.target.value)}
-                    />
-                  </Form.Group>
-                </Col>
-              </Row>
-              <Button
-                id={ComponentIDs.addPaymentFormSubmit}
-                variant="success"
-                size="lg"
-                block
-                onClick={handleAddCard}
-              >
-                Add card
-              </Button>
             </Card.Body>
           </Card>
         </Col>

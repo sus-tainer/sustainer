@@ -43,7 +43,7 @@ const VendorOrderItem = ({ vendorOrder, collection }) => {
   );
 };
 
-// Require a document to be passed to this component.
+/** Require a document to be passed to this component
 VendorOrderItem.propTypes = {
   vendororder: PropTypes.shape({
   vendorOrder: PropTypes.shape({

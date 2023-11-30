@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ZXing from '@zxing/library';
-// import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 // import { AutoForm, SubmitField } from 'uniforms-bootstrap5';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import swal from 'sweetalert';
