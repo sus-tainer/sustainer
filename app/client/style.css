@@ -109,4 +109,14 @@ body .navbar {
     overflow: hidden;
     text-decoration: none;
   }
+
+  /* Update the custom style for the sign-in card */
+  .signin-card {
+    width: 100%;
+    max-width: 500px; /* Increase the max-width for a larger card */
+    margin: auto;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 15px; /* Increase the border-radius for more rounded corners */
+    padding: 30px; /* Increase the padding for more space inside the card */
+  }
 }
