@@ -7,17 +7,19 @@ import swal from 'sweetalert';
 // import { useTracker } from 'meteor/react-meteor-data';
 // import { Meteor } from 'meteor/meteor';
 // import { Containers } from '../../api/container/Containers';
-// import LoadingSpinner from './LoadingSpinner';
+import LoadingSpinner from './LoadingSpinner';
 
 // const bridge = new SimpleSchema2Bridge(Containers.schema);
 
 const QrCodeScanner = () => {
   const [selectedDeviceId, setSelectedDeviceId] = useState(null);
+  // eslint-disable-next-line no-unused-vars
+  const [result, setResult] = useState('');
+
   useEffect(() => {
     const initCodeReader = async () => {
       try {
         const codeReader = new ZXing.BrowserQRCodeReader();
-        // eslint-disable-next-line no-console
         console.log('ZXing code reader initialized');
 
         const videoInputDevices = await codeReader.getVideoInputDevices();
@@ -41,19 +43,10 @@ const QrCodeScanner = () => {
         }
 
         document.getElementById('startButton').addEventListener('click', () => {
-          const decodingStyle = document.getElementById('decoding-style').value;
-
-          if (decodingStyle === 'once') {
-            // eslint-disable-next-line no-use-before-define
-            decodeOnce(codeReader, selectedDeviceId);
-          } else {
-            // eslint-disable-next-line no-use-before-define
-            decodeContinuously(codeReader, selectedDeviceId);
-          }
-
-          // eslint-disable no-console
-          // eslint-disable-next-line no-console
-          console.log(`Started decode from camera with id ${selectedDeviceId}`);
+          // eslint-disable-next-line no-unused-vars
+          const decodingStyle = document.getElementById('decoding-style');
+          // eslint-disable-next-line no-use-before-define
+          decodeContinuously(codeReader, selectedDeviceId);
         });
 
         document.getElementById('resetButton').addEventListener('click', () => {
@@ -70,20 +63,12 @@ const QrCodeScanner = () => {
   }, [selectedDeviceId]);
 
   // eslint-disable-next-line no-shadow
-  const decodeOnce = (codeReader, selectedDeviceId) => {
-    codeReader.decodeFromInputVideoDevice(selectedDeviceId, 'video').then((result) => {
-      console.log(result);
-      document.getElementById('result').textContent = result.text;
-    }).catch((err) => {
-      console.error(err);
-      document.getElementById('result').textContent = err;
-    });
-  };
-  // eslint-disable-next-line no-shadow
   const decodeContinuously = (codeReader, selectedDeviceId) => {
+    // eslint-disable-next-line no-shadow
     codeReader.decodeFromInputVideoDeviceContinuously(selectedDeviceId, 'video', (result, err) => {
       if (result) {
         console.log('Found QR code!', result);
+        setResult(result.text);
         document.getElementById('result').textContent = result.text;
       }
 
@@ -106,7 +91,6 @@ const QrCodeScanner = () => {
   const [selection, setSelection] = useState('container');
 
   const submit = (msgResult) => {
-    // eslint-disable-next-line no-console
     console.log(selection);
     if (msgResult === 'user') {
       swal('User Scan Success', 'Name: THOMAS', 'success');
@@ -121,15 +105,14 @@ const QrCodeScanner = () => {
     setSelection(e.currentTarget.value);
   };
 
-  // const message1 = true;
-  //
-  // const message2 = false;
+  if (!ZXing) {
+    return <LoadingSpinner />;
+  }
 
   return (
-    <div className="wrapper" style={{ paddingTop: '2em' }}>
-
+    <div className="wrapper p-1">
       <Container className="align-content-center my-auto">
-        <Row>
+        <Row className="py-1">
           <Col sm={2}>
             <Button className="button" id="startButton">Start</Button>
             <Button className="button" id="resetButton">Reset</Button>
@@ -141,7 +124,7 @@ const QrCodeScanner = () => {
         </Row>
       </Container>
 
-      <Container>
+      <Container style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <div>
           {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
           <video id="video" width="300" height="200" style={{ border: '1px solid gray' }} />
@@ -151,20 +134,9 @@ const QrCodeScanner = () => {
       <Container>
         <div id="sourceSelectPanel" style={{ display: 'none' }}>
           {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-          <label htmlFor="sourceSelect">Change video source:</label>
+          <label htmlFor="sourceSelect">Video Source:</label>
           {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
           <select id="sourceSelect" style={{ maxWidth: '400px' }} />
-        </div>
-      </Container>
-
-      <Container>
-        <div style={{ display: 'table' }}>
-          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-          <label htmlFor="decoding-style"> Decoding Style:</label>
-          <select id="decoding-style" size="1">
-            <option value="once">Decode once</option>
-            <option value="continuously">Decode continuously</option>
-          </select>
         </div>
       </Container>
 
