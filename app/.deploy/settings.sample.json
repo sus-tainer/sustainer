@@ -4,7 +4,7 @@
     {"firstName": "Jaren", "lastName": "Foo", "email": "mod@foo.com", "password": "changeme", "role": "moderator"},
     {"firstName": "Aaron", "lastName": "Foo", "email": "burgers@foo.com", "password": "changeme", "role": "vendor"},
     {"firstName": "Sage", "lastName": "Foo", "email": "user@foo.com", "password": "changeme", "role": "user"},
-    {"firstName": "Nathan", "lastName": "Foo", "email": "murrayn@foo.com", "password": "changeme", "role": "user"}
+    {"firstName": "Nathan", "lastName": "Foo", "email": "murrayn@foo.com", "password": "changeme", "role": "vendor"}
   ],
 
   "defaultData": [

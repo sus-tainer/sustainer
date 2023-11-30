@@ -5,6 +5,9 @@ import { useTracker } from 'meteor/react-meteor-data';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { VendorOrder } from '../../api/vendor/VendorOrder';
 import VendorOrderItem from '../components/VendorOrderItem';
+import { VendorOrder } from '../../api/vendor/VendorOrder';
+import VendorOrderItem from '../components/VendorOrderItem';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const ListVendorOrder = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
@@ -43,6 +46,7 @@ const ListVendorOrder = () => {
             </thead>
             <tbody>
               {vendororders.map((vendororder) => <VendorOrderItem key={VendorOrderItem._id} vendororder={vendororder} vendorordercollection={VendorOrder.collection} />)}
+              {vendororders.map((vendororder) => <VendorOrderItem key={vendororder._id} vendorOrder={vendororder} collection={VendorOrder.collection} />)}
             </tbody>
           </Table>
         </Col>

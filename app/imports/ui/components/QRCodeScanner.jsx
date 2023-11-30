@@ -17,6 +17,7 @@ const QrCodeScanner = () => {
     const initCodeReader = async () => {
       try {
         const codeReader = new ZXing.BrowserQRCodeReader();
+        // eslint-disable-next-line no-console
         console.log('ZXing code reader initialized');
 
         const videoInputDevices = await codeReader.getVideoInputDevices();
@@ -51,6 +52,7 @@ const QrCodeScanner = () => {
           }
 
           // eslint-disable no-console
+          // eslint-disable-next-line no-console
           console.log(`Started decode from camera with id ${selectedDeviceId}`);
         });
 
@@ -111,6 +113,15 @@ const QrCodeScanner = () => {
       swal('Success', 'Assigned container to: THOMAS (trivera2@goo.com)', 'success');
     } else {
       swal('User Scan Success', 'Name: THOMAS', 'success');
+  const [selection, setSelection] = useState('container');
+
+  const submit = (msgResult) => {
+    // eslint-disable-next-line no-console
+    console.log(selection);
+    if (msgResult === 'user') {
+      swal('User Scan Success', 'Name: THOMAS', 'success');
+    } else {
+      swal('Successful Return', 'Assigned container back to: ZWO', 'success');
     }
   };
 
@@ -134,6 +145,7 @@ const QrCodeScanner = () => {
             <Button className="button" id="resetButton">Reset</Button>
             <Form.Select aria-label="Default select example" value={selection} onChange={handleSelectionChange}>
               <option value="container">Add Container</option>
+              <option value="container">Scan Container</option>
               <option value="user">Scan User</option>
             </Form.Select>
           </Col>
@@ -171,6 +183,7 @@ const QrCodeScanner = () => {
         <h3>Result:</h3>
         <pre><code id="result" /></pre>
         <Button value={scan} onClick={handleOnClick}>Scan</Button>
+        <Button value={selection} onClick={handleOnClick}>Scan</Button>
       </Container>
     </div>
   );
