@@ -10,6 +10,7 @@ import './Navbar2.css';
 
 const NavBar = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
+  // Test
   const { currentUser } = useTracker(() => ({
     currentUser: Meteor.user() ? Meteor.user().username : '',
   }), []);
@@ -102,18 +103,23 @@ const NavBar = () => {
                       </NavLink>
                     </li>
                     <li className="nav-item">
+                      <NavLink to="/add-container" className="nav-links" onClick={closeMobileMenu}>
+                        Add Container
+                      </NavLink>
+                    </li>
+                    <li className="nav-item">
+                      <NavLink to="/scan" className="nav-links" onClick={closeMobileMenu}>
+                        Scan Container
+                      </NavLink>
+                    </li>
+                    <li className="nav-item">
                       <NavLink to="/admin-list" className="nav-links" onClick={closeMobileMenu}>
                         Containers List
                       </NavLink>
                     </li>
-                    {/* <li className="nav-item"> */}
-                    {/*  <NavLink to="/admin-list" className="nav-links" onClick={closeMobileMenu}> */}
-                    {/*    Containers List */}
-                    {/*  </NavLink> */}
-                    {/* </li> */}
                     <li className="nav-item">
-                      <NavLink to="/scan" className="nav-links" onClick={closeMobileMenu}>
-                        Scan Containers
+                      <NavLink to="/charge-user" className="nav-links" onClick={closeMobileMenu}>
+                        Charge User
                       </NavLink>
                     </li>
                     <li className="nav-item">
