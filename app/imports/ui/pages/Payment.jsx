@@ -109,8 +109,6 @@ const PaymentForm = () => {
     </form>
   );
 };
-import React, { useState } from 'react';
-import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import { ComponentIDs, PageIDs } from '../utilities/ids';
 
 const App = () => {
