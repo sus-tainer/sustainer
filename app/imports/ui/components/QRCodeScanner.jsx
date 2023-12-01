@@ -9,6 +9,7 @@ const useCodeReader = () => useRef(new ZXing.BrowserQRCodeReader());
 const QrCodeScanner = () => {
   const codeReaderRef = useCodeReader();
   const [selectedDeviceId, setSelectedDeviceId] = useState(null);
+  // eslint-disable-next-line no-unused-vars
   const [result, setResult] = useState('');
 
   useEffect(() => {
