@@ -1,19 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import ZXing from '@zxing/library';
-// import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-// import { AutoForm, SubmitField } from 'uniforms-bootstrap5';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import swal from 'sweetalert';
-// import { useTracker } from 'meteor/react-meteor-data';
-// import { Meteor } from 'meteor/meteor';
-// import { Containers } from '../../api/container/Containers';
 import LoadingSpinner from './LoadingSpinner';
 
-// const bridge = new SimpleSchema2Bridge(Containers.schema);
+const useCodeReader = () => useRef(new ZXing.BrowserQRCodeReader());
 
 const QrCodeScanner = () => {
+  const codeReaderRef = useCodeReader();
   const [selectedDeviceId, setSelectedDeviceId] = useState(null);
-  // eslint-disable-next-line no-unused-vars
   const [result, setResult] = useState('');
 
   useEffect(() => {
@@ -46,14 +41,15 @@ const QrCodeScanner = () => {
           // eslint-disable-next-line no-unused-vars
           const decodingStyle = document.getElementById('decoding-style');
           // eslint-disable-next-line no-use-before-define
-          decodeContinuously(codeReader, selectedDeviceId);
+          decodeContinuously(codeReaderRef.current, selectedDeviceId);
         });
 
         document.getElementById('resetButton').addEventListener('click', () => {
-          codeReader.reset();
+          codeReaderRef.current.reset();
           document.getElementById('result').textContent = '';
           console.log('Reset.');
         });
+
       } catch (error) {
         console.error(error);
       }
@@ -90,16 +86,20 @@ const QrCodeScanner = () => {
 
   const [selection, setSelection] = useState('container');
 
-  const submit = (msgResult) => {
+  const submit = (scanned) => {
     console.log(selection);
-    if (msgResult === 'user') {
-      swal('User Scan Success', 'Name: THOMAS', 'success');
-    } else {
+    if (scanned !== null) {
       swal('Successful Return', 'Assigned container back to: ZWO', 'success');
+    } else {
+      swal('Error', 'Please scan a container', 'error');
     }
   };
 
-  const handleOnClick = () => submit(selection);
+  const handleOnClick = () => {
+    submit(selection);
+    codeReaderRef.current.reset();
+    document.getElementById('result').textContent = '';
+  };
 
   const handleSelectionChange = (e) => {
     setSelection(e.currentTarget.value);
@@ -110,41 +110,51 @@ const QrCodeScanner = () => {
   }
 
   return (
-    <div className="wrapper p-1">
-      <Container className="align-content-center my-auto">
-        <Row className="py-1">
-          <Col sm={2}>
-            <Button className="button" id="startButton">Start</Button>
-            <Button className="button" id="resetButton">Reset</Button>
-            <Form.Select aria-label="Default select example" value={selection} onChange={handleSelectionChange}>
-              <option value="container">Scan Container</option>
-              <option value="user">Scan User</option>
-            </Form.Select>
-          </Col>
-        </Row>
-      </Container>
+    <div className="p-1 justify-content-center align-content-center">
+      <Row className="justify-content-center">
+        <Col sm={3} md={4} lg={4} xl={4}>
+          <Container className="py-2">
+            <Row className="py-1 d-flex">
+              <Col className="d-flex justify-content-center align-items-center">
+                <Button className="button" id="startButton">Start</Button>
+              </Col>
+              <Col className="d-flex justify-content-center align-items-center">
+                <Button className="button" id="resetButton">Reset</Button>
+              </Col>
+            </Row>
+            <Row className="py-1">
+              <Form.Select aria-label="Default select example" value={selection} onChange={handleSelectionChange}>
+                <option value="container">Scan Container</option>
+                <option value="user">Scan User</option>
+              </Form.Select>
+            </Row>
+          </Container>
 
-      <Container style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <div>
-          {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-          <video id="video" width="300" height="200" style={{ border: '1px solid gray' }} />
-        </div>
-      </Container>
+          <Container style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <div>
+              {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+              <video id="video" width="300" height="200" style={{ border: '1px solid gray' }} />
+            </div>
+          </Container>
 
-      <Container>
-        <div id="sourceSelectPanel" style={{ display: 'none' }}>
-          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-          <label htmlFor="sourceSelect">Video Source:</label>
-          {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-          <select id="sourceSelect" style={{ maxWidth: '400px' }} />
-        </div>
-      </Container>
+          <Container className="py-2">
+            <div id="sourceSelectPanel" style={{ display: 'none' }}>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+              <label htmlFor="sourceSelect">Video Source:</label>
+              {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+              <select id="sourceSelect" style={{ maxWidth: '400px' }} />
+            </div>
+          </Container>
 
-      <Container>
-        <h3>Result:</h3>
-        <pre><code id="result" /></pre>
-        <Button value={selection} onClick={handleOnClick}>Scan</Button>
-      </Container>
+          <Container>
+            <h3>Result:</h3>
+            <pre><code id="result" /></pre>
+            <div className="d-flex justify-content-center align-items-center">
+              <Button value={selection} onClick={handleOnClick}>Scan</Button>
+            </div>
+          </Container>
+        </Col>
+      </Row>
     </div>
   );
 };
