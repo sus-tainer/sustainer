@@ -47,8 +47,8 @@ const AdminContainerScan = () => {
         </div>
       ))}
       <QRCodeScanner onResultChange={handleResultChange} />
+      <h3>Container Id: </h3>
       <div id="result">
-        <h3>Container Id: </h3>
         {result}
       </div>
       <div className="d-flex justify-content-center align-items-center">
