@@ -24,7 +24,6 @@ import ListContainersAdmin from '../pages/ListContainersAdmin';
 import QRCodeGenerator from '../components/QRCodeGenerator';
 import ListVendorOrder from '../pages/ListVendorOrder';
 import EditVendorOrder from '../pages/EditVendorOrder';
-import QRCodeScanner from '../components/QRCodeScanner';
 import AdminContainerScan from '../pages/AdminContainerScan';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
