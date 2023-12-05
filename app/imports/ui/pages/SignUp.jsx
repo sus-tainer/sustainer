@@ -34,7 +34,7 @@ const SignUp = ({ location }) => {
   };
 
   const { from } = location?.state || { from: { pathname: '/home' } };
-  if (redirect) {
+  if (redirectToReferer) {
     return <Navigate to={from} />;
   }
 

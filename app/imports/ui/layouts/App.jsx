@@ -24,7 +24,7 @@ import EditVendorOrder from '../pages/EditVendorOrder';
 import QRCodeScanner from '../components/QRCodeScanner';
 import ChargeUser from '../pages/ChargeUser';
 import VendorSignUp from '../pages/VendorSignUp';
-import AdminContainerScan from '../pages/AdminContainerScan';
+// import AdminContainerScan from '../pages/AdminContainerScan';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {

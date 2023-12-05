@@ -19,7 +19,7 @@ const NavBar = () => {
   const closeMobileMenu = () => setClick(false);
 
   return (
-    <Navbar className="navbar">
+    <Navbar className="navbar" id="main-navbar-nav">
       <Container className="navbar-container align-items-center">
         {currentUser === '' ? (
           <Link to="/" className="navbar-logo " onClick={closeMobileMenu}>
@@ -45,12 +45,12 @@ const NavBar = () => {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink to="/signin" className="nav-links" onClick={closeMobileMenu}>
+                  <NavLink to="/signin" className="nav-links" onClick={closeMobileMenu} id="login">
                     Sign In
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink to="/signup" className="nav-links" onClick={closeMobileMenu}>
+                  <NavLink to="/signup" className="nav-links" onClick={closeMobileMenu} id="sign-up">
                     Register
                   </NavLink>
                 </li>
@@ -72,17 +72,17 @@ const NavBar = () => {
                       </NavLink>
                     </li>
                     <li className="nav-item">
-                      <NavLink to="/qrcode" className="nav-links" onClick={closeMobileMenu}>
+                      <NavLink to="/qrcode" className="nav-links" onClick={closeMobileMenu} id="navbar-qr-code">
                         QR Code
                       </NavLink>
                     </li>
                     <li className="nav-item">
-                      <NavLink to="/payment" className="nav-links" onClick={closeMobileMenu}>
+                      <NavLink to="/payment" className="nav-links" onClick={closeMobileMenu} id="navbar-payment">
                         Payment
                       </NavLink>
                     </li>
                     <li className="nav-item">
-                      <NavLink to="/signout" className="nav-links" onClick={closeMobileMenu}>
+                      <NavLink to="/signout" className="nav-links" onClick={closeMobileMenu} id="sign-out">
                         Sign Out
                       </NavLink>
                     </li>
@@ -123,7 +123,7 @@ const NavBar = () => {
                       </NavLink>
                     </li>
                     <li className="nav-item">
-                      <NavLink to="/signout" className="nav-links" onClick={closeMobileMenu}>
+                      <NavLink to="/signout" className="nav-links" onClick={closeMobileMenu} id="signout-2">
                         Sign Out
                       </NavLink>
                     </li>

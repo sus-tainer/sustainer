@@ -145,36 +145,34 @@ const PaymentForm = () => {
   );
 };
 
-const App = () => {
-  return (
-    <Container
-      className="py-5"
-      fluid
-      style={{
-        background: 'url(https://mdbcdn.b-cdn.net/img/Photos/Others/background3.webp) no-repeat center center fixed',
-        backgroundSize: 'cover',
-        height: '100vh',
-        fontSize: '24px',
-      }}
-    >
-      <Row className="d-flex justify-content-center">
-        <Col md="10" lg="8" xl="6">
-          <Card className="rounded-3" style={{ fontSize: '24px' }}>
-            <Card.Body className="p-4">
-              <div className="text-center mb-4">
-                <h3 style={{ fontSize: '28px' }}>Settings</h3>
-                <h6 style={{ fontSize: '24px' }}>Payment</h6>
-              </div>
-              {/* Your existing content */}
-              <Elements stripe={stripePromise}>
-                <PaymentForm />
-              </Elements>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
-  );
-};
+const App = () => (
+  <Container
+    className="py-5"
+    fluid
+    style={{
+      background: 'url(https://mdbcdn.b-cdn.net/img/Photos/Others/background3.webp) no-repeat center center fixed',
+      backgroundSize: 'cover',
+      height: '100vh',
+      fontSize: '24px',
+    }}
+  >
+    <Row className="d-flex justify-content-center">
+      <Col md="10" lg="8" xl="6">
+        <Card className="rounded-3" style={{ fontSize: '24px' }}>
+          <Card.Body className="p-4">
+            <div className="text-center mb-4">
+              <h3 style={{ fontSize: '28px' }}>Settings</h3>
+              <h6 style={{ fontSize: '24px' }}>Payment</h6>
+            </div>
+            {/* Your existing content */}
+            <Elements stripe={stripePromise}>
+              <PaymentForm />
+            </Elements>
+          </Card.Body>
+        </Card>
+      </Col>
+    </Row>
+  </Container>
+);
 
 export default App;
