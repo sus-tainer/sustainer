@@ -18,7 +18,7 @@ const NavBar = () => {
   const closeMobileMenu = () => setClick(false);
 
   return (
-    <Navbar className="navbar" id="main-navbar-nav">
+    <Navbar className="navbar">
       <Container className="navbar-container align-items-center">
         {currentUser === '' ? (
           <Link to="/" className="navbar-logo " onClick={closeMobileMenu}>
@@ -29,7 +29,7 @@ const NavBar = () => {
             <h2 className="mt-2">Sustainer <Recycle /></h2>
           </Link>
         )}
-        <Nav>
+        <Nav id="main-navbar-nav">
           {currentUser === '' ? (
             <div>
               {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}

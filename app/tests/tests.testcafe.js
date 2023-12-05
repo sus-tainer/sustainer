@@ -40,7 +40,7 @@ test('Test the QR Generator page', async (testController) => {
 
 // Shell code for Credit Card test case page
 // test
-test.only('Test that payment page works', async (testController) => {
+test('Test that payment page works', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentialsUser.username, credentialsUser.password);
