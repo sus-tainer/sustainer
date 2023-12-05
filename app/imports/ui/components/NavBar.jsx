@@ -19,7 +19,7 @@ const NavBar = () => {
   const closeMobileMenu = () => setClick(false);
 
   return (
-    <Navbar className="navbar" id="main-navbar-nav">
+    <Navbar className="navbar">
       <Container className="navbar-container align-items-center">
         {currentUser === '' ? (
           <Link to="/" className="navbar-logo " onClick={closeMobileMenu}>
@@ -30,7 +30,7 @@ const NavBar = () => {
             <h2 className="mt-2">Sustainer <Recycle /></h2>
           </Link>
         )}
-        <Nav>
+        <Nav id="main-navbar-nav">
           {/* <------------- Landing Navbar ------------> */}
           {currentUser === '' ? (
             <div>
@@ -50,14 +50,14 @@ const NavBar = () => {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink to="/signup" className="nav-links" onClick={closeMobileMenu} id="sign-up">
+                  <NavLink to="/signup" className="nav-links" onClick={closeMobileMenu} id="signup">
                     Register
                   </NavLink>
                 </li>
               </ul>
             </div>
           ) : (
-            <div title={currentUser}>
+            <div title={currentUser} id="navbar-current-user">
               {/* <------------- User Navbar ------------> */}
               {Roles.userIsInRole(Meteor.userId(), 'user') ? ([
                 <div>
@@ -91,7 +91,7 @@ const NavBar = () => {
               ]) : ''}
               {/* <------------- Admin Navbar ------------> */}
               {Roles.userIsInRole(Meteor.userId(), 'admin') ? ([
-                <div>
+                <div id="navbar-current-admin">
                   {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
                   <div className="menu-icon" onClick={handleClick}>
                     <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
@@ -103,17 +103,17 @@ const NavBar = () => {
                       </NavLink>
                     </li>
                     <li className="nav-item">
-                      <NavLink to="/add-container" className="nav-links" onClick={closeMobileMenu}>
+                      <NavLink to="/add-container" className="nav-links" onClick={closeMobileMenu} id="add-container">
                         Add Container
                       </NavLink>
                     </li>
                     <li className="nav-item">
-                      <NavLink to="/scan-container" className="nav-links" onClick={closeMobileMenu}>
+                      <NavLink to="/scan-container" className="nav-links" onClick={closeMobileMenu} id="scan-container">
                         Scan Container
                       </NavLink>
                     </li>
                     <li className="nav-item">
-                      <NavLink to="/admin-list" className="nav-links" onClick={closeMobileMenu}>
+                      <NavLink to="/admin-list" className="nav-links" onClick={closeMobileMenu} id="list-container">
                         Containers List
                       </NavLink>
                     </li>

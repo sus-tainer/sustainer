@@ -16,15 +16,15 @@ fixture('sustainer localhost test with default db')
   .page('http://localhost:3000');
 
 // Test landing page
-test.only('Test that landing page shows up', async (testController) => {
+test('Test that landing page shows up', async (testController) => {
   await landingPage.isDisplayed(testController);
 });
 
 // Test log-in page with user credentials
-test.only('Test that signin and signout work', async (testController) => {
+test('Test that signin and signout work', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentialsUser.username, credentialsUser.password);
-  // await navBar.isLoggedIn(testController, credentialsUser.username);
+  await navBar.isLoggedIn(testController, credentialsUser.username);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });
@@ -43,7 +43,7 @@ test('Test that payment page works', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentialsUser.username, credentialsUser.password);
-  await navBar.gotoAddPaymentPage(testController);
+  await navBar.gotoAddProjectPage(testController);
   await addCreditCardPage.isDisplayed(testController);
   await addCreditCardPage.addCard(testController);
   await addCreditCardPage.hasCreditCard(testController);
