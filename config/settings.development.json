@@ -377,10 +377,12 @@
   ],
 
   "defaultOrders": [
-    { "firstName": "John", "lastName": "Doe", "email": "john@foo.com", "event": "Charity", "location": "Kalihi", "containers": "50" },
-    { "firstName": "Bob", "lastName": "Dot", "email": "john@foo.com", "event": "Fundraiser", "location": "Kapolei", "containers": "100" },
-    { "firstName": "Hal", "lastName": "Rob", "email": "admin@foo.com", "event": "Dinner", "location": "Waipahu", "containers": "10" },
-    { "firstName": "Jen", "lastName": "Doe", "email": "admin@foo.com", "event": "Birthday", "location": "Ala Moana", "containers": "25" }
+    { "firstName": "John", "lastName": "Doe", "email": "john@foo.com", "event": "Charity", "location": "Kalihi", "containers": "50" ,
+     "size": "small"
+    },
+    { "firstName": "Bob", "lastName": "Dot", "email": "john@foo.com", "event": "Fundraiser", "location": "Kapolei", "containers": "100" ,  "size": "small" },
+    { "firstName": "Hal", "lastName": "Rob", "email": "admin@foo.com", "event": "Dinner", "location": "Waipahu", "containers": "10" ,  "size": "small" },
+    { "firstName": "Jen", "lastName": "Doe", "email": "admin@foo.com", "event": "Birthday", "location": "Ala Moana", "containers": "25" ,  "size": "small" }
   ],
 
   "monti": {

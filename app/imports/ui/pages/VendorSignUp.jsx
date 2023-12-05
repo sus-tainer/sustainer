@@ -34,7 +34,7 @@ const VendorSignUp = ({ location }) => {
     });
   };
 
-  const { from } = location?.state || { from: { pathname: '/add' } };
+  const { from } = location?.state || { from: { pathname: '/landing' } };
   if (redirectToReferer) {
     return <Navigate to={from} />;
   }

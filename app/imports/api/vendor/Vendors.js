@@ -4,10 +4,10 @@ import SimpleSchema from 'simpl-schema';
 /**
  * The Vendors. It encapsulates state and variable values for stuff.
  */
-class Vendors {
+class VendorsCollection {
   constructor() {
     // The name of this collection.
-    this.name = 'Vendors';
+    this.name = 'VendorsCollection';
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
@@ -21,7 +21,7 @@ class Vendors {
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
     // Define names for publications and subscriptions
-    this.userPublicationName = `${this.name}.publication.user`;
+    this.vendorPublicationName = `${this.name}.publication.vendor`;
     this.adminPublicationName = `${this.name}.publication.admin`;
   }
 }
@@ -30,4 +30,4 @@ class Vendors {
  * The singleton instance of the Vendors.
  * @type {Vendors}
  */
-export const VendorOrder = new Vendors();
+export const Vendors = new VendorsCollection();
