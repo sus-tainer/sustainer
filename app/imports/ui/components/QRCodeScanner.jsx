@@ -1,23 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import PropTypes from 'prop-types';
 import ZXing from '@zxing/library';
-// import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-// import { AutoForm, SubmitField } from 'uniforms-bootstrap5';
-import { Button, Col, Container, Form, Row } from 'react-bootstrap';
-import swal from 'sweetalert';
-// import { useTracker } from 'meteor/react-meteor-data';
-// import { Meteor } from 'meteor/meteor';
-// import { Containers } from '../../api/container/Containers';
-// import LoadingSpinner from './LoadingSpinner';
+import { Button, Col, Container, Row } from 'react-bootstrap';
+import LoadingSpinner from './LoadingSpinner';
 
-// const bridge = new SimpleSchema2Bridge(Containers.schema);
+const useCodeReader = () => useRef(new ZXing.BrowserQRCodeReader());
 
-const QrCodeScanner = () => {
+const QrCodeScanner = ({ onResultChange }) => {
+  const codeReaderRef = useCodeReader();
   const [selectedDeviceId, setSelectedDeviceId] = useState(null);
+  const [isScanning, setIsScanning] = useState(true); // New state to control scanning
+  // eslint-disable-next-line no-unused-vars
+  const [result, setResult] = useState('');
+
   useEffect(() => {
     const initCodeReader = async () => {
       try {
         const codeReader = new ZXing.BrowserQRCodeReader();
-        // eslint-disable-next-line no-console
         console.log('ZXing code reader initialized');
 
         const videoInputDevices = await codeReader.getVideoInputDevices();
@@ -41,140 +40,98 @@ const QrCodeScanner = () => {
         }
 
         document.getElementById('startButton').addEventListener('click', () => {
-          const decodingStyle = document.getElementById('decoding-style').value;
-
-          if (decodingStyle === 'once') {
-            // eslint-disable-next-line no-use-before-define
-            decodeOnce(codeReader, selectedDeviceId);
-          } else {
-            // eslint-disable-next-line no-use-before-define
-            decodeContinuously(codeReader, selectedDeviceId);
-          }
-
-          // eslint-disable no-console
-          // eslint-disable-next-line no-console
-          console.log(`Started decode from camera with id ${selectedDeviceId}`);
+          // eslint-disable-next-line no-use-before-define
+          decodeOnce(codeReaderRef.current, selectedDeviceId);
         });
 
         document.getElementById('resetButton').addEventListener('click', () => {
-          codeReader.reset();
+          codeReaderRef.current.reset();
+          setIsScanning(true); // Reset scanning state
+          setResult('');
           document.getElementById('result').textContent = '';
           console.log('Reset.');
         });
+
       } catch (error) {
         console.error(error);
       }
     };
 
     initCodeReader();
-  }, [selectedDeviceId]);
+  }, [selectedDeviceId, codeReaderRef]);
 
   // eslint-disable-next-line no-shadow
   const decodeOnce = (codeReader, selectedDeviceId) => {
-    codeReader.decodeFromInputVideoDevice(selectedDeviceId, 'video').then((result) => {
-      console.log(result);
-      document.getElementById('result').textContent = result.text;
-    }).catch((err) => {
-      console.error(err);
-      document.getElementById('result').textContent = err;
-    });
-  };
-  // eslint-disable-next-line no-shadow
-  const decodeContinuously = (codeReader, selectedDeviceId) => {
-    codeReader.decodeFromInputVideoDeviceContinuously(selectedDeviceId, 'video', (result, err) => {
-      if (result) {
-        console.log('Found QR code!', result);
-        document.getElementById('result').textContent = result.text;
-      }
-
-      if (err) {
-        if (err instanceof ZXing.NotFoundException) {
-          console.log('No QR code found.');
+    if (isScanning) {
+      setIsScanning(false); // Set to false before scanning to prevent rapid clicks
+      // eslint-disable-next-line no-shadow
+      codeReader.decodeFromInputVideoDeviceContinuously(selectedDeviceId, 'video', (result, err) => {
+        if (result) {
+          console.log('Found QR code!', result);
+          setResult(result.text);
+          document.getElementById('result').textContent = result.text;
+          onResultChange(result.text);
         }
 
-        if (err instanceof ZXing.ChecksumException) {
-          console.log('A code was found, but its read value was not valid.');
+        if (err) {
+          if (err instanceof ZXing.NotFoundException) {
+            console.log('No QR code found.');
+          }
+
+          if (err instanceof ZXing.ChecksumException) {
+            console.log('A code was found, but its read value was not valid.');
+          }
+
+          if (err instanceof ZXing.FormatException) {
+            console.log('A code was found, but it was in an invalid format.');
+          }
         }
-
-        if (err instanceof ZXing.FormatException) {
-          console.log('A code was found, but it was in an invalid format.');
-        }
-      }
-    });
-  };
-
-  const [selection, setSelection] = useState('container');
-
-  const submit = (msgResult) => {
-    // eslint-disable-next-line no-console
-    console.log(selection);
-    if (msgResult === 'user') {
-      swal('User Scan Success', 'Name: THOMAS', 'success');
-    } else {
-      swal('Successful Return', 'Assigned container back to: ZWO', 'success');
+      });
     }
   };
 
-  const handleOnClick = () => submit(selection);
-
-  const handleSelectionChange = (e) => {
-    setSelection(e.currentTarget.value);
-  };
-
-  // const message1 = true;
-  //
-  // const message2 = false;
+  if (!ZXing) {
+    return <LoadingSpinner />;
+  }
 
   return (
-    <div className="wrapper" style={{ paddingTop: '2em' }}>
+    <div className="p-1 justify-content-center align-content-center">
+      <Row className="justify-content-center">
+        <Col sm={3} md={4} lg={4} xl={4}>
+          <Container className="py-2">
+            <Row className="py-1 d-flex">
+              <Col className="d-flex justify-content-center align-items-center">
+                <Button className="button" id="startButton">Start</Button>
+              </Col>
+              <Col className="d-flex justify-content-center align-items-center">
+                <Button className="button" id="resetButton">Stop</Button>
+              </Col>
+            </Row>
 
-      <Container className="align-content-center my-auto">
-        <Row>
-          <Col sm={2}>
-            <Button className="button" id="startButton">Start</Button>
-            <Button className="button" id="resetButton">Reset</Button>
-            <Form.Select aria-label="Default select example" value={selection} onChange={handleSelectionChange}>
-              <option value="container">Scan Container</option>
-              <option value="user">Scan User</option>
-            </Form.Select>
-          </Col>
-        </Row>
-      </Container>
+            <Container style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <div>
+                {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+                <video id="video" width="300" height="200" style={{ border: '1px solid gray' }} />
+              </div>
+            </Container>
 
-      <Container>
-        <div>
-          {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-          <video id="video" width="300" height="200" style={{ border: '1px solid gray' }} />
-        </div>
-      </Container>
-
-      <Container>
-        <div id="sourceSelectPanel" style={{ display: 'none' }}>
-          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-          <label htmlFor="sourceSelect">Change video source:</label>
-          {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-          <select id="sourceSelect" style={{ maxWidth: '400px' }} />
-        </div>
-      </Container>
-
-      <Container>
-        <div style={{ display: 'table' }}>
-          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-          <label htmlFor="decoding-style"> Decoding Style:</label>
-          <select id="decoding-style" size="1">
-            <option value="once">Decode once</option>
-            <option value="continuously">Decode continuously</option>
-          </select>
-        </div>
-      </Container>
-
-      <Container>
-        <h3>Result:</h3>
-        <pre><code id="result" /></pre>
-        <Button value={selection} onClick={handleOnClick}>Scan</Button>
-      </Container>
+            <Container className="py-2">
+              <div id="sourceSelectPanel" style={{ display: 'none' }}>
+                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+                <label htmlFor="sourceSelect">Video Source:</label>
+                {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+                <select id="sourceSelect" style={{ maxWidth: '400px' }} />
+              </div>
+            </Container>
+          </Container>
+        </Col>
+      </Row>
     </div>
   );
+};
+
+QrCodeScanner.propTypes = {
+  onResultChange: PropTypes.func.isRequired,
 };
 
 export default QrCodeScanner;
