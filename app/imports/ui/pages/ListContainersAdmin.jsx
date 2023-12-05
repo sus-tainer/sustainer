@@ -25,6 +25,12 @@ const ListContainersAdmin = () => {
   return (ready ? (
     <Container className="py-3">
       <Row className="justify-content-center">
+        <Container className="py-3 text-center">
+          <h2>Container Retention Rate</h2>
+          <PieChartStats />
+        </Container>
+      </Row>
+      <Row className="justify-content-center">
         <Col md={7}>
           <Col className="text-center"><h2>List Containers (Admin)</h2></Col>
           <Table striped bordered hover>
@@ -40,12 +46,6 @@ const ListContainersAdmin = () => {
             </tbody>
           </Table>
         </Col>
-      </Row>
-      <Row className="justify-content-center">
-        <Container className="py-3 text-center">
-          <h2>Container Retention Rate</h2>
-          <PieChartStats />
-        </Container>
       </Row>
     </Container>
   ) : <LoadingSpinner />);

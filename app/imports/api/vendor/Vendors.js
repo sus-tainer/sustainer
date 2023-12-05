@@ -28,6 +28,6 @@ class VendorsCollection {
 
 /**
  * The singleton instance of the Vendors.
- * @type {Vendors}
+ * @type {VendorsCollection}
  */
 export const Vendors = new VendorsCollection();

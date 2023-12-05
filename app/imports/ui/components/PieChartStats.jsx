@@ -10,6 +10,7 @@ import { Doughnut } from 'react-chartjs-2';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Containers } from '../../api/container/Containers';
+import { Vendors } from '../../api/vendor/Vendors';
 import LoadingSpinner from './LoadingSpinner';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -17,16 +18,20 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 const PieChartStats = () => {
 
   // useTracker connects Meteor data to React components.
-  const { containers, ready } = useTracker(() => {
+  const { containers, ready, vendors } = useTracker(() => {
   // Get access to Container documents.
     const subscription = Meteor.subscribe(Containers.adminPublicationName);
+    const subscription2 = Meteor.subscribe(Vendors.adminPublicationName);
     // Determine if the subscription is ready
     const rdy = subscription.ready();
+    const rdy2 = subscription2.ready();
     // Get the Container documents
     const items = Containers.collection.find({}).fetch();
+    const items2 = Vendors.collection.find({}).fetch();
     return {
       containers: items,
-      ready: rdy,
+      vendors: items2,
+      ready: rdy && rdy2,
     };
   }, []);
 
@@ -34,10 +39,17 @@ const PieChartStats = () => {
     // Sets values for the pie chart
     const totContainers = Containers.collection.find().fetch().length;
     const totReturned = Containers.collection.find({ owner: 'ZWO' }).fetch().length;
-    const totMissing = totContainers - totReturned;
-    const totReturnedPercent = (totReturned / totContainers) * 100;
+    // Extract vendor email addresses
+    const vendorEmails = vendors.map(vendor => vendor.email);
+    // Find containers owned by vendors based on email
+    const vendorContainers = Containers.collection.find({ owner: { $in: vendorEmails } }).fetch();
+    // Get the total number of containers owned by vendors
+    const totVendorContainers = vendorContainers.length;
+    const totMissing = totContainers - (totReturned + totVendorContainers);
+    const totReturnedPercent = ((totReturned + totVendorContainers) / totContainers) * 100;
 
     // Prints values to console for debugging
+    console.log('Total vendors:', totVendorContainers);
     console.log('Total containers:', totContainers);
     console.log('Total returned:', totReturned);
     console.log('Total missing:', totMissing);
@@ -62,13 +74,15 @@ const PieChartStats = () => {
     const data = {
       labels: [
         'Returned',
+        'Vendors',
         'Missing',
       ],
       datasets: [{
         label: 'Container Retention Rate',
-        data: [totReturned, totMissing],
+        data: [totReturned, totVendorContainers, totMissing],
         backgroundColor: [
           'rgb(0, 219, 0)',
+          'rgb(255, 255, 0)',
           'rgb(256, 0, 0)',
         ],
         hoverOffset: 4,
