@@ -21,10 +21,10 @@ import ListContainersAdmin from '../pages/ListContainersAdmin';
 import QRCodeGenerator from '../components/QRCodeGenerator';
 import ListVendorOrder from '../pages/ListVendorOrder';
 import EditVendorOrder from '../pages/EditVendorOrder';
-import QRCodeScanner from '../components/QRCodeScanner';
 import ChargeUser from '../pages/ChargeUser';
 import VendorSignUp from '../pages/VendorSignUp';
-// import AdminContainerScan from '../pages/AdminContainerScan';
+import AdminContainerScan from '../pages/AdminContainerScan';
+import ListVendorInventory from '../pages/ListVendorInventory';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -50,11 +50,12 @@ const App = () => {
           <Route path="/add" element={<ProtectedRoute><AddContainer /></ProtectedRoute>} />
           <Route path="/qrcode" element={<ProtectedRoute><QRCodeGenerator /></ProtectedRoute>} />
           <Route path="/vendororder" element={<VendorProtectedRoute ready={ready}><AddVendorOrder /></VendorProtectedRoute>} />
-          <Route path="/listvendororder" element={<VendorProtectedRoute> ready={ready}<ListVendorOrder /></VendorProtectedRoute>} />
+          <Route path="/listvendororder" element={<VendorProtectedRoute ready={ready}><ListVendorOrder /></VendorProtectedRoute>} />
+          <Route path="/listinventory" element={<VendorProtectedRoute ready={ready}><ListVendorInventory /></VendorProtectedRoute>} />
           <Route path="/edit/:_id" element={<VendorProtectedRoute ready={ready}><EditVendorOrder /></VendorProtectedRoute>} />
           <Route path="/admin-list" element={<AdminProtectedRoute ready={ready}><ListContainersAdmin /></AdminProtectedRoute>} />
           <Route path="/add-container" element={<AdminProtectedRoute ready={ready}><AddContainer /></AdminProtectedRoute>} />
-          <Route path="/scan" element={<AdminProtectedRoute ready={ready}><QRCodeScanner /></AdminProtectedRoute>} />
+          <Route path="/scan-container" element={<AdminProtectedRoute ready={ready}><AdminContainerScan /></AdminProtectedRoute>} />
           <Route path="/charge-user" element={<AdminProtectedRoute ready={ready}><ChargeUser /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />

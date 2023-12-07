@@ -15,7 +15,7 @@
     {"firstName": "Noah", "lastName": "Anderson", "email": "bbq@gmail.com", "password": "changeme", "role": "vendor"},
     {"firstName": "Emma", "lastName": "Wilson", "email": "crepes@gmail.com", "password": "changeme", "role": "vendor"},
     {"firstName": "Mason", "lastName": "Brown", "email": "brown@gmail.com", "password": "changeme", "role": "user"},
-    {"firstName": "isabella", "lastName": "Garcia", "email": "garcia@gmail.com", "password": "changeme", "role": "user"},
+    {"firstName": "Isabella", "lastName": "Garcia", "email": "garcia@gmail.com", "password": "changeme", "role": "user"},
     {"firstName": "Elijah", "lastName": "Clark", "email": "clark@gmail.com", "password": "changeme", "role": "user"},
     {"firstName": "Mia", "lastName": "Thompson", "email": "thompson@gmail.com", "password": "changeme", "role": "user"},
     {"firstName": "Alexander", "lastName": "Wright", "email": "wright@gmail.com", "password": "changeme", "role": "user"},
@@ -345,7 +345,6 @@
     {"owner": "ZWO", "size": "small"},
     {"owner": "ZWO", "size": "small"},
     {"owner": "ZWO", "size": "small"},
-
     {"owner": "ZWO", "size": "medium"},
     {"owner": "ZWO", "size": "medium"},
     {"owner": "ZWO", "size": "medium"},
@@ -383,6 +382,19 @@
     { "firstName": "Bob", "lastName": "Dot", "email": "john@foo.com", "event": "Fundraiser", "location": "Kapolei", "containers": "100" ,  "size": "small" },
     { "firstName": "Hal", "lastName": "Rob", "email": "admin@foo.com", "event": "Dinner", "location": "Waipahu", "containers": "10" ,  "size": "small" },
     { "firstName": "Jen", "lastName": "Doe", "email": "admin@foo.com", "event": "Birthday", "location": "Ala Moana", "containers": "25" ,  "size": "small" }
+  ],
+
+  "defaultVendors": [
+    {"vendorName": "Teddy's Bigger Burger", "firstName": "Aaron", "lastName": "Foo", "email": "burgers@foo.com", "password": "changeme", "role": "vendor"},
+    {"vendorName": "Taco Bell", "firstName": "Benjamin", "lastName": "Miller", "email": "tacos@gmail.com", "password": "changeme", "role": "vendor"},
+    {"vendorName": "Aloha Salad", "firstName": "Avery", "lastName": "Wilson", "email": "salad@gmail.com", "password": "changeme", "role": "vendor"},
+    {"vendorName": "Bautistas", "firstName": "Olivia", "lastName": "Johnson", "email": "filipino@gmail.com", "password": "changeme", "role": "vendor"},
+    {"vendorName": "Baldwins Sweet Shop", "firstName": "Ethan", "lastName": "Taylor", "email": "shavedice@gmail.com", "password": "changeme", "role": "vendor"},
+    {"vendorName": "Baskin Robin", "firstName": "Sophia", "lastName": "Davis", "email": "icecream@gmail.com", "password": "changeme", "role": "vendor"},
+    {"vendorName": "Spaghetti Factory", "firstName": "Lucas", "lastName": "Smith", "email": "pasta@gmail.com", "password": "changeme", "role": "vendor"},
+    {"vendorName": "Ninja Sushi", "firstName": "Ava", "lastName": "Martinez", "email": "sushi@gmail.com", "password": "changeme", "role": "vendor"},
+    {"vendorName": "Maui Mikes Chicken", "firstName": "Noah", "lastName": "Anderson", "email": "bbq@gmail.com", "password": "changeme", "role": "vendor"},
+    {"vendorName": "Aloha Crepes", "firstName": "Emma", "lastName": "Wilson", "email": "crepes@gmail.com", "password": "changeme", "role": "vendor"}
   ],
 
   "monti": {

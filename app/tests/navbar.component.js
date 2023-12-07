@@ -36,6 +36,7 @@ class NavBar {
       await testController.click('button.navbar-toggler');
     }
     await testController.expect(Selector('#navbar-current-user').exists).ok();
+    // await testController.click('#navbar-current-user');
     await testController.click('#sign-out');
   }
 
@@ -46,7 +47,8 @@ class NavBar {
     if (!visible) {
       await testController.click('button.navbar-toggler');
     }
-    await testController.click('#sign-up');
+    await testController.click('#login');
+    await testController.click('#login-dropdown-sign-up');
   }
 
   /** Go to QR Generator page from Nav Bar upon sign in. */
@@ -59,7 +61,7 @@ class NavBar {
   }
 
   /** Go to Payment page and add a credit card. */
-  async gotoAddPaymentPage(testController) {
+  async gotoAddProjectPage(testController) {
     const visible = await Selector('#main-navbar-nav').visible;
     if (!visible) {
       await testController.click('button.navbar-toggler');
