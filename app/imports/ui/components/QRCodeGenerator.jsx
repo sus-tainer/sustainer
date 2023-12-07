@@ -6,11 +6,11 @@ const QRCodeGenerator = () => {
   const [qrCode, setQRCode] = useState('');
 
   useEffect(() => {
-    const userId = Meteor.userId();
+    const userId = Meteor.user();
 
     if (userId) {
-      // Generate the QR code based on the user ID
-      const userQrText = `${userId}`;
+      // Extract the user's email from the Meteor user object
+      const userQrText = userId.emails[0].address;
 
       // Use the toDataURL method from the qrcode library
       qrcode.toDataURL(userQrText, (err, dataUrl) => {
