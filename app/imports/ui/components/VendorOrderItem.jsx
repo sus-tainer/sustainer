@@ -19,6 +19,7 @@ const VendorOrderItem = ({ vendorOrder, collection }) => {
       <td>{vendorOrder.location}</td>
       <td>{vendorOrder.containers}</td>
       <td>{vendorOrder.size}</td>
+      <td>{vendorOrder.createdAt.toLocaleDateString('en-US')}</td>
       <td>
         <Link to={`/edit/${vendorOrder._id}`}>Edit</Link>
       </td>
@@ -37,6 +38,7 @@ VendorOrderItem.propTypes = {
     location: PropTypes.string,
     containers: PropTypes.number,
     size: PropTypes.string,
+    createdAt: PropTypes.instanceOf(Date),
     _id: PropTypes.string,
   }).isRequired,
   // eslint-disable-next-line react/forbid-prop-types
