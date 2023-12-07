@@ -1,6 +1,7 @@
 import { useTracker } from 'meteor/react-meteor-data';
 import React from 'react';
-import { Container, Table, Row, Col } from 'react-bootstrap';
+import { Container, Table, Row, Col, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import { Containers } from '../../api/container/Containers';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -56,6 +57,11 @@ const ListVendorInventory = () => {
                 </tbody>
               </Table>
             </Col>
+          </Row>
+          <Row className="text-center py-3">
+            <Link to="/vendororder">
+              <Button type="submit" variant="primary">Order More</Button>
+            </Link>
           </Row>
         </Container>
       ) : <LoadingSpinner />
