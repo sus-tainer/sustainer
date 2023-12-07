@@ -36,7 +36,7 @@ const Home = () => {
                 </Button>
               </Col>
               <Col xs="auto">
-                <Button className="rounded-0" variant="light" size="lg" href="/scan">
+                <Button className="rounded-0" variant="light" size="lg" href="/scan-container">
                   Scan Containers
                 </Button>
               </Col>
