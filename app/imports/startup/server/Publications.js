@@ -16,9 +16,12 @@ Meteor.publish(Stuffs.userPublicationName, function () {
 });
 
 Meteor.publish(Containers.userPublicationName, function () {
-  if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return Containers.collection.find({ owner: username });
+  if (this.userId && Roles.userIsInRole(this.userId, 'vendor')) {
+    const user = Meteor.users.findOne(this.userId);
+    const email = user?.emails?.[0]?.address; // Access the first email address
+    if (email) {
+      return Containers.collection.find({ owner: email });
+    }
   }
   return this.ready();
 });
@@ -27,6 +30,13 @@ Meteor.publish(VendorOrder.userPublicationName, function () {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
     return VendorOrder.collection.find({ owner: username });
+  }
+  return this.ready();
+});
+
+Meteor.publish(Vendors.userPublicationName, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'vendor')) {
+    return Vendors.collection.find();
   }
   return this.ready();
 });

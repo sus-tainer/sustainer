@@ -21,7 +21,7 @@ class VendorsCollection {
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
     // Define names for publications and subscriptions
-    this.vendorPublicationName = `${this.name}.publication.vendor`;
+    this.userPublicationName = `${this.name}.publication.user`;
     this.adminPublicationName = `${this.name}.publication.admin`;
   }
 }
