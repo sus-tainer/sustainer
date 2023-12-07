@@ -15,7 +15,7 @@
     {"firstName": "Noah", "lastName": "Anderson", "email": "bbq@gmail.com", "password": "changeme", "role": "vendor"},
     {"firstName": "Emma", "lastName": "Wilson", "email": "crepes@gmail.com", "password": "changeme", "role": "vendor"},
     {"firstName": "Mason", "lastName": "Brown", "email": "brown@gmail.com", "password": "changeme", "role": "user"},
-    {"firstName": "isabella", "lastName": "Garcia", "email": "garcia@gmail.com", "password": "changeme", "role": "user"},
+    {"firstName": "Isabella", "lastName": "Garcia", "email": "garcia@gmail.com", "password": "changeme", "role": "user"},
     {"firstName": "Elijah", "lastName": "Clark", "email": "clark@gmail.com", "password": "changeme", "role": "user"},
     {"firstName": "Mia", "lastName": "Thompson", "email": "thompson@gmail.com", "password": "changeme", "role": "user"},
     {"firstName": "Alexander", "lastName": "Wright", "email": "wright@gmail.com", "password": "changeme", "role": "user"},
