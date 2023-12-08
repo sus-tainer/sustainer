@@ -20,6 +20,7 @@ const VendorOrderItem = ({ vendorOrder, collection }) => {
       <td>{vendorOrder.containers}</td>
       <td>{vendorOrder.size}</td>
       <td>{vendorOrder.createdAt.toLocaleDateString('en-US')}</td>
+      <td>{vendorOrder.scheduledFor.toLocaleDateString('en-US')}</td>
       <td>
         <Link to={`/edit/${vendorOrder._id}`}>Edit</Link>
       </td>
@@ -39,6 +40,7 @@ VendorOrderItem.propTypes = {
     containers: PropTypes.number,
     size: PropTypes.string,
     createdAt: PropTypes.instanceOf(Date),
+    scheduledFor: PropTypes.instanceOf(Date),
     _id: PropTypes.string,
   }).isRequired,
   // eslint-disable-next-line react/forbid-prop-types

@@ -9,6 +9,7 @@ const createUser = (firstName, lastName, email, password, role) => {
   const userID = Accounts.createUser({
     firstName: firstName,
     lastName: lastName,
+    username: email,
     email: email,
     password: password,
     role: role,

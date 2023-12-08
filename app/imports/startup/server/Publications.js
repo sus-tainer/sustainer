@@ -17,19 +17,28 @@ Meteor.publish(Containers.userPublicationName, function () {
   return this.ready();
 });
 
-Meteor.publish(VendorOrder.userPublicationName, function () {
-  if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return VendorOrder.collection.find({ owner: username });
-  }
-  return this.ready();
-});
-
 Meteor.publish(Vendors.userPublicationName, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'vendor')) {
     return Vendors.collection.find();
   }
   return this.ready();
+});
+
+Meteor.publish(VendorOrder.vendorPublicationName, function () {
+  if (this.userId) {
+    const email = Meteor.users.findOne(this.userId).username;
+    return VendorOrder.collection.find({ email: email });
+  }
+  return this.ready();
+  // if (this.userId && Roles.userIsInRole(this.userId, 'vendor')) {
+  //   const vendorUser = Meteor.users.findOne(this.userId).email;
+  //   return Vendors.collection.find({ email: vendorUser });
+  //   const email = vendorUser?.emails?.[0]?.address; // Access the first email address
+  //   if (email) {
+  //     return VendorOrder.collection.find({ email: email });
+  //   }
+  // }
+  // return this.ready();
 });
 
 // Admin-level publication.
@@ -41,20 +50,17 @@ Meteor.publish(Containers.adminPublicationName, function () {
   return this.ready();
 });
 
-Meteor.publish(VendorOrder.vendorPublicationName, function () {
-  if (this.userId && Roles.userIsInRole(this.userId, 'vendor')) {
-    const vendorUser = Meteor.users.findOne(this.userId);
-    const email = vendorUser?.emails?.[0]?.address; // Access the first email address
-    if (email) {
-      return VendorOrder.collection.find({ email: email });
-    }
+Meteor.publish(Vendors.adminPublicationName, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
+    return Vendors.collection.find();
   }
   return this.ready();
 });
 
-Meteor.publish(Vendors.adminPublicationName, function () {
-  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return Vendors.collection.find();
+Meteor.publish(VendorOrder.adminPublicationName, function () {
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return VendorOrder.collection.find({ owner: username });
   }
   return this.ready();
 });
