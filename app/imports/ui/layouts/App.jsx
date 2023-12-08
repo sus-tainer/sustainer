@@ -25,6 +25,7 @@ import ChargeUser from '../pages/ChargeUser';
 import VendorSignUp from '../pages/VendorSignUp';
 import AdminContainerScan from '../pages/AdminContainerScan';
 import ListVendorInventory from '../pages/ListVendorInventory';
+import VendorScan from '../pages/VendorScan';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -50,6 +51,7 @@ const App = () => {
           <Route path="/add" element={<ProtectedRoute><AddContainer /></ProtectedRoute>} />
           <Route path="/qrcode" element={<ProtectedRoute><QRCodeGenerator /></ProtectedRoute>} />
           <Route path="/vendororder" element={<VendorProtectedRoute ready={ready}><AddVendorOrder /></VendorProtectedRoute>} />
+          <Route path="/vendorscan" element={<VendorProtectedRoute ready={ready}><VendorScan /></VendorProtectedRoute>} />
           <Route path="/listvendororder" element={<VendorProtectedRoute ready={ready}><ListVendorOrder /></VendorProtectedRoute>} />
           <Route path="/listinventory" element={<VendorProtectedRoute ready={ready}><ListVendorInventory /></VendorProtectedRoute>} />
           <Route path="/edit/:_id" element={<VendorProtectedRoute ready={ready}><EditVendorOrder /></VendorProtectedRoute>} />
