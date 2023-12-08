@@ -39,6 +39,8 @@ const ListVendorOrder = () => {
                 <th>Location</th>
                 <th>Containers</th>
                 <th>Size</th>
+                <th>Date</th>
+                <th>Edit</th>
                 <th>Remove</th>
               </tr>
             </thead>

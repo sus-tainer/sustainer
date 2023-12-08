@@ -59,7 +59,11 @@ Meteor.publish(Containers.adminPublicationName, function () {
 
 Meteor.publish(VendorOrder.vendorPublicationName, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'vendor')) {
-    return VendorOrder.collection.find();
+    const vendorUser = Meteor.users.findOne(this.userId);
+    const email = vendorUser?.emails?.[0]?.address; // Access the first email address
+    if (email) {
+      return VendorOrder.collection.find({ email: email });
+    }
   }
   return this.ready();
 });
