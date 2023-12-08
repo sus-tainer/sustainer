@@ -9,7 +9,7 @@ const addContainer = (data) => {
   Containers.collection.insert(data);
 };
 
-// Initialize the StuffsCollection if empty.
+// Initialize the Containerscollection if empty.
 if (Containers.collection.find().count() === 0) {
   if (Meteor.settings.defaultContainer) {
     console.log('Creating default containers.');
@@ -22,7 +22,7 @@ const addVendorOrder = (data) => {
   VendorOrder.collection.insert(data);
 };
 
-// Initialize the StuffsCollection if empty.
+// Initialize the VendorOrderCollection if empty.
 if (VendorOrder.collection.find().count() === 0) {
   if (Meteor.settings.defaultOrders) {
     console.log('Creating default Vendor Orders.');

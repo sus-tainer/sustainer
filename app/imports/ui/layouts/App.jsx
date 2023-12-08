@@ -5,7 +5,6 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { Roles } from 'meteor/alanning:roles';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Landing from '../pages/Landing';
-import ListStuff from '../pages/ListStuff';
 import NavBar from '../components/NavBar';
 import NotFound from '../pages/NotFound';
 import SignUp from '../pages/SignUp';
@@ -47,7 +46,6 @@ const App = () => {
           <Route path="/signout" element={<SignOut />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-          <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
           <Route path="/add" element={<ProtectedRoute><AddContainer /></ProtectedRoute>} />
           <Route path="/qrcode" element={<ProtectedRoute><QRCodeGenerator /></ProtectedRoute>} />
           <Route path="/vendororder" element={<VendorProtectedRoute ready={ready}><AddVendorOrder /></VendorProtectedRoute>} />
