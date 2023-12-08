@@ -11,12 +11,13 @@ const ListVendorOrder = () => {
   const { ready, vendorOrders } = useTracker(() => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
-    // Get access to Stuff documents.
+    // Get access to VendorOrder documents.
     const subscription = Meteor.subscribe(VendorOrder.vendorPublicationName);
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the Stuff documents
     const vendorItems = VendorOrder.collection.find({}).fetch();
+    console.log(vendorItems);
     return {
       vendorOrders: vendorItems,
       ready: rdy,
