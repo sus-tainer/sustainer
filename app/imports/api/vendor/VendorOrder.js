@@ -19,12 +19,14 @@ class VendorOrderCollection {
       location: String,
       containers: Number,
       size: String,
+      createdAt: Date,
+      scheduledFor: Date,
     });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
     // Define names for publications and subscriptions
     this.vendorPublicationName = `${this.name}.publication.vendor`;
-    // this.adminPublicationName = `${this.name}.publication.admin`;
+    this.adminPublicationName = `${this.name}.publication.admin`;
   }
 }
 

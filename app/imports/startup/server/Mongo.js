@@ -3,29 +3,13 @@ import { Containers } from '../../api/container/Containers.js';
 import { VendorOrder } from '../../api/vendor/VendorOrder';
 import { Vendors } from '../../api/vendor/Vendors';
 
-/* eslint-disable no-console */
-
-// // Initialize the database with a default data document.
-// const addData = (data) => {
-//   console.log(`  Adding: ${data.name} (${data.owner})`);
-//   Stuffs.collection.insert(data);
-// };
-//
-// // Initialize the StuffsCollection if empty.
-// if (Stuffs.collection.find().count() === 0) {
-//   if (Meteor.settings.defaultData) {
-//     console.log('Creating default data.');
-//     Meteor.settings.defaultData.forEach(data => addData(data));
-//   }
-// }
-
 // Initialize the database with a default data document.
 const addContainer = (data) => {
   console.log(`  Adding: ${data.owner} (${data.size})`);
   Containers.collection.insert(data);
 };
 
-// Initialize the StuffsCollection if empty.
+// Initialize the Containerscollection if empty.
 if (Containers.collection.find().count() === 0) {
   if (Meteor.settings.defaultContainer) {
     console.log('Creating default containers.');
@@ -38,7 +22,7 @@ const addVendorOrder = (data) => {
   VendorOrder.collection.insert(data);
 };
 
-// Initialize the StuffsCollection if empty.
+// Initialize the VendorOrderCollection if empty.
 if (VendorOrder.collection.find().count() === 0) {
   if (Meteor.settings.defaultOrders) {
     console.log('Creating default Vendor Orders.');
