@@ -18,6 +18,7 @@ const ListVendorOrder = () => {
     // Get the Stuff documents
     const vendorItems = VendorOrder.collection.find({}).fetch();
     console.log(vendorItems);
+    console.log(subscription);
     return {
       vendorOrders: vendorItems,
       ready: rdy,
@@ -47,7 +48,7 @@ const ListVendorOrder = () => {
               </tr>
             </thead>
             <tbody>
-              {vendorOrders.map((vendorOrder) => <VendorOrderItem key={vendorOrder._id} vendorOrder={vendorOrder} collection={VendorOrder.collection} />)}
+              {vendorOrders.map((order) => <VendorOrderItem key={order._id} vendorOrder={order} collection={VendorOrder.collection} />)}
             </tbody>
           </Table>
         </Col>
