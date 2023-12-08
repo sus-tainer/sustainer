@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, NumField, SubmitField, TextField, HiddenField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, NumField, SubmitField, TextField, HiddenField, DateField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -17,6 +17,7 @@ const formSchema = new SimpleSchema({
   containers: Number,
   size: String,
   createdAt: Date,
+  scheduledFor: Date,
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
@@ -26,10 +27,10 @@ const AddVendorOrder = () => {
 
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { firstName, lastName, email, event, location, containers, size, createdAt } = data;
+    const { firstName, lastName, email, event, location, containers, size, createdAt, scheduledFor } = data;
     const owner = Meteor.user().email;
     VendorOrder.collection.insert(
-      { firstName, lastName, email, event, location, containers, size, createdAt, owner },
+      { firstName, lastName, email, event, location, containers, size, createdAt, scheduledFor, owner },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -59,6 +60,7 @@ const AddVendorOrder = () => {
                 <NumField name="containers" decimal={null} />
                 <TextField name="size" />
                 <HiddenField name="createdAt" value={new Date()} />
+                <DateField name="scheduledFor" value={new Date()} />
                 <SubmitField value="Submit" />
                 <ErrorsField />
               </Card.Body>
