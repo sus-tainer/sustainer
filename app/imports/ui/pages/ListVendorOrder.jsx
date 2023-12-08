@@ -17,8 +17,6 @@ const ListVendorOrder = () => {
     const rdy = subscription.ready();
     // Get the Stuff documents
     const vendorItems = VendorOrder.collection.find({}).fetch();
-    console.log(vendorItems);
-    console.log(subscription);
     return {
       vendorOrders: vendorItems,
       ready: rdy,

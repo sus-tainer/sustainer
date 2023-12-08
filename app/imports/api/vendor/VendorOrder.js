@@ -27,7 +27,6 @@ class VendorOrderCollection {
     // Define names for publications and subscriptions
     this.vendorPublicationName = `${this.name}.publication.vendor`;
     this.adminPublicationName = `${this.name}.publication.admin`;
-    // this.adminPublicationName = `${this.name}.publication.admin`;
   }
 }
 
