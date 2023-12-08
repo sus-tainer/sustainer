@@ -144,6 +144,11 @@ const NavBar = () => {
                       </NavLink>
                     </li>
                     <li className="nav-item">
+                      <NavLink to="/vendorscan" className="nav-links" onClick={closeMobileMenu}>
+                        Scan
+                      </NavLink>
+                    </li>
+                    <li className="nav-item">
                       <NavLink to="/vendororder" className="nav-links" onClick={closeMobileMenu}>
                         Order
                       </NavLink>
@@ -196,4 +201,5 @@ const NavBar = () => {
     </Navbar>
   );
 };
+
 export default NavBar;
