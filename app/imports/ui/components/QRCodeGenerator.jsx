@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Row, Col } from 'react';
+import React, { useState, useEffect } from 'react';
 import qrcode from 'qrcode';
 import { Meteor } from 'meteor/meteor';
 import { Container } from 'react-bootstrap';
