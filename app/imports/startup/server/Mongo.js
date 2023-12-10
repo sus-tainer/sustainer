@@ -1,23 +1,7 @@
 import { Meteor } from 'meteor/meteor';
-import { Stuffs } from '../../api/stuff/Stuff.js';
 import { Containers } from '../../api/container/Containers.js';
 import { VendorOrder } from '../../api/vendor/VendorOrder';
-
-/* eslint-disable no-console */
-
-// Initialize the database with a default data document.
-const addData = (data) => {
-  console.log(`  Adding: ${data.name} (${data.owner})`);
-  Stuffs.collection.insert(data);
-};
-
-// Initialize the StuffsCollection if empty.
-if (Stuffs.collection.find().count() === 0) {
-  if (Meteor.settings.defaultData) {
-    console.log('Creating default data.');
-    Meteor.settings.defaultData.forEach(data => addData(data));
-  }
-}
+import { Vendors } from '../../api/vendor/Vendors';
 
 // Initialize the database with a default data document.
 const addContainer = (data) => {
@@ -25,9 +9,9 @@ const addContainer = (data) => {
   Containers.collection.insert(data);
 };
 
-// Initialize the StuffsCollection if empty.
+// Initialize the Containerscollection if empty.
 if (Containers.collection.find().count() === 0) {
-  if (Meteor.settings.defaultData) {
+  if (Meteor.settings.defaultContainer) {
     console.log('Creating default containers.');
     Meteor.settings.defaultContainer.forEach(data => addContainer(data));
   }
@@ -38,10 +22,23 @@ const addVendorOrder = (data) => {
   VendorOrder.collection.insert(data);
 };
 
-// Initialize the StuffsCollection if empty.
+// Initialize the VendorOrderCollection if empty.
 if (VendorOrder.collection.find().count() === 0) {
-  if (Meteor.settings.defaultData) {
-    console.log('Creating default containers.');
+  if (Meteor.settings.defaultOrders) {
+    console.log('Creating default Vendor Orders.');
     Meteor.settings.defaultOrders.forEach(data => addVendorOrder(data));
+  }
+}
+
+const addVendor = (data) => {
+  console.log(`  Adding: ${data.vendorName} (${data.email})`);
+  Vendors.collection.insert(data);
+};
+
+// Initialize the VendorsCollection if empty.
+if (Vendors.collection.find().count() === 0) {
+  if (Meteor.settings.defaultVendors) {
+    console.log('Creating default vendor.');
+    Meteor.settings.defaultVendors.forEach(data => addVendor(data));
   }
 }

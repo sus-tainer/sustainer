@@ -8,6 +8,9 @@ const VendorOrderSchema = new SimpleSchema({
   location: { label: 'Location', type: String, defaultValue: '' },
   containers: {
     label: 'Number of Containers', type: Number },
+  size: { label: 'Location', type: String, defaultValue: '' },
+  createdAt: { label: 'Date Created', type: Date, defaultValue: '' },
+  scheduledFor: { label: 'Date Scheduled', type: Date, defaultValue: '' },
 });
 
 export { VendorOrderSchema };

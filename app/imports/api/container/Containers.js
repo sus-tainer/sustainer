@@ -13,7 +13,6 @@ class ContainersCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       owner: String,
-      codeQR: String,
       size: {
         type: String,
         allowedValues: ['small', 'medium', 'large'],
@@ -24,6 +23,7 @@ class ContainersCollection {
     this.collection.attachSchema(this.schema);
     // Define names for publications and subscriptions
     this.userPublicationName = `${this.name}.publication.user`;
+    this.vendorPublicationName = `${this.name}.publication.vendor`;
     this.adminPublicationName = `${this.name}.publication.admin`;
   }
 }

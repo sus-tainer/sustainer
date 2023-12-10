@@ -33,15 +33,15 @@ const SignIn = () => {
   return (
     <Container id="signin-page" className="py-3">
       <Row className="justify-content-center">
-        <Col xs={12} sm={8} md={6} lg={4}>
+        <Col xs={12} md={10} lg={8}>
           <Col className="text-center">
             <h2>Login to your account</h2>
           </Col>
           <AutoForm schema={bridge} onSubmit={data => submit(data)}>
-            <Card>
+            <Card className="signin-card">
               <Card.Body>
-                <TextField id="signin-form-email" name="email" placeholder="E-mail address" />
-                <TextField id="signin-form-password" name="password" placeholder="Password" type="password" />
+                <TextField id="signin-form-email" name="email" placeholder="E-mail address" inputClassName="form-control form-control-lg mb-3" />
+                <TextField id="signin-form-password" name="password" placeholder="Password" type="password" inputClassName="form-control form-control-lg mb-3" />
                 <ErrorsField />
                 <SubmitField id="signin-form-submit" />
               </Card.Body>

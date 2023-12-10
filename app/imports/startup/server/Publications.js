@@ -1,44 +1,48 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
-import { Stuffs } from '../../api/stuff/Stuff';
 import { Containers } from '../../api/container/Containers';
 import { VendorOrder } from '../../api/vendor/VendorOrder';
+import { Vendors } from '../../api/vendor/Vendors';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise, publish nothing.
-Meteor.publish(Stuffs.userPublicationName, function () {
-  if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return Stuffs.collection.find({ owner: username });
-  }
-  return this.ready();
-});
-
 Meteor.publish(Containers.userPublicationName, function () {
-  if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return Containers.collection.find({ owner: username });
+  if (this.userId && Roles.userIsInRole(this.userId, 'vendor')) {
+    const user = Meteor.users.findOne(this.userId);
+    const email = user?.emails?.[0]?.address; // Access the first email address
+    if (email) {
+      return Containers.collection.find({ owner: email });
+    }
   }
   return this.ready();
 });
 
-Meteor.publish(VendorOrder.userPublicationName, function () {
-  if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return VendorOrder.collection.find({ owner: username });
+Meteor.publish(Vendors.userPublicationName, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'vendor')) {
+    return Vendors.collection.find();
   }
   return this.ready();
+});
+
+Meteor.publish(VendorOrder.vendorPublicationName, function () {
+  if (this.userId) {
+    const email = Meteor.users.findOne(this.userId).username;
+    return VendorOrder.collection.find({ email: email });
+  }
+  return this.ready();
+  // if (this.userId && Roles.userIsInRole(this.userId, 'vendor')) {
+  //   const vendorUser = Meteor.users.findOne(this.userId).email;
+  //   return Vendors.collection.find({ email: vendorUser });
+  //   const email = vendorUser?.emails?.[0]?.address; // Access the first email address
+  //   if (email) {
+  //     return VendorOrder.collection.find({ email: email });
+  //   }
+  // }
+  // return this.ready();
 });
 
 // Admin-level publication.
 // If logged in and with admin role, then publish all documents from all users. Otherwise, publish nothing.
-Meteor.publish(Stuffs.adminPublicationName, function () {
-  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return Stuffs.collection.find();
-  }
-  return this.ready();
-});
-
 Meteor.publish(Containers.adminPublicationName, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
     return Containers.collection.find();
@@ -46,9 +50,17 @@ Meteor.publish(Containers.adminPublicationName, function () {
   return this.ready();
 });
 
-Meteor.publish(VendorOrder.adminPublicationName, function () {
+Meteor.publish(Vendors.adminPublicationName, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return VendorOrder.collection.find();
+    return Vendors.collection.find();
+  }
+  return this.ready();
+});
+
+Meteor.publish(VendorOrder.adminPublicationName, function () {
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return VendorOrder.collection.find({ owner: username });
   }
   return this.ready();
 });

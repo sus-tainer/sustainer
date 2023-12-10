@@ -11,7 +11,7 @@ const ListVendorOrder = () => {
   const { ready, vendorOrders } = useTracker(() => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
-    // Get access to Stuff documents.
+    // Get access to VendorOrder documents.
     const subscription = Meteor.subscribe(VendorOrder.vendorPublicationName);
     // Determine if the subscription is ready
     const rdy = subscription.ready();
@@ -39,11 +39,14 @@ const ListVendorOrder = () => {
                 <th>Location</th>
                 <th>Containers</th>
                 <th>Size</th>
+                <th>Created On</th>
+                <th>Scheduled For</th>
+                <th>Edit</th>
                 <th>Remove</th>
               </tr>
             </thead>
             <tbody>
-              {vendorOrders.map((vendorOrder) => <VendorOrderItem key={vendorOrder._id} vendorOrder={vendorOrder} collection={VendorOrder.collection} />)}
+              {vendorOrders.map((order) => <VendorOrderItem key={order._id} vendorOrder={order} collection={VendorOrder.collection} />)}
             </tbody>
           </Table>
         </Col>

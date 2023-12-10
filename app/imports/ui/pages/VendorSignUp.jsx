@@ -7,11 +7,12 @@ import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
 
-const SignUp = ({ location }) => {
+const VendorSignUp = ({ location }) => {
   const [error, setError] = useState('');
   const [redirectToReferer, setRedirectToRef] = useState(false);
 
   const schema = new SimpleSchema({
+    vendorName: String,
     firstName: String,
     lastName: String,
     email: String,
@@ -33,7 +34,7 @@ const SignUp = ({ location }) => {
     });
   };
 
-  const { from } = location?.state || { from: { pathname: '/home' } };
+  const { from } = location?.state || { from: { pathname: '/landing' } };
   if (redirectToReferer) {
     return <Navigate to={from} />;
   }
@@ -43,11 +44,12 @@ const SignUp = ({ location }) => {
       <Row className="justify-content-center">
         <Col xs={12} md={10} lg={8}>
           <Col className="text-center">
-            <h2>Register your account</h2>
+            <h2>Register your vendor account</h2>
           </Col>
           <AutoForm schema={bridge} onSubmit={(data) => submit(data)}>
             <Card>
               <Card.Body>
+                <TextField name="vendorName" placeholder="Vendor Name" inputClassName="form-control form-control-lg mb-3" />
                 <TextField name="firstName" placeholder="First Name" inputClassName="form-control form-control-lg mb-3" />
                 <TextField name="lastName" placeholder="Last Name" inputClassName="form-control form-control-lg mb-3" />
                 <TextField name="email" placeholder="E-mail address" inputClassName="form-control form-control-lg mb-3" />
@@ -74,14 +76,14 @@ const SignUp = ({ location }) => {
   );
 };
 
-SignUp.propTypes = {
+VendorSignUp.propTypes = {
   location: PropTypes.shape({
     state: PropTypes.string,
   }),
 };
 
-SignUp.defaultProps = {
+VendorSignUp.defaultProps = {
   location: { state: '' },
 };
 
-export default SignUp;
+export default VendorSignUp;

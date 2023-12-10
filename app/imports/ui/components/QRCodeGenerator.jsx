@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import qrcode from 'qrcode';
 import { Meteor } from 'meteor/meteor';
+import { Container } from 'react-bootstrap';
 
 const QRCodeGenerator = () => {
   const [qrCode, setQRCode] = useState('');
 
   useEffect(() => {
-    const userId = Meteor.userId();
+    const userId = Meteor.user();
 
     if (userId) {
-      // Generate the QR code based on the user ID
-      const userQrText = `${userId}`;
+      // Extract the user's email from the Meteor user object
+      const userQrText = userId.emails[0].address;
 
       // Use the toDataURL method from the qrcode library
       qrcode.toDataURL(userQrText, (err, dataUrl) => {
@@ -27,12 +28,15 @@ const QRCodeGenerator = () => {
   }, []);
 
   return (
-    <div id="generate-qr">
-      <h1>User QR Code</h1>
-      <div id="qrcode" className="d-flex justify-content-center align-items-center">
-        {qrCode && <img src={qrCode} alt="QR Code" width="95%" />}
-      </div>
-    </div>
+    <Container>
+      <h1 className="text-center py-3">User QR Code</h1>
+
+      <Container id="generate-qr" className="d-flex justify-content-center align-items-center">
+        <Container id="qrcode" className="col-lg-4">
+          {qrCode && <img src={qrCode} alt="QR Code" width="100%" />}
+        </Container>
+      </Container>
+    </Container>
   );
 };
 

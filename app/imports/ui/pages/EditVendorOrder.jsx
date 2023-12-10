@@ -1,7 +1,7 @@
 import React from 'react';
 import swal from 'sweetalert';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, NumField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, DateField, ErrorsField, HiddenField, NumField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -19,7 +19,7 @@ const EditVendorOrder = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { doc, ready } = useTracker(() => {
     // Get access to Stuff documents.
-    const subscription = Meteor.subscribe(VendorOrder.userPublicationName);
+    const subscription = Meteor.subscribe(VendorOrder.vendorPublicationName);
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the document
@@ -32,8 +32,8 @@ const EditVendorOrder = () => {
   // console.log('EditStuff', doc, ready);
   // On successful submit, insert the data.
   const submit = (data) => {
-    const { firstName, lastName, email, event, location, containers } = data;
-    VendorOrder.collection.update(_id, { $set: { firstName, lastName, email, event, location, containers } }, (error) => (error ?
+    const { firstName, lastName, email, event, location, containers, size, scheduledFor } = data;
+    VendorOrder.collection.update(_id, { $set: { firstName, lastName, email, event, location, containers, size, scheduledFor } }, (error) => (error ?
       swal('Error', error.message, 'error') :
       swal('Success', 'Item updated successfully', 'success')));
   };
@@ -41,7 +41,7 @@ const EditVendorOrder = () => {
   return ready ? (
     <Container className="py-3">
       <Row className="justify-content-center">
-        <Col xs={5}>
+        <Col xs={6}>
           <Col className="text-center"><h2>Edit Vendor Order</h2></Col>
           <AutoForm schema={bridge} onSubmit={data => submit(data)} model={doc}>
             <Card>
@@ -51,7 +51,10 @@ const EditVendorOrder = () => {
                 <TextField name="email" />
                 <TextField name="event" />
                 <TextField name="location" />
+                <TextField name="size" />
                 <NumField name="containers" decimal={null} />
+                <HiddenField name="createdAt" value={new Date()} />
+                <DateField name="scheduledFor" value={new Date()} />
                 <SubmitField value="Submit" />
                 <ErrorsField />
               </Card.Body>
