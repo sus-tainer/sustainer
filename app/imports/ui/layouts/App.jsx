@@ -25,6 +25,7 @@ import VendorSignUp from '../pages/VendorSignUp';
 import AdminContainerScan from '../pages/AdminContainerScan';
 import ListVendorInventory from '../pages/ListVendorInventory';
 import VendorScan from '../pages/VendorScan';
+import About from '../pages/About';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -40,6 +41,7 @@ const App = () => {
         <NavBar />
         <Routes>
           <Route exact path="/" element={<Landing />} />
+          <Route path="/About" element={<About />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/vendorsignup" element={<VendorSignUp />} />
