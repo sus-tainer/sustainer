@@ -20,7 +20,7 @@ const Landing = () => (
         </Row>
         <Row className="mb-5 g-0 justify-content-center">
           <Col xs="auto">
-            <Button className="rounded-0" variant="outline-light" size="lg" href="/signin">
+            <Button className="rounded-0" variant="outline-light-landing" size="lg" href="/signin">
               Sign In
             </Button>
           </Col>
