@@ -45,7 +45,6 @@ const QRCodeGenerator = () => {
           <LoadingSpinner />
         ) : (
           <Container id="qrcode" className="col-lg-4">
-            <h1>QR Text: {userQrText}</h1>
             {qrCodeReady && <img src={qrCode} alt="QR Code" width="100%" />}
           </Container>
         )}
