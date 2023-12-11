@@ -2,19 +2,17 @@ import React from 'react';
 import { Col, Button, Container, Row } from 'react-bootstrap';
 import Footer from '../components/Footer';
 
-/* A simple static component to render some text for the landing page. */
+/* A static component to render the landing page. */
 const Landing = () => (
   <>
     <div className="landing-part1">
       <Container id="landing-page">
-        <Row className="">
+        <Row>
           <Col className="my-5">
-            <h2 className="mt-sm-3 text-center">What is Sustainer?</h2>
+            <h2 className="mt-sm-3 text-center">Sustainer</h2>
             <p className="mb-0 text-center">
               {/* eslint-disable-next-line max-len */}
-              Single-use takeout containers and food wrappers make up a significant portion—up to one-third—of the debris discovered along Hawai’i&apos;s shorelines. Sustainer is dedicated to tackling this environmental challenge by
-              providing a convenient and user-friendly reusable takeout container system. Our aim is to contribute to reducing this prevalent waste and elimi nating debris along Hawai’i&apos;s coastal areas. Join us in making a positive
-              impact by adopting our sustainable solution for takeout packaging.
+              The Earth friendly way to enjoy ono foods!
             </p>
           </Col>
         </Row>

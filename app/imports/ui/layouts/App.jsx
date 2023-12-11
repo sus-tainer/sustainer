@@ -5,7 +5,6 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { Roles } from 'meteor/alanning:roles';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Landing from '../pages/Landing';
-import ListStuff from '../pages/ListStuff';
 import NavBar from '../components/NavBar';
 import NotFound from '../pages/NotFound';
 import SignUp from '../pages/SignUp';
@@ -25,6 +24,8 @@ import ChargeUser from '../pages/ChargeUser';
 import VendorSignUp from '../pages/VendorSignUp';
 import AdminContainerScan from '../pages/AdminContainerScan';
 import ListVendorInventory from '../pages/ListVendorInventory';
+import VendorScan from '../pages/VendorScan';
+import About from '../pages/About';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -40,16 +41,17 @@ const App = () => {
         <NavBar />
         <Routes>
           <Route exact path="/" element={<Landing />} />
+          <Route path="/About" element={<About />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/vendorsignup" element={<VendorSignUp />} />
           <Route path="/signout" element={<SignOut />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-          <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
           <Route path="/add" element={<ProtectedRoute><AddContainer /></ProtectedRoute>} />
           <Route path="/qrcode" element={<ProtectedRoute><QRCodeGenerator /></ProtectedRoute>} />
           <Route path="/vendororder" element={<VendorProtectedRoute ready={ready}><AddVendorOrder /></VendorProtectedRoute>} />
+          <Route path="/vendorscan" element={<VendorProtectedRoute ready={ready}><VendorScan /></VendorProtectedRoute>} />
           <Route path="/listvendororder" element={<VendorProtectedRoute ready={ready}><ListVendorOrder /></VendorProtectedRoute>} />
           <Route path="/listinventory" element={<VendorProtectedRoute ready={ready}><ListVendorInventory /></VendorProtectedRoute>} />
           <Route path="/edit/:_id" element={<VendorProtectedRoute ready={ready}><EditVendorOrder /></VendorProtectedRoute>} />

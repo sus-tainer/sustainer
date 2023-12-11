@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Chart as ChartJS,
   ArcElement,
@@ -48,25 +47,18 @@ const PieChartStats = () => {
     const totMissing = totContainers - (totReturned + totVendorContainers);
     const totReturnedPercent = ((totReturned + totVendorContainers) / totContainers) * 100;
 
-    // Prints values to console for debugging
-    console.log('Total vendors:', totVendorContainers);
-    console.log('Total containers:', totContainers);
-    console.log('Total returned:', totReturned);
-    console.log('Total missing:', totMissing);
-
     let pieImg = null;
 
     if (totReturnedPercent >= 95) {
-      console.log('Container retention rate is above 95%');
       pieImg = './images/pie-chart-img/green-warning.png';
+
     } else if (totReturnedPercent >= 85) {
-      console.log('Container retention rate is above 85%');
       pieImg = './images/pie-chart-img/blue-warning.png';
+
     } else if (totReturnedPercent >= 75) {
-      console.log('Container retention rate is above 75%');
       pieImg = './images/pie-chart-img/yellow-warning.png';
+
     } else if (totReturnedPercent < 75) {
-      console.log('Container retention rate is below 75%');
       pieImg = './images/pie-chart-img/red-warning.png';
     }
 
@@ -106,7 +98,6 @@ const PieChartStats = () => {
     );
 
   } if (!ready) {
-    console.log('Subscription not ready yet.');
     return (
       <LoadingSpinner />
     );

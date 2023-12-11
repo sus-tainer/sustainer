@@ -45,6 +45,11 @@ const NavBar = () => {
                   </NavLink>
                 </li>
                 <li className="nav-item">
+                  <NavLink to="/About" className="nav-links" onClick={closeMobileMenu}>
+                    About
+                  </NavLink>
+                </li>
+                <li className="nav-item">
                   <NavLink to="/signin" className="nav-links" onClick={closeMobileMenu} id="login">
                     Sign In
                   </NavLink>
@@ -109,17 +114,17 @@ const NavBar = () => {
                     </li>
                     <li className="nav-item">
                       <NavLink to="/scan-container" className="nav-links" onClick={closeMobileMenu} id="scan-container">
-                        Scan Container
+                        Return Container
                       </NavLink>
                     </li>
                     <li className="nav-item">
                       <NavLink to="/admin-list" className="nav-links" onClick={closeMobileMenu} id="list-container">
-                        Containers List
+                        List
                       </NavLink>
                     </li>
                     <li className="nav-item">
                       <NavLink to="/charge-user" className="nav-links" onClick={closeMobileMenu}>
-                        Charge User
+                        Charge
                       </NavLink>
                     </li>
                     <li className="nav-item">
@@ -144,13 +149,23 @@ const NavBar = () => {
                       </NavLink>
                     </li>
                     <li className="nav-item">
+                      <NavLink to="/vendorscan" className="nav-links" onClick={closeMobileMenu}>
+                        Scan
+                      </NavLink>
+                    </li>
+                    <li className="nav-item">
                       <NavLink to="/vendororder" className="nav-links" onClick={closeMobileMenu}>
-                        Vendor Order Form
+                        Order
                       </NavLink>
                     </li>
                     <li className="nav-item">
                       <NavLink to="/listvendororder" className="nav-links" onClick={closeMobileMenu}>
-                        List Vendor Orders
+                        History
+                      </NavLink>
+                    </li>
+                    <li className="nav-item">
+                      <NavLink to="/listinventory" className="nav-links" onClick={closeMobileMenu}>
+                        Inventory
                       </NavLink>
                     </li>
                     <li className="nav-item">
