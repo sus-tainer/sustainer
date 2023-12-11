@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
-import { Trash } from 'react-bootstrap-icons';
+import { Button, Container } from 'react-bootstrap';
+import { Trash, X, HourglassSplit, Check2 } from 'react-bootstrap-icons';
 
 /** Renders a single row in the List Vendor Order table. See pages/ListVendorOrder.jsx. */
 const VendorOrderItem = ({ vendorOrder, collection }) => {
@@ -10,11 +10,33 @@ const VendorOrderItem = ({ vendorOrder, collection }) => {
     // console.log(`The item to remove is ${docID}`);
     collection.remove(docID);
   };
+  const displayApproval = (order) => {
+    if (order === 1) {
+      return (
+        <Container className="justify-content-center align-content-center" style={{ color: 'darkgoldenrod' }}>
+          <HourglassSplit size={32} />
+        </Container>
+      );
+    }
+    if (order === 2) {
+      return (
+        <div className="justify-content-center align-content-center" style={{ color: 'red' }}>
+          <X size={40} />
+        </div>
+      );
+    }
+    if (order === 3) {
+      return (
+        <div className="justify-content-center align-content-center" style={{ color: 'darkgreen' }}>
+          <Check2 size={32} />
+        </div>
+      );
+    }
+    return true;
+  };
   return (
     <tr>
-      <td>{vendorOrder.firstName}</td>
-      <td>{vendorOrder.lastName}</td>
-      <td>{vendorOrder.email}</td>
+      <td className="text-center my-auto">{displayApproval(vendorOrder.approval)}</td>
       <td>{vendorOrder.event}</td>
       <td>{vendorOrder.location}</td>
       <td>{vendorOrder.containers}</td>
@@ -32,9 +54,7 @@ const VendorOrderItem = ({ vendorOrder, collection }) => {
 // Require a document to be passed to this component.
 VendorOrderItem.propTypes = {
   vendorOrder: PropTypes.shape({
-    firstName: PropTypes.string,
-    lastName: PropTypes.string,
-    email: PropTypes.string,
+    approval: PropTypes.number,
     event: PropTypes.string,
     location: PropTypes.string,
     containers: PropTypes.number,

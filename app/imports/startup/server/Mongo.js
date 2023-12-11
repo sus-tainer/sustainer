@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Containers } from '../../api/container/Containers.js';
 import { VendorOrder } from '../../api/vendor/VendorOrder';
 import { Vendors } from '../../api/vendor/Vendors';
+import { ApproveOrders } from '../../api/vendor/ApproveVendorOrder';
 
 // Initialize the database with a default data document.
 const addContainer = (data) => {
@@ -20,12 +21,20 @@ if (Containers.collection.find().count() === 0) {
 const addVendorOrder = (data) => {
   console.log(`  Adding: ${data.firstName} (${data.email})`);
   VendorOrder.collection.insert(data);
+  ApproveOrders.collection.insert(data);
 };
 
 // Initialize the VendorOrderCollection if empty.
 if (VendorOrder.collection.find().count() === 0) {
   if (Meteor.settings.defaultOrders) {
     console.log('Creating default Vendor Orders.');
+    Meteor.settings.defaultOrders.forEach(data => addVendorOrder(data));
+  }
+}
+
+// Copy of vendor orders for Admin approval
+if (ApproveOrders.collection.find().count() === 0) {
+  if (Meteor.settings.defaultOrders) {
     Meteor.settings.defaultOrders.forEach(data => addVendorOrder(data));
   }
 }
