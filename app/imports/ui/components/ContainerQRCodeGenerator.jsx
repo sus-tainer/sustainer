@@ -32,7 +32,7 @@ const ContainerQRCodeGenerator = () => {
 
       if (latestContainer) {
         const latestContainerId = latestContainer._id;
-        console.log('Latest container ID:', latestContainerId);
+        // console.log('Latest container ID:', latestContainerId);
 
         const userQrText = latestContainerId;
 
