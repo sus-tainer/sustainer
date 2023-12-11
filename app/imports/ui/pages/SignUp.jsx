@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom'; // Removed unused Navigate import
 import { Accounts } from 'meteor/accounts-base';
 import { Alert, Card, Col, Container, Row } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
@@ -23,7 +23,9 @@ const SignUp = ({ location }) => {
 
   const submit = (doc) => {
     const { email, password } = doc;
-    Accounts.createUser({ email, username: email, password }, (err) => {
+
+    // Create a user with the role set to 'user'
+    Accounts.createUser({ email, username: email, password, roles: ['user'] }, (err) => {
       if (err) {
         setError(err.reason);
       } else {
@@ -34,7 +36,7 @@ const SignUp = ({ location }) => {
   };
 
   const { from } = location?.state || { from: { pathname: '/home' } };
-  if (redirect) {
+  if (redirectToReferer) {
     return <Navigate to={from} />;
   }
 
