@@ -7,6 +7,7 @@ import LoadingSpinner from './LoadingSpinner';
 const QRCodeGenerator = () => {
   const [qrCode, setQRCode] = useState('');
   const [loading, setLoading] = useState(true);
+  // eslint-disable-next-line no-unused-vars
   const [userQrText, setUserQrText] = useState('');
   const [qrCodeReady, setQRCodeReady] = useState(false);
 
