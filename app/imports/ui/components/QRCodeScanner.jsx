@@ -17,7 +17,6 @@ const QrCodeScanner = ({ onResultChange }) => {
     const initCodeReader = async () => {
       try {
         const codeReader = new ZXing.BrowserQRCodeReader();
-        console.log('ZXing code reader initialized');
 
         const videoInputDevices = await codeReader.getVideoInputDevices();
         setSelectedDeviceId(videoInputDevices[0]?.deviceId);
@@ -49,7 +48,6 @@ const QrCodeScanner = ({ onResultChange }) => {
           setIsScanning(true); // Reset scanning state
           setResult('');
           document.getElementById('result').textContent = '';
-          console.log('Reset.');
         });
 
       } catch (error) {
