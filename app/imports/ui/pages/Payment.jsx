@@ -9,9 +9,6 @@ const PaymentForm = () => {
   const [form, setForm] = React.useState({
     email: '',
     cardName: '',
-    cardNumber: '',
-    expDate: '',
-    cvv: '',
     error: 'Credit Card Information Not Valid',
     loading: false,
   });
@@ -74,16 +71,6 @@ const PaymentForm = () => {
       </div>
       <div style={{ marginBottom: '2em' }}>
         <input
-          type="email"
-          name="email"
-          value={form.email}
-          onChange={handleInputChange}
-          placeholder="Email"
-          style={{ width: '100%', padding: '1.5em', fontSize: '22px' }}
-        />
-      </div>
-      <div style={{ marginBottom: '2em' }}>
-        <input
           type="text"
           name="cardName"
           value={form.cardName}
@@ -94,36 +81,14 @@ const PaymentForm = () => {
       </div>
       <div style={{ marginBottom: '2em' }}>
         <input
-          type="text"
-          name="cardNumber"
-          value={form.cardNumber}
+          type="email"
+          name="email"
+          value={form.email}
           onChange={handleInputChange}
-          placeholder="Card Number"
+          placeholder="Email"
           style={{ width: '100%', padding: '1.5em', fontSize: '22px' }}
         />
       </div>
-      <Row style={{ marginBottom: '2em' }}>
-        <Col>
-          <input
-            type="text"
-            name="expDate"
-            value={form.expDate}
-            onChange={handleInputChange}
-            placeholder="Expiration Date"
-            style={{ width: '100%', padding: '1.5em', fontSize: '22px' }}
-          />
-        </Col>
-        <Col>
-          <input
-            type="text"
-            name="cvv"
-            value={form.cvv}
-            onChange={handleInputChange}
-            placeholder="CVV"
-            style={{ width: '100%', padding: '1.5em', fontSize: '22px' }}
-          />
-        </Col>
-      </Row>
       <button
         type="submit"
         disabled={form.loading}
