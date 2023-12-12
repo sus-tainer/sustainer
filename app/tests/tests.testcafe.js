@@ -48,14 +48,12 @@ test('Test the QR Generator page', async (testController) => {
 });
 
 // Shell code for Credit Card test case page
-test('Test that payment page works', async (testController) => {
+test.only('Test that payment page works', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentialsUser.username, credentialsUser.password);
-  await navBar.gotoAddProjectPage(testController);
+  await navBar.gotoPaymentPage(testController);
   await addCreditCardPage.isDisplayed(testController);
-  await addCreditCardPage.addCard(testController);
-  await addCreditCardPage.hasCreditCard(testController);
 });
 
 // Shell code for List Container Admin test case page

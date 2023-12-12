@@ -61,7 +61,7 @@ class NavBar {
   }
 
   /** Go to Payment page and add a credit card. */
-  async gotoAddProjectPage(testController) {
+  async gotoPaymentPage(testController) {
     const visible = await Selector('#main-navbar-nav').visible;
     if (!visible) {
       await testController.click('button.navbar-toggler');
