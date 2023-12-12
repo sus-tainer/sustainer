@@ -9,6 +9,7 @@ import { listContainersAdmin } from './listcontainersadmin.page';
 import { addContainer } from './addcontainer.page';
 import { adminContainerScanPage } from './admincontainerscan.page';
 import { chargeUser } from './chargeuser.page';
+import { adminOrderApprovalPage } from './adminorderapproval.page';
 
 /* global fixture:false, test:false */
 
@@ -100,4 +101,12 @@ test('Test the Admin Charge User page', async (testController) => {
   await signinPage.signin(testController, credentialsAdmin.username, credentialsAdmin.password);
   await navBar.gotoAdminChargeUser(testController);
   await chargeUser.isDisplayed(testController);
+});
+
+// Shell code for Admin Order Approval test case page
+test('Test the Admin Order Approval page', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentialsAdmin.username, credentialsAdmin.password);
+  await navBar.gotoAdminOrderApprovalPage(testController);
+  await adminOrderApprovalPage.isDisplayed(testController);
 });

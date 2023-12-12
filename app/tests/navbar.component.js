@@ -113,6 +113,15 @@ class NavBar {
     }
     await testController.click('#admin-charge-user');
   }
+
+  /** Go to Order Approval page. */
+  async gotoAdminOrderApprovalPage(testController) {
+    const visible = await Selector('#main-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click('#admin-order-approval');
+  }
 }
 
 export const navBar = new NavBar();
