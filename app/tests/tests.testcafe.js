@@ -16,12 +16,12 @@ fixture('sustainer localhost test with default db')
   .page('http://localhost:3000');
 
 // Test landing page
-test('Test that landing page shows up', async (testController) => {
+test.only('Test that landing page shows up', async (testController) => {
   await landingPage.isDisplayed(testController);
 });
 
 // Test log-in page with user credentials
-test('Test that signin and signout work', async (testController) => {
+test.only('Test that signin and signout work', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentialsUser.username, credentialsUser.password);
   await navBar.isLoggedIn(testController, credentialsUser.username);
@@ -30,7 +30,7 @@ test('Test that signin and signout work', async (testController) => {
 });
 
 // Shell code for QR Code generator test case page
-test('Test the QR Generator page', async (testController) => {
+test.only('Test the QR Generator page', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentialsUser.username, credentialsUser.password);
   await navBar.gotoGenerateQRCodePage(testController);
