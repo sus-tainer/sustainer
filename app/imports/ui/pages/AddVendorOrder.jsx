@@ -6,12 +6,12 @@ import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { VendorOrder } from '../../api/vendor/VendorOrder';
+import { ApproveOrders } from '../../api/vendor/ApproveVendorOrder';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
   firstName: String,
   lastName: String,
-  email: String,
   event: String,
   location: String,
   containers: Number,
@@ -27,10 +27,11 @@ const AddVendorOrder = () => {
 
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { firstName, lastName, email, event, location, containers, size, createdAt, scheduledFor } = data;
-    const owner = Meteor.user().email;
+    const { firstName, lastName, event, location, containers, size, createdAt, scheduledFor, approval } = data;
+    const email = Meteor.user().username;
+    // Username field is email field
     VendorOrder.collection.insert(
-      { firstName, lastName, email, event, location, containers, size, createdAt, scheduledFor, owner },
+      { firstName, lastName, email, event, location, containers, size, createdAt, scheduledFor, approval },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -40,6 +41,7 @@ const AddVendorOrder = () => {
         }
       },
     );
+    ApproveOrders.collection.insert({ firstName, lastName, email, event, location, containers, size, createdAt, scheduledFor, approval });
   };
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
@@ -54,7 +56,6 @@ const AddVendorOrder = () => {
               <Card.Body>
                 <TextField name="firstName" />
                 <TextField name="lastName" />
-                <TextField name="email" />
                 <TextField name="event" />
                 <TextField name="location" />
                 <NumField name="containers" decimal={null} />

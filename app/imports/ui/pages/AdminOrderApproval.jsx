@@ -22,6 +22,9 @@ const ApproveVendorOrder = () => {
       ready: rdy,
     };
   }, []);
+  // Count the approval orders remaining in the collection
+  const count = ApproveOrders.collection.find().count();
+
   return (ready ? (
     <Container className="py-3">
       <Row className="justify-content-center">
@@ -29,24 +32,30 @@ const ApproveVendorOrder = () => {
           <Col className="text-center">
             <h2>Approve Vendor Orders</h2>
           </Col>
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Event</th>
-                <th>Location</th>
-                <th>Containers</th>
-                <th>Size</th>
-                <th>Submitted On</th>
-                <th>Approval</th>
-              </tr>
-            </thead>
-            <tbody>
-              {vendorOrders.map((order) => <AdminVendorOrderItem key={order._id} vendorOrder={order} collection={ApproveOrders.collection} />)}
-            </tbody>
-          </Table>
+          {count ? (
+            <Table className="justify-content-center align-content-center text-center" striped bordered hover style={{ width: '880px' }}>
+              <thead>
+                <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Email</th>
+                  <th>Event</th>
+                  <th>Location</th>
+                  <th>Containers</th>
+                  <th>Size</th>
+                  <th>Submit Date</th>
+                  <th>Approval</th>
+                </tr>
+              </thead>
+              <tbody>
+                {vendorOrders.map((order) => <AdminVendorOrderItem key={order._id} vendorOrder={order} collection={ApproveOrders.collection} />)}
+              </tbody>
+            </Table>
+          ) : (
+            <Row className="py-5 text-center">
+              <h4> No new vendor orders to approve</h4>
+            </Row>
+          )}
         </Col>
       </Row>
     </Container>

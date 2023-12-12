@@ -1,14 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import swal from 'sweetalert';
 import { Button } from 'react-bootstrap';
-import { XCircleFill } from 'react-bootstrap-icons';
+import { XCircleFill, CheckSquareFill } from 'react-bootstrap-icons';
+import { VendorOrder } from '../../api/vendor/VendorOrder';
 
 /** Renders a single row in the List Vendor Order table. See pages/ListVendorOrder.jsx. */
 const VendorOrderItem = ({ vendorOrder, collection }) => {
-  const removeItem = (docID) => {
+  const updateBad = (docID) => {
     // console.log(`The item to remove is ${docID}`);
+    VendorOrder.collection.update(docID, { $set: { approval: 2 } }, (error) => (error ?
+      swal('Error', error.message, 'error') :
+      swal('Rejected Successfully', 'Order has been rejected', 'success')));
     collection.remove(docID);
   };
+  const updateGood = (docID) => {
+    // console.log(`The item to remove is ${docID}`);
+    VendorOrder.collection.update(docID, { $set: { approval: 3 } }, (error) => (error ?
+      swal('Error', error.message, 'error') :
+      swal('Approved Successfully', 'Order has been approved', 'success')));
+    collection.remove(docID);
+  };
+
+  // Return the items in the doc
   return (
     <tr>
       <td>{vendorOrder.firstName}</td>
@@ -19,8 +33,13 @@ const VendorOrderItem = ({ vendorOrder, collection }) => {
       <td>{vendorOrder.containers}</td>
       <td>{vendorOrder.size}</td>
       <td>{vendorOrder.createdAt.toLocaleDateString('en-US')}</td>
-      <td>
-        <Button variant="danger" aria-label="Save" onClick={() => removeItem(vendorOrder._id)}><XCircleFill /></Button>
+      <td width="300px">
+        <Button className="mx-2" variant="success" aria-label="Save" onClick={() => updateGood(vendorOrder._id)}>
+          <CheckSquareFill />
+        </Button>
+        <Button className="mx-2" variant="danger" aria-label="Save" onClick={() => updateBad(vendorOrder._id)}>
+          <XCircleFill />
+        </Button>
       </td>
     </tr>
   );
