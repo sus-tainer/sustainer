@@ -159,7 +159,7 @@ const NavBar = () => {
                       </NavLink>
                     </li>
                     <li className="nav-item">
-                      <NavLink to="/vendororder" className="nav-links" onClick={closeMobileMenu} id="vendor-order-container">
+                      <NavLink to="/vendororder" className="nav-links" onClick={closeMobileMenu} id="add-vendor-order">
                         Order
                       </NavLink>
                     </li>

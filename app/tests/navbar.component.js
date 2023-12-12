@@ -149,6 +149,15 @@ class NavBar {
     }
     await testController.click('#vendor-list-inventory');
   }
+
+  /** Go to Vendor Order Containers page. */
+  async gotoAddVendorOrder(testController) {
+    const visible = await Selector('#main-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click('#add-vendor-order');
+  }
 }
 
 export const navBar = new NavBar();

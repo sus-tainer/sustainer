@@ -47,22 +47,22 @@ const AddVendorOrder = () => {
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   let fRef = null;
   return (
-    <Container className="py-3">
+    <Container className="py-3" id="add-vendor-order-page">
       <Row className="justify-content-center">
         <Col xs={5}>
           <Col className="text-center"><h2>Vendor Order Information</h2></Col>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
             <Card>
               <Card.Body>
-                <TextField name="firstName" />
-                <TextField name="lastName" />
-                <TextField name="event" />
-                <TextField name="location" />
-                <NumField name="containers" decimal={null} />
-                <TextField name="size" />
+                <TextField name="firstName" id="first-name" />
+                <TextField name="lastName" id="last-name" />
+                <TextField name="event" id="event" />
+                <TextField name="location" id="location" />
+                <NumField name="containers" decimal={null} id="containers" />
+                <TextField name="size" id="size" />
                 <HiddenField name="createdAt" value={new Date()} />
-                <DateField name="scheduledFor" value={new Date()} />
-                <SubmitField value="Submit" />
+                <DateField name="scheduledFor" value={new Date()} id="schedule" />
+                <SubmitField value="Submit" id="submit-vendor-order" />
                 <ErrorsField />
               </Card.Body>
             </Card>

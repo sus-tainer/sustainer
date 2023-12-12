@@ -13,6 +13,7 @@ import { adminOrderApprovalPage } from './adminorderapproval.page';
 import { vendorContainerScanPage } from './vendorcontainerscan.page';
 import { vendorOrderHistory } from './orderhistoryvendor.page';
 import { inventoryContainersVendor } from './inventorycontainersvendor.page';
+import { addVendorOrderPage } from './addvendororder.page';
 
 /* global fixture:false, test:false */
 
@@ -83,6 +84,15 @@ test('Test the Vendor Order History page', async (testController) => {
   await vendorOrderHistory.hasTable(testController);
 });
 
+// Shell code for Add Vendor Order test case page
+test.only('Test the Add Vendor Order page', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentialsVendor.username, credentialsVendor.password);
+  await navBar.gotoAddVendorOrder(testController);
+  await addVendorOrderPage.isDisplayed(testController);
+  await addVendorOrderPage.addOrder(testController);
+});
+
 // Shell code for Vendor Container Inventory List test case page
 test('Test the Vendor Container Inventory List page', async (testController) => {
   await navBar.gotoSignInPage(testController);
@@ -93,15 +103,15 @@ test('Test the Vendor Container Inventory List page', async (testController) => 
 });
 
 // Shell code for Vendor Order Containers test case page
-test.only('Test that Vendor Order Containers page works', async (testController) => {
-  await navBar.ensureLogout(testController);
-  await navBar.gotoSignInPage(testController);
-  await signinPage.signin(testController, credentialsVendor.username, credentialsVendor.password);
-  await navBar.gotoPaymentPage(testController);
-  await inventoryContainersVendor.isDisplayed(testController);
-  await inventoryContainersVendor.hasTable(testController);
-  await addCreditCardPage.isDisplayed(testController);
-});
+// test.only('Test that Vendor Order Containers page works', async (testController) => {
+//   await navBar.ensureLogout(testController);
+//   await navBar.gotoSignInPage(testController);
+//   await signinPage.signin(testController, credentialsVendor.username, credentialsVendor.password);
+//   await navBar.gotoPaymentPage(testController);
+//   await inventoryContainersVendor.isDisplayed(testController);
+//   await inventoryContainersVendor.hasTable(testController);
+//   await addCreditCardPage.isDisplayed(testController);
+// });
 
 // Shell code for List Container Admin test case page
 test('Test the List Container Admin page', async (testController) => {
