@@ -58,6 +58,13 @@ Meteor.publish(Vendors.adminPublicationName, function () {
   return this.ready();
 });
 
+Meteor.publish(VendorOrder.adminPublicationName, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
+    return VendorOrder.collection.find();
+  }
+  return this.ready();
+});
+
 Meteor.publish(ApproveOrders.adminPublicationName, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
     return ApproveOrders.collection.find();
