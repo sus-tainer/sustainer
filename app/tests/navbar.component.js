@@ -140,6 +140,15 @@ class NavBar {
     }
     await testController.click('#vendor-order-history');
   }
+
+  /** Go to Vendor Inventory page. */
+  async gotoVendorInventory(testController) {
+    const visible = await Selector('#main-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click('#vendor-list-inventory');
+  }
 }
 
 export const navBar = new NavBar();

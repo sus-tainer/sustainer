@@ -12,6 +12,7 @@ import { chargeUser } from './chargeuser.page';
 import { adminOrderApprovalPage } from './adminorderapproval.page';
 import { vendorContainerScanPage } from './vendorcontainerscan.page';
 import { vendorOrderHistory } from './orderhistoryvendor.page';
+import { inventoryContainersVendor } from './inventorycontainersvendor.page';
 
 /* global fixture:false, test:false */
 
@@ -80,6 +81,15 @@ test.only('Test the Vendor Order History page', async (testController) => {
   await navBar.gotoVendorOrderHistory(testController);
   await vendorOrderHistory.isDisplayed(testController);
   await vendorOrderHistory.hasTable(testController);
+});
+
+// Shell code for Vendor Container Inventory List test case page
+test.only('Test the Vendor Container Inventory List page', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentialsVendor.username, credentialsVendor.password);
+  await navBar.gotoVendorInventory(testController);
+  await inventoryContainersVendor.isDisplayed(testController);
+  await inventoryContainersVendor.hasTable(testController);
 });
 
 // Shell code for List Container Admin test case page
