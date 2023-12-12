@@ -1,12 +1,16 @@
 import React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import { AutoForm, ErrorsField, NumField, SubmitField, TextField, HiddenField, DateField } from 'uniforms-bootstrap5';
+import 'react-datepicker/dist/react-datepicker.css';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { VendorOrder } from '../../api/vendor/VendorOrder';
 import { ApproveOrders } from '../../api/vendor/ApproveVendorOrder';
+
+const oneWeekFromToday = new Date();
+oneWeekFromToday.setDate(oneWeekFromToday.getDate() + 7); // Add 7 days to today
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
@@ -17,14 +21,24 @@ const formSchema = new SimpleSchema({
   containers: Number,
   size: String,
   createdAt: Date,
-  scheduledFor: Date,
+  scheduledFor: {
+    type: Date,
+    defaultValue: new Date(),
+    custom() {
+      const oneWeekFromNow = new Date();
+      oneWeekFromNow.setDate(oneWeekFromNow.getDate() + 7);
+
+      if (this.value <= oneWeekFromNow) {
+        return 'The scheduled date must be greater than one week from today in field ';
+      }
+    },
+  },
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
 /* Renders the AddStuff page for adding a document. */
 const AddVendorOrder = () => {
-
   // On submit, insert the data.
   const submit = (data, formRef) => {
     const { firstName, lastName, event, location, containers, size, createdAt, scheduledFor, approval } = data;
@@ -61,7 +75,7 @@ const AddVendorOrder = () => {
                 <NumField name="containers" decimal={null} />
                 <TextField name="size" />
                 <HiddenField name="createdAt" value={new Date()} />
-                <DateField name="scheduledFor" value={new Date()} />
+                <DateField name="scheduledFor" />
                 <SubmitField value="Submit" />
                 <ErrorsField />
               </Card.Body>

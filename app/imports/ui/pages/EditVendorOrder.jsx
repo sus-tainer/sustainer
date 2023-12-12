@@ -4,6 +4,7 @@ import { Card, Col, Container, Row } from 'react-bootstrap';
 import { AutoForm, DateField, ErrorsField, HiddenField, NumField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
+import 'react-datepicker/dist/react-datepicker.css';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { useParams } from 'react-router';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -57,7 +58,7 @@ const EditVendorOrder = () => {
                 <TextField name="size" />
                 <NumField name="containers" decimal={null} />
                 <HiddenField name="createdAt" value={new Date()} />
-                <DateField name="scheduledFor" value={new Date()} />
+                <DateField name="scheduledFor" />
                 <SubmitField value="Submit" />
                 <ErrorsField />
               </Card.Body>

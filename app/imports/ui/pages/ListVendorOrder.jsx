@@ -47,6 +47,9 @@ const ListVendorOrder = () => {
               {vendorOrders.map((order) => <VendorOrderItem key={order._id} vendorOrder={order} collection={VendorOrder.collection} />)}
             </tbody>
           </Table>
+          <Col className="text-center">
+            <p>** Vendor orders cannot be changed less than 1 week prior to scheduled event. **</p>
+          </Col>
         </Col>
       </Row>
     </Container>

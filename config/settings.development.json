@@ -377,7 +377,8 @@
     { "firstName": "Tom", "lastName": "Savage", "email": "burgers@foo.com", "event": "Dinner", "location": "Kalihi", "containers": "145" ,  "size": "small", "createdAt": "10/31/23", "scheduledFor": "11/14/23", "approval": 3  },
     { "firstName": "Terik", "lastName": "Bosh", "email": "burgers@foo.com", "event": "Farmers Market", "location": "Kaka'ako", "containers": "570" ,  "size": "large", "createdAt": "11/15/23", "scheduledFor": "11/25/23", "approval": 2 },
     { "firstName": "Ben", "lastName": "Dover", "email": "burgers@foo.com", "event": "Fundraiser", "location": "Waikiki", "containers": "300" ,  "size": "medium", "createdAt": "11/14/23", "scheduledFor": "12/17/23", "approval": 1 },
-    { "firstName": "Burger", "lastName": "Man", "email": "burgers@foo.com", "event": "Beach", "location": "Kailua", "containers": "16" ,  "size": "large", "createdAt": "11/23/23", "scheduledFor": "12/1/23", "approval": 1 }
+    { "firstName": "Burger", "lastName": "Man", "email": "burgers@foo.com", "event": "Beach", "location": "Kailua", "containers": "16" ,  "size": "large", "createdAt": "11/23/23", "scheduledFor": "12/1/23", "approval": 1 },
+    { "firstName": "Burger", "lastName": "Man", "email": "burgers@foo.com", "event": "Beach 2", "location": "Kailua", "containers": "16" ,  "size": "large", "createdAt": "11/23/23", "scheduledFor": "12/22/23", "approval": 1 }
   ],
 
   "defaultVendors": [

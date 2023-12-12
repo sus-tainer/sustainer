@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Button, Container } from 'react-bootstrap';
 import { Trash, X, HourglassSplit, Check2 } from 'react-bootstrap-icons';
+import { VendorOrder } from '../../api/vendor/VendorOrder';
 
 /** Renders a single row in the List Vendor Order table. See pages/ListVendorOrder.jsx. */
 const VendorOrderItem = ({ vendorOrder, collection }) => {
@@ -34,6 +35,9 @@ const VendorOrderItem = ({ vendorOrder, collection }) => {
     }
     return true;
   };
+  const scheduledDate = new Date(vendorOrder.scheduledFor);
+  const oneWeekFromToday = new Date();
+  oneWeekFromToday.setDate(oneWeekFromToday.getDate() + 7); // Add 7 days to today
   return (
     <tr>
       <td className="text-center my-auto">{displayApproval(vendorOrder.approval)}</td>
@@ -43,9 +47,7 @@ const VendorOrderItem = ({ vendorOrder, collection }) => {
       <td>{vendorOrder.size}</td>
       <td>{vendorOrder.createdAt.toLocaleDateString('en-US')}</td>
       <td>{vendorOrder.scheduledFor.toLocaleDateString('en-US')}</td>
-      <td>
-        <Link to={`/edit/${vendorOrder._id}`}>Edit</Link>
-      </td>
+      {scheduledDate > oneWeekFromToday ? <td><Link to={`/edit/${vendorOrder._id}`}>Edit</Link></td> : <td />}
       <td><Button variant="danger" aria-label="Save" onClick={() => removeItem(vendorOrder._id)}><Trash /></Button></td>
     </tr>
   );
