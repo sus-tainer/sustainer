@@ -4,6 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Roles } from 'meteor/alanning:roles';
 import FooterHome from '../components/FooterHome';
+import PieChartStats from '../components/PieChartStats';
 
 /* A simple static component to render some text for the landing page. */
 const Home = () => {
@@ -12,12 +13,13 @@ const Home = () => {
   }), []);
   return (
     <div title={currentUser}>
-      <div className="landing-part1">
-        <Container className="">
-          {Roles.userIsInRole(Meteor.userId(), 'user') ? ([
+      {/* <------------------ User Homepage --------------------> */}
+      {Roles.userIsInRole(Meteor.userId(), 'user') ? ([
+        <div className="landing-part1">
+          <Container>
             <Row className="justify-content-center align-items-center">
               <Col xs="auto" className="my-3">
-                <Button className="rounded-0" variant="outline-light" size="lg" href="/qrcode">
+                <Button className="rounded-0" variant="outline-light-landing" size="lg" href="/qrcode">
                   Generate QR Code
                 </Button>
               </Col>
@@ -26,39 +28,77 @@ const Home = () => {
                   Choose Payment Method
                 </Button>
               </Col>
-            </Row>,
-          ]) : ''}
-          {Roles.userIsInRole(Meteor.userId(), 'admin') ? ([
+            </Row>
+          </Container>
+        </div>,
+      ]) : ''}
+      {/* <------------------ End of User Homepage --------------------> */}
+      {/* <------------------ Admin Homepage --------------------> */}
+      {Roles.userIsInRole(Meteor.userId(), 'admin') ? ([
+        <div className="landing-admin adminhome-column">
+          <div className="adminhome-piechart">
+            <h2>Container Retention Rate</h2>
+            <PieChartStats />
+          </div>
+          <div>
+            <Container className="justify-content-center">
+              <Row className="me-3">
+                <Col className="px-0">
+                  <Button className="rounded-0" variant="outline-light" size="lg" href="/add-container">
+                    Add Containers
+                  </Button>
+                  <Button className="rounded-0" variant="outline-light" size="lg" href="/scan-container">
+                    Return Containers
+                  </Button>
+                </Col>
+                <Col className="px-0">
+                  <Button className="rounded-0" variant="outline-light" size="lg" href="/admin-list">
+                    Containers List
+                  </Button>
+                  <Button className="rounded-0" variant="outline-light" size="lg" href="/charge-user">
+                    Charge User
+                  </Button>
+                </Col>
+              </Row>
+            </Container>
+          </div>
+        </div>,
+      ]) : ''}
+      {/* <------------------ End of Admin Homepage --------------------> */}
+      {/* <------------------ Vendor Homepage --------------------> */}
+      {Roles.userIsInRole(Meteor.userId(), 'vendor') ? ([
+        <div className="landing-vendor">
+          <Container>
             <Row className="justify-content-center align-items-center">
               <Col xs="auto" className="my-3">
-                <Button className="rounded-0" variant="outline-light" size="lg" href="/admin-list">
-                  Containers List
+                <Button className="rounded-0" variant="outline-light-vendor" size="lg" href="/vendorscan">
+                  Scan
                 </Button>
               </Col>
               <Col xs="auto">
-                <Button className="rounded-0" variant="light" size="lg" href="/scan-container">
-                  Scan Containers
+                <Button className="rounded-0" variant="outline-light-vendor" size="lg" href="/vendororder">
+                  Order Form
                 </Button>
               </Col>
-            </Row>,
-          ]) : ''}
-          {Roles.userIsInRole(Meteor.userId(), 'vendor') ? ([
+            </Row>
             <Row className="justify-content-center align-items-center">
               <Col xs="auto" className="my-3">
-                <Button className="rounded-0" variant="outline-light" size="lg" href="/listvendororder">
-                  Vendor Order List
+                <Button className="rounded-0" variant="outline-light-vendor" size="lg" href="/listvendororder">
+                  Order History
                 </Button>
               </Col>
               <Col xs="auto">
-                <Button className="rounded-0" variant="light" size="lg" href="/vendororder">
-                  Vendor Order Form
+                <Button className="rounded-0" variant="outline-light-vendor" size="lg" href="/listinventory">
+                  Inventory
                 </Button>
               </Col>
-            </Row>,
-          ]) : ''}
-        </Container>
-      </div>
-      <FooterHome />
+            </Row>
+          </Container>
+        </div>,
+      ]) : ''}
+      {Roles.userIsInRole(Meteor.userId(), 'user') ? ([
+        <FooterHome />,
+      ]) : ''}
     </div>
   );
 };
