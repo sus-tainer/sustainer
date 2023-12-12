@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Button, Container } from 'react-bootstrap';
 import { Trash, X, HourglassSplit, Check2 } from 'react-bootstrap-icons';
-import { VendorOrder } from '../../api/vendor/VendorOrder';
+// import { VendorOrder } from '../../api/vendor/VendorOrder';
 
 /** Renders a single row in the List Vendor Order table. See pages/ListVendorOrder.jsx. */
 const VendorOrderItem = ({ vendorOrder, collection }) => {

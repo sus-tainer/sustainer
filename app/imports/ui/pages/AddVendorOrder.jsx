@@ -24,6 +24,7 @@ const formSchema = new SimpleSchema({
   scheduledFor: {
     type: Date,
     defaultValue: new Date(),
+    // eslint-disable-next-line consistent-return
     custom() {
       const oneWeekFromNow = new Date();
       oneWeekFromNow.setDate(oneWeekFromNow.getDate() + 7);
