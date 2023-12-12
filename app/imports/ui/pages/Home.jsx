@@ -71,13 +71,25 @@ const Home = () => {
           <Container>
             <Row className="justify-content-center align-items-center">
               <Col xs="auto" className="my-3">
-                <Button className="rounded-0" variant="outline-light" size="lg" href="/listvendororder">
-                  Vendor Order List
+                <Button className="rounded-0" variant="outline-light-vendor" size="lg" href="/vendorscan">
+                  Scan
                 </Button>
               </Col>
               <Col xs="auto">
-                <Button className="rounded-0" variant="outline-light" size="lg" href="/vendororder">
-                  Vendor Order Form
+                <Button className="rounded-0" variant="outline-light-vendor" size="lg" href="/vendororder">
+                  Order Form
+                </Button>
+              </Col>
+            </Row>
+            <Row className="justify-content-center align-items-center">
+              <Col xs="auto" className="my-3">
+                <Button className="rounded-0" variant="outline-light-vendor" size="lg" href="/listvendororder">
+                  Order History
+                </Button>
+              </Col>
+              <Col xs="auto">
+                <Button className="rounded-0" variant="outline-light-vendor" size="lg" href="/listinventory">
+                  Inventory
                 </Button>
               </Col>
             </Row>
