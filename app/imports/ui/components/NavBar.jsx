@@ -45,7 +45,7 @@ const NavBar = () => {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink to="/About" className="nav-links" onClick={closeMobileMenu}>
+                  <NavLink to="/About" className="nav-links" onClick={closeMobileMenu} id="about">
                     About
                   </NavLink>
                 </li>
@@ -113,22 +113,22 @@ const NavBar = () => {
                       </NavLink>
                     </li>
                     <li className="nav-item">
-                      <NavLink to="/scan-container" className="nav-links" onClick={closeMobileMenu} id="scan-container">
+                      <NavLink to="/scan-container" className="nav-links" onClick={closeMobileMenu} id="admin-container-scan">
                         Return Container
                       </NavLink>
                     </li>
                     <li className="nav-item">
-                      <NavLink to="/admin-list" className="nav-links" onClick={closeMobileMenu} id="list-container">
+                      <NavLink to="/admin-list" className="nav-links" onClick={closeMobileMenu} id="list-containers-admin">
                         List
                       </NavLink>
                     </li>
                     <li className="nav-item">
-                      <NavLink to="/charge-user" className="nav-links" onClick={closeMobileMenu}>
+                      <NavLink to="/charge-user" className="nav-links" onClick={closeMobileMenu} id="admin-charge-user">
                         Charge
                       </NavLink>
                     </li>
                     <li className="nav-item">
-                      <NavLink to="/vendor-order-approval" className="nav-links" onClick={closeMobileMenu}>
+                      <NavLink to="/vendor-order-approval" className="nav-links" onClick={closeMobileMenu} id="admin-order-approval">
                         Approve Orders
                       </NavLink>
                     </li>
@@ -149,32 +149,32 @@ const NavBar = () => {
                   </div>
                   <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                     <li className="nav-item">
-                      <NavLink to="/home" className="nav-links" onClick={closeMobileMenu}>
+                      <NavLink to="/home" className="nav-links" onClick={closeMobileMenu} id="vendor-home">
                         Home
                       </NavLink>
                     </li>
                     <li className="nav-item">
-                      <NavLink to="/vendorscan" className="nav-links" onClick={closeMobileMenu}>
+                      <NavLink to="/vendorscan" className="nav-links" onClick={closeMobileMenu} id="vendor-container-scan">
                         Scan
                       </NavLink>
                     </li>
                     <li className="nav-item">
-                      <NavLink to="/vendororder" className="nav-links" onClick={closeMobileMenu}>
+                      <NavLink to="/vendororder" className="nav-links" onClick={closeMobileMenu} id="add-vendor-order">
                         Order
                       </NavLink>
                     </li>
                     <li className="nav-item">
-                      <NavLink to="/listvendororder" className="nav-links" onClick={closeMobileMenu}>
+                      <NavLink to="/listvendororder" className="nav-links" onClick={closeMobileMenu} id="vendor-order-history">
                         History
                       </NavLink>
                     </li>
                     <li className="nav-item">
-                      <NavLink to="/listinventory" className="nav-links" onClick={closeMobileMenu}>
+                      <NavLink to="/listinventory" className="nav-links" onClick={closeMobileMenu} id="vendor-list-inventory">
                         Inventory
                       </NavLink>
                     </li>
                     <li className="nav-item">
-                      <NavLink to="/signout" className="nav-links" onClick={closeMobileMenu}>
+                      <NavLink to="/signout" className="nav-links" onClick={closeMobileMenu} id="signout-3">
                         Sign Out
                       </NavLink>
                     </li>

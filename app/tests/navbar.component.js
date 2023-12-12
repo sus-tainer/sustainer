@@ -61,12 +61,102 @@ class NavBar {
   }
 
   /** Go to Payment page and add a credit card. */
-  async gotoAddProjectPage(testController) {
+  async gotoPaymentPage(testController) {
     const visible = await Selector('#main-navbar-nav').visible;
     if (!visible) {
       await testController.click('button.navbar-toggler');
     }
     await testController.click('#navbar-payment');
+  }
+
+  /** Go to Return container page. */
+  async gotoVendorContainerScanPage(testController) {
+    const visible = await Selector('#main-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click('#vendor-container-scan');
+  }
+
+  /** Go to About page. */
+  async gotoAboutPage(testController) {
+    const visible = await Selector('#main-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click('#about');
+  }
+
+  /** Go to List Containers Admin page. */
+  async gotoListContainterAdmin(testController) {
+    const visible = await Selector('#main-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click('#list-containers-admin');
+  }
+
+  /** Go to Add container page. */
+  async gotoAddContainer(testController) {
+    const visible = await Selector('#main-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click('#add-container');
+  }
+
+  /** Go to Return container page. */
+  async gotoAdminContainerScanPage(testController) {
+    const visible = await Selector('#main-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click('#admin-container-scan');
+  }
+
+  /** Go to Charge User page. */
+  async gotoAdminChargeUser(testController) {
+    const visible = await Selector('#main-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click('#admin-charge-user');
+  }
+
+  /** Go to Order Approval page. */
+  async gotoAdminOrderApprovalPage(testController) {
+    const visible = await Selector('#main-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click('#admin-order-approval');
+  }
+
+  /** Go to Vendor Order History page. */
+  async gotoVendorOrderHistory(testController) {
+    const visible = await Selector('#main-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click('#vendor-order-history');
+  }
+
+  /** Go to Vendor Inventory page. */
+  async gotoVendorInventory(testController) {
+    const visible = await Selector('#main-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click('#vendor-list-inventory');
+  }
+
+  /** Go to Vendor Order Containers page. */
+  async gotoAddVendorOrder(testController) {
+    const visible = await Selector('#main-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click('#add-vendor-order');
   }
 }
 

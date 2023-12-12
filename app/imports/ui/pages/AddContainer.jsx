@@ -49,16 +49,16 @@ const AddContainer = () => {
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   let fRef = null;
   return (
-    <Container className="py-3">
+    <Container className="py-3" id="add-container">
       <Row className="justify-content-center">
         <Col xs={5}>
           <Col className="text-center"><h2>Add Container</h2></Col>
-          <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
+          <AutoForm id="container-add" ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
             <Card>
               <Card.Body>
                 <HiddenField name="owner" />
-                <SelectField name="size" />
-                <SubmitField value="submit" />
+                <SelectField name="size" id="container-dropdown" />
+                <SubmitField value="submit" id="container-add" />
                 <ErrorsField />
               </Card.Body>
             </Card>

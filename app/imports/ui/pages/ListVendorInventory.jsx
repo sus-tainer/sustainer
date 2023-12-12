@@ -36,7 +36,7 @@ const ListVendorInventory = () => {
 
     return (
       ready ? (
-        <Container className="text-center p-3">
+        <Container className="text-center p-3" id="vendor-inventory-page">
           <h1>Container Inventory</h1>
           <Row className="justify-content-center py-3">
             <Col className="col-lg-6">

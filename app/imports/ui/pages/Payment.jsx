@@ -2,6 +2,7 @@ import React from 'react';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { Card, Col, Container, Row } from 'react-bootstrap';
+import { PageIDs } from '../utilities/ids';
 
 const stripePromise = loadStripe('your_stripe_publishable_key');
 
@@ -50,7 +51,7 @@ const PaymentForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ maxWidth: '800px', margin: 'auto', fontSize: '22px' }}>
+    <form onSubmit={handleSubmit} style={{ maxWidth: '800px', margin: 'auto', fontSize: '22px' }} id={PageIDs.addPayment}>
       <div style={{ marginBottom: '2em' }}>
         <CardElement
           options={{

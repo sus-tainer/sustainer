@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Card, Col, Row, Image } from 'react-bootstrap';
 
 const About = () => (
-  <Container className="justify-content-center text-center p-3">
+  <Container className="justify-content-center text-center p-3" id="about-page">
     <h1>About</h1>
     <Row xs={1} sm={2} className="justify-content-center mb-5">
       <Col className="py-1">
