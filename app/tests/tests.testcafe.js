@@ -75,7 +75,7 @@ test('Test the Vendor Scan page', async (testController) => {
 });
 
 // Shell code for Vendor Order History test case page
-test.only('Test the Vendor Order History page', async (testController) => {
+test('Test the Vendor Order History page', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentialsVendor.username, credentialsVendor.password);
   await navBar.gotoVendorOrderHistory(testController);
@@ -84,12 +84,23 @@ test.only('Test the Vendor Order History page', async (testController) => {
 });
 
 // Shell code for Vendor Container Inventory List test case page
-test.only('Test the Vendor Container Inventory List page', async (testController) => {
+test('Test the Vendor Container Inventory List page', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentialsVendor.username, credentialsVendor.password);
   await navBar.gotoVendorInventory(testController);
   await inventoryContainersVendor.isDisplayed(testController);
   await inventoryContainersVendor.hasTable(testController);
+});
+
+// Shell code for Vendor Order Containers test case page
+test.only('Test that Vendor Order Containers page works', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentialsVendor.username, credentialsVendor.password);
+  await navBar.gotoPaymentPage(testController);
+  await inventoryContainersVendor.isDisplayed(testController);
+  await inventoryContainersVendor.hasTable(testController);
+  await addCreditCardPage.isDisplayed(testController);
 });
 
 // Shell code for List Container Admin test case page
