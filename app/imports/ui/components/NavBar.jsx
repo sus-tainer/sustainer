@@ -143,7 +143,7 @@ const NavBar = () => {
               {/* <------------- Vendor Navbar ------------> */}
               {Roles.userIsInRole(Meteor.userId(), 'vendor') ? ([
                 <div>
-                {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
+                  {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
                   <div className="menu-icon" onClick={handleClick}>
                     <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
                   </div>
