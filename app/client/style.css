@@ -60,8 +60,28 @@ body .navbar {
   object-fit: contain;
 }
 
-.landing-not-user {
-  background: url('/images/pexels-mali-maeder-802221.jpg') fixed center;
+.landing-admin {
+  background: linear-gradient(
+      rgba(37, 28, 28, 0.7),
+      rgba(37, 28, 28, 0.7)
+  ), url('/images/pexels-mali-maeder-802221.jpg') fixed center;
+  background-size: cover;
+  color: white;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+  object-fit: contain;
+}
+
+.landing-vendor {
+  background: linear-gradient(
+      rgba(37, 28, 28, 0.7),
+      rgba(37, 28, 28, 0.7)
+  ), url('/images/pexels-mali-maeder-802221.jpg') fixed center;
   background-size: cover;
   color: white;
   min-height: 100vh;
@@ -77,6 +97,7 @@ body .navbar {
 footer {
   background-color: white;
 }
+
 .mission-footer {
   color: black;
   padding: 2rem 0 2rem 0;
@@ -85,7 +106,7 @@ footer {
   align-self: center;
   justify-content: center;
 }
-/* <------------ Buttons---------------> */
+ /*<------------ Buttons--------------->*/
 .btn-outline-light-landing {
   color: white!important;
   border-color: white!important;
@@ -95,7 +116,7 @@ footer {
 }
 
 .btn-outline-light {
-  min-height: 100vh;
+  min-height: 20vh;
   min-width: 100%;
   display: flex !important;
   align-items: center;
@@ -136,13 +157,36 @@ footer {
     text-decoration: none;
   }
 
-  /* Update the custom style for the sign-in card */
-  .signin-card {
-    width: 100%;
-    max-width: 500px; /* Increase the max-width for a larger card */
-    margin: auto;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 15px; /* Increase the border-radius for more rounded corners */
-    padding: 30px; /* Increase the padding for more space inside the card */
+.adminhome-column {
+  display: block;
+  padding: 1rem;
+}
+/* tablet breakpoint */
+@media (min-width:768px) {
+  .adminhome-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.adminhome-piechart {
+  color: white;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+  . {
+    /* Update the custom style for the sign-in card */
+    .signin-card {
+      width: 100%;
+      max-width: 500px; /* Increase the max-width for a larger card */
+      margin: auto;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 15px; /* Increase the border-radius for more rounded corners */
+      padding: 30px; /* Increase the padding for more space inside the card */
+    }
   }
 
