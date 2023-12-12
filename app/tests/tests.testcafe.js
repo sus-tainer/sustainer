@@ -11,6 +11,7 @@ import { adminContainerScanPage } from './admincontainerscan.page';
 import { chargeUser } from './chargeuser.page';
 import { adminOrderApprovalPage } from './adminorderapproval.page';
 import { vendorContainerScanPage } from './vendorcontainerscan.page';
+import { vendorOrderHistory } from './orderhistoryvendor.page';
 
 /* global fixture:false, test:false */
 
@@ -65,11 +66,20 @@ test('Test that payment page works', async (testController) => {
 });
 
 // Shell code for Vendor Scan test case page
-test.only('Test the Vendor Scan page', async (testController) => {
+test('Test the Vendor Scan page', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentialsVendor.username, credentialsVendor.password);
   await navBar.gotoVendorContainerScanPage(testController);
   await vendorContainerScanPage.isDisplayed(testController);
+});
+
+// Shell code for Vendor Order History test case page
+test.only('Test the Vendor Order History page', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentialsVendor.username, credentialsVendor.password);
+  await navBar.gotoVendorOrderHistory(testController);
+  await vendorOrderHistory.isDisplayed(testController);
+  await vendorOrderHistory.hasTable(testController);
 });
 
 // Shell code for List Container Admin test case page

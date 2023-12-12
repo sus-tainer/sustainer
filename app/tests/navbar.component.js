@@ -131,6 +131,15 @@ class NavBar {
     }
     await testController.click('#admin-order-approval');
   }
+
+  /** Go to Vendor Order History page. */
+  async gotoVendorOrderHistory(testController) {
+    const visible = await Selector('#main-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click('#vendor-order-history');
+  }
 }
 
 export const navBar = new NavBar();
