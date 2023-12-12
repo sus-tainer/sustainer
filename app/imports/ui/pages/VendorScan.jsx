@@ -75,7 +75,7 @@ const VendorScan = () => {
   }, [userId, formStep, submitting]);
 
   return ready ? (
-    <Container className="text-center p-2">
+    <Container className="text-center p-2" id="#vendor-scan-page">
       {formStep === 0 && (
         <>
           <h1>Scan User</h1>

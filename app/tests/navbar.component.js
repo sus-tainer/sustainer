@@ -69,6 +69,15 @@ class NavBar {
     await testController.click('#navbar-payment');
   }
 
+  /** Go to Return container page. */
+  async gotoVendorContainerScanPage(testController) {
+    const visible = await Selector('#main-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click('#vendor-container-scan');
+  }
+
   /** Go to About page. */
   async gotoAboutPage(testController) {
     const visible = await Selector('#main-navbar-nav').visible;

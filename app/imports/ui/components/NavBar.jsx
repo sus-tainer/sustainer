@@ -154,7 +154,7 @@ const NavBar = () => {
                       </NavLink>
                     </li>
                     <li className="nav-item">
-                      <NavLink to="/vendorscan" className="nav-links" onClick={closeMobileMenu}>
+                      <NavLink to="/vendorscan" className="nav-links" onClick={closeMobileMenu} id="#vendor-container-scan">
                         Scan
                       </NavLink>
                     </li>

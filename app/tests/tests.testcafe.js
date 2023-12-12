@@ -8,11 +8,15 @@ import { addCreditCardPage } from './addcreditcard.page';
 import { listContainersAdmin } from './listcontainersadmin.page';
 import { addContainer } from './addcontainer.page';
 import { adminContainerScanPage } from './admincontainerscan.page';
+import { vendorContainerScanPage } from './vendorcontainerscan.page';
 
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
 const credentialsUser = { username: 'user@foo.com', password: 'changeme' };
+
+/** Credentials for one of the sample users defined in settings.development.json. */
+const credentialsVendor = { username: 'burgers@foo.com', password: 'changeme' };
 
 /** Credentials for the admin user defined in settings.development.json. */
 const credentialsAdmin = { username: 'admin@foo.com', password: 'changeme' };
@@ -50,12 +54,20 @@ test('Test the QR Generator page', async (testController) => {
 });
 
 // Shell code for Credit Card test case page
-test.only('Test that payment page works', async (testController) => {
+test('Test that payment page works', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentialsUser.username, credentialsUser.password);
   await navBar.gotoPaymentPage(testController);
   await addCreditCardPage.isDisplayed(testController);
+});
+
+// Shell code for Vendor Scan test case page
+test.only('Test the Vendor Scan page', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentialsVendor.username, credentialsVendor.password);
+  await navBar.gotoVendorContainerScanPage(testController);
+  await vendorContainerScanPage.isDisplayed(testController);
 });
 
 // Shell code for List Container Admin test case page
