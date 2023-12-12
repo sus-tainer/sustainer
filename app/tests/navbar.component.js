@@ -77,6 +77,15 @@ class NavBar {
     }
     await testController.click('#about');
   }
+
+  /** Go to List Containers Admin page. */
+  async gotoListContainterAdmin(testController) {
+    const visible = await Selector('#main-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click('#list-containers-admin');
+  }
 }
 
 export const navBar = new NavBar();

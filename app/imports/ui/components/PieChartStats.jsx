@@ -89,7 +89,7 @@ const PieChartStats = () => {
     // Returns the pie chart with the overlaying image
     return (
       ready ? (
-        <div style={{ position: 'relative', textAlign: 'center', minWidth: '200px' }}>
+        <div id="pie-chart" style={{ position: 'relative', textAlign: 'center', minWidth: '200px' }}>
           <h3>{totReturnedPercent.toFixed(2)}%</h3>
           <Doughnut data={data} options={options} style={{ minWidth: '100px' }} />
           {pieImg && <img src={pieImg} alt="Pie Chart" width="15%" style={{ position: 'absolute', top: '57%', left: '50%', transform: 'translate(-50%, -50%)', minWidth: '100px' }} />}

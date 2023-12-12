@@ -23,7 +23,7 @@ const ListContainersAdmin = () => {
     };
   }, []);
   return (ready ? (
-    <Container className="py-3">
+    <Container className="py-3" id="list-containers-admin-page">
       <Row className="justify-content-center">
         <Container className="py-3 text-center">
           <h2>Container Retention Rate</h2>

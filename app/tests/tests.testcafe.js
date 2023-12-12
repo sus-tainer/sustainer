@@ -5,13 +5,14 @@ import { signoutPage } from './signout.page';
 import { navBar } from './navbar.component';
 import { generateQRCodePage } from './generateqrcode.page';
 import { addCreditCardPage } from './addcreditcard.page';
+import { listContainersAdmin } from './listcontainersadmin.page';
 
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
 const credentialsUser = { username: 'user@foo.com', password: 'changeme' };
 
-// const credentialsAdmin = { username: 'admin@foo.com', password: 'changeme' };
+const credentialsAdmin = { username: 'admin@foo.com', password: 'changeme' };
 
 fixture('sustainer localhost test with default db')
   .page('http://localhost:3000');
@@ -54,4 +55,13 @@ test('Test that payment page works', async (testController) => {
   await addCreditCardPage.isDisplayed(testController);
   await addCreditCardPage.addCard(testController);
   await addCreditCardPage.hasCreditCard(testController);
+});
+
+// Shell code for List Container Admin test case page
+test.only('Test the List Container Admin page', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentialsAdmin.username, credentialsAdmin.password);
+  await navBar.gotoListContainterAdmin(testController);
+  await listContainersAdmin.isDisplayed(testController);
+  await listContainersAdmin.hasPieChart(testController);
 });

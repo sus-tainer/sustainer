@@ -118,7 +118,7 @@ const NavBar = () => {
                       </NavLink>
                     </li>
                     <li className="nav-item">
-                      <NavLink to="/admin-list" className="nav-links" onClick={closeMobileMenu} id="list-container">
+                      <NavLink to="/admin-list" className="nav-links" onClick={closeMobileMenu} id="list-containers-admin">
                         List
                       </NavLink>
                     </li>
