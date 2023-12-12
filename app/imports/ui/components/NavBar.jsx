@@ -123,7 +123,7 @@ const NavBar = () => {
                       </NavLink>
                     </li>
                     <li className="nav-item">
-                      <NavLink to="/charge-user" className="nav-links" onClick={closeMobileMenu}>
+                      <NavLink to="/charge-user" className="nav-links" onClick={closeMobileMenu} id="admin-charge-user">
                         Charge
                       </NavLink>
                     </li>

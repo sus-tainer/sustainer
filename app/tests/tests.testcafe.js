@@ -8,6 +8,7 @@ import { addCreditCardPage } from './addcreditcard.page';
 import { listContainersAdmin } from './listcontainersadmin.page';
 import { addContainer } from './addcontainer.page';
 import { adminContainerScanPage } from './admincontainerscan.page';
+import { chargeUser } from './chargeuser.page';
 
 /* global fixture:false, test:false */
 
@@ -91,4 +92,12 @@ test('Test the Admin Container Scan page', async (testController) => {
   await signinPage.signin(testController, credentialsAdmin.username, credentialsAdmin.password);
   await navBar.gotoAdminContainerScanPage(testController);
   await adminContainerScanPage.isDisplayed(testController);
+});
+
+// Shell code for Admin Charge User test case page
+test('Test the Admin Charge User page', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentialsAdmin.username, credentialsAdmin.password);
+  await navBar.gotoAdminChargeUser(testController);
+  await chargeUser.isDisplayed(testController);
 });
