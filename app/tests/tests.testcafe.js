@@ -85,7 +85,7 @@ test('Test the Vendor Order History page', async (testController) => {
 });
 
 // Shell code for Add Vendor Order test case page
-test.only('Test the Add Vendor Order page', async (testController) => {
+test('Test the Add Vendor Order page', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentialsVendor.username, credentialsVendor.password);
   await navBar.gotoAddVendorOrder(testController);
