@@ -1,4 +1,5 @@
 import { landingPage } from './landing.page';
+import { aboutPage } from './about.page';
 import { signinPage } from './signin.page';
 import { signoutPage } from './signout.page';
 import { navBar } from './navbar.component';
@@ -18,6 +19,12 @@ fixture('sustainer localhost test with default db')
 // Test landing page
 test.only('Test that landing page shows up', async (testController) => {
   await landingPage.isDisplayed(testController);
+});
+
+// Test about page
+test.only('Test that about page shows up', async (testController) => {
+  await navBar.gotoAboutPage(testController);
+  await aboutPage.isDisplayed(testController);
 });
 
 // Test log-in page with user credentials
