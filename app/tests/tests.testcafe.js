@@ -7,12 +7,14 @@ import { generateQRCodePage } from './generateqrcode.page';
 import { addCreditCardPage } from './addcreditcard.page';
 import { listContainersAdmin } from './listcontainersadmin.page';
 import { addContainer } from './addcontainer.page';
+import { adminContainerScanPage } from './admincontainerscan.page';
 
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
 const credentialsUser = { username: 'user@foo.com', password: 'changeme' };
 
+/** Credentials for the admin user defined in settings.development.json. */
 const credentialsAdmin = { username: 'admin@foo.com', password: 'changeme' };
 
 fixture('sustainer localhost test with default db')
@@ -66,10 +68,27 @@ test('Test the List Container Admin page', async (testController) => {
 });
 
 // Shell code for Add Container test case page
-test.only('Test the Add Container page', async (testController) => {
+test('Test the Add Container page', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentialsAdmin.username, credentialsAdmin.password);
   await navBar.gotoAddContainer(testController);
   await addContainer.isDisplayed(testController);
   await addContainer.addContainer(testController);
+});
+
+// Shell code for Return Container test case page
+test('Test the Return Container page', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentialsAdmin.username, credentialsAdmin.password);
+  await navBar.gotoListContainterAdmin(testController);
+  await listContainersAdmin.isDisplayed(testController);
+  await listContainersAdmin.hasPieChart(testController);
+});
+
+// Shell code for Admin Container Scan test case page
+test('Test the Admin Container Scan page', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentialsAdmin.username, credentialsAdmin.password);
+  await navBar.gotoAdminContainerScanPage(testController);
+  await adminContainerScanPage.isDisplayed(testController);
 });

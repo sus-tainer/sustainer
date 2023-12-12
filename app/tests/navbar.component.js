@@ -95,6 +95,15 @@ class NavBar {
     }
     await testController.click('#add-container');
   }
+
+  /** Go to Return container page. */
+  async gotoAdminContainerScanPage(testController) {
+    const visible = await Selector('#main-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click('#admin-container-scan');
+  }
 }
 
 export const navBar = new NavBar();
