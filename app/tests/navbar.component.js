@@ -86,6 +86,15 @@ class NavBar {
     }
     await testController.click('#list-containers-admin');
   }
+
+  /** Go to Add container page. */
+  async gotoAddContainer(testController) {
+    const visible = await Selector('#main-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click('#add-container');
+  }
 }
 
 export const navBar = new NavBar();

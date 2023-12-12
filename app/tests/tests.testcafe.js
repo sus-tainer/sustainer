@@ -6,6 +6,7 @@ import { navBar } from './navbar.component';
 import { generateQRCodePage } from './generateqrcode.page';
 import { addCreditCardPage } from './addcreditcard.page';
 import { listContainersAdmin } from './listcontainersadmin.page';
+import { addContainer } from './addcontainer.page';
 
 /* global fixture:false, test:false */
 
@@ -18,18 +19,18 @@ fixture('sustainer localhost test with default db')
   .page('http://localhost:3000');
 
 // Test landing page
-test.only('Test that landing page shows up', async (testController) => {
+test('Test that landing page shows up', async (testController) => {
   await landingPage.isDisplayed(testController);
 });
 
 // Test about page
-test.only('Test that about page shows up', async (testController) => {
+test('Test that about page shows up', async (testController) => {
   await navBar.gotoAboutPage(testController);
   await aboutPage.isDisplayed(testController);
 });
 
 // Test log-in page with user credentials
-test.only('Test that signin and signout work', async (testController) => {
+test('Test that signin and signout work', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentialsUser.username, credentialsUser.password);
   await navBar.isLoggedIn(testController, credentialsUser.username);
@@ -38,7 +39,7 @@ test.only('Test that signin and signout work', async (testController) => {
 });
 
 // Shell code for QR Code generator test case page
-test.only('Test the QR Generator page', async (testController) => {
+test('Test the QR Generator page', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentialsUser.username, credentialsUser.password);
   await navBar.gotoGenerateQRCodePage(testController);
@@ -58,10 +59,19 @@ test('Test that payment page works', async (testController) => {
 });
 
 // Shell code for List Container Admin test case page
-test.only('Test the List Container Admin page', async (testController) => {
+test('Test the List Container Admin page', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentialsAdmin.username, credentialsAdmin.password);
   await navBar.gotoListContainterAdmin(testController);
   await listContainersAdmin.isDisplayed(testController);
   await listContainersAdmin.hasPieChart(testController);
+});
+
+// Shell code for Add Container test case page
+test.only('Test the Add Container page', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentialsAdmin.username, credentialsAdmin.password);
+  await navBar.gotoAddContainer(testController);
+  await addContainer.isDisplayed(testController);
+  await addContainer.addContainer(testController);
 });
