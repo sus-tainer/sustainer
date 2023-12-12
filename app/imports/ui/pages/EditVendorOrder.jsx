@@ -8,6 +8,7 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { useParams } from 'react-router';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { VendorOrder } from '../../api/vendor/VendorOrder';
+import { ApproveOrders } from '../../api/vendor/ApproveVendorOrder';
 
 const bridge = new SimpleSchema2Bridge(VendorOrder.schema);
 
@@ -19,9 +20,10 @@ const EditVendorOrder = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { doc, ready } = useTracker(() => {
     // Get access to Stuff documents.
-    const subscription = Meteor.subscribe(VendorOrder.vendorPublicationName);
+    const subscription1 = Meteor.subscribe(VendorOrder.vendorPublicationName);
+    const subscription2 = Meteor.subscribe(ApproveOrders.adminPublicationName);
     // Determine if the subscription is ready
-    const rdy = subscription.ready();
+    const rdy = subscription1.ready() && subscription2.ready();
     // Get the document
     const document = VendorOrder.collection.findOne(_id);
     return {
@@ -33,7 +35,8 @@ const EditVendorOrder = () => {
   // On successful submit, insert the data.
   const submit = (data) => {
     const { firstName, lastName, email, event, location, containers, size, scheduledFor } = data;
-    VendorOrder.collection.update(_id, { $set: { firstName, lastName, email, event, location, containers, size, scheduledFor } }, (error) => (error ?
+    ApproveOrders.collection.insert({ firstName, lastName, email, event, location, containers, size, scheduledFor, approval: 1 });
+    VendorOrder.collection.update(_id, { $set: { firstName, lastName, email, event, location, containers, size, scheduledFor, approval: 1 } }, (error) => (error ?
       swal('Error', error.message, 'error') :
       swal('Success', 'Item updated successfully', 'success')));
   };

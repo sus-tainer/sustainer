@@ -128,6 +128,11 @@ const NavBar = () => {
                       </NavLink>
                     </li>
                     <li className="nav-item">
+                      <NavLink to="/vendor-order-approval" className="nav-links" onClick={closeMobileMenu}>
+                        Approve Orders
+                      </NavLink>
+                    </li>
+                    <li className="nav-item">
                       <NavLink to="/signout" className="nav-links" onClick={closeMobileMenu} id="signout-2">
                         Sign Out
                       </NavLink>
@@ -138,7 +143,7 @@ const NavBar = () => {
               {/* <------------- Vendor Navbar ------------> */}
               {Roles.userIsInRole(Meteor.userId(), 'vendor') ? ([
                 <div>
-                  {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
+                {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
                   <div className="menu-icon" onClick={handleClick}>
                     <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
                   </div>

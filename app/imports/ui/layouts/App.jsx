@@ -26,6 +26,7 @@ import AdminContainerScan from '../pages/AdminContainerScan';
 import ListVendorInventory from '../pages/ListVendorInventory';
 import VendorScan from '../pages/VendorScan';
 import About from '../pages/About';
+import ApproveVendorOrder from '../pages/AdminOrderApproval';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -58,6 +59,7 @@ const App = () => {
           <Route path="/admin-list" element={<AdminProtectedRoute ready={ready}><ListContainersAdmin /></AdminProtectedRoute>} />
           <Route path="/add-container" element={<AdminProtectedRoute ready={ready}><AddContainer /></AdminProtectedRoute>} />
           <Route path="/scan-container" element={<AdminProtectedRoute ready={ready}><AdminContainerScan /></AdminProtectedRoute>} />
+          <Route path="/vendor-order-approval" element={<AdminProtectedRoute ready={ready}><ApproveVendorOrder /></AdminProtectedRoute>} />
           <Route path="/charge-user" element={<AdminProtectedRoute ready={ready}><ChargeUser /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />
