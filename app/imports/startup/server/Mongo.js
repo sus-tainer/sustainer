@@ -21,7 +21,9 @@ if (Containers.collection.find().count() === 0) {
 const addVendorOrder = (data) => {
   console.log(`  Adding: ${data.firstName} (${data.email})`);
   VendorOrder.collection.insert(data);
-  ApproveOrders.collection.insert(data);
+  if (data.approval === 1) {
+    ApproveOrders.collection.insert(data);
+  }
 };
 
 // Initialize the VendorOrderCollection if empty.
