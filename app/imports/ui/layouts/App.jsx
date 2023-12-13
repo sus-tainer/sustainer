@@ -119,7 +119,7 @@ ProtectedRoute.propTypes = {
 };
 
 ProtectedRoute.defaultProps = {
-  children: <Landing />,
+  children: <Home />,
 };
 
 // Require a component and location to be passed to each AdminProtectedRoute.
@@ -130,7 +130,7 @@ AdminProtectedRoute.propTypes = {
 
 AdminProtectedRoute.defaultProps = {
   ready: false,
-  children: <Landing />,
+  children: <Home />,
 };
 
 // Require a component and location to be passed to each VendorProtectedRoute.
@@ -141,7 +141,7 @@ VendorProtectedRoute.propTypes = {
 
 VendorProtectedRoute.defaultProps = {
   ready: false,
-  children: <Landing />,
+  children: <Home />,
 };
 
 export default App;
