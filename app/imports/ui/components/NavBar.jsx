@@ -158,7 +158,7 @@ const NavBar = () => {
           <h2 className="mt-2">Sustainer <Recycle /></h2>
         </Link>
         <Nav id="main-navbar-nav">
-          <div>
+          <div id="navbar-current-vendor">
             {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
             <div className="menu-icon" onClick={handleClick}>
               <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
