@@ -58,13 +58,13 @@ const NavBar = () => {
     </Navbar>
   );
   const userNavbar = () => (
-    <Navbar className="nabar">
+    <Navbar className="navbar">
       <Container className="navbar-container align-items-center">
         <Link to="/home" className="navbar-logo" onClick={closeMobileMenu}>
           <h2 className="mt-2">Sustainer <Recycle /></h2>
         </Link>
         <Nav id="main-navbar-nav">
-          <div>
+          <div id="navbar-current-user">
             {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
             <div className="menu-icon" onClick={handleClick}>
               <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
